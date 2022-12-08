@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Proyecto-1-VM-music/static/css/main.de52b3ce.css",
+    "main.js": "/Proyecto-1-VM-music/static/js/main.094a03cf.js",
+    "index.html": "/Proyecto-1-VM-music/index.html",
+    "main.de52b3ce.css.map": "/Proyecto-1-VM-music/static/css/main.de52b3ce.css.map",
+    "main.094a03cf.js.map": "/Proyecto-1-VM-music/static/js/main.094a03cf.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.de52b3ce.css",
+    "static/js/main.094a03cf.js"
+  ]
+}
