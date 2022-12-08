@@ -1,5 +1,8 @@
 
 
-@mixin bg($color){
-    background-color: $color;
+@mixin flex($justity: center, $aling:center, $direccion: row){
+    display: flex;
+    flex-direction: $direccion;
+    justify-content: $justity;
+    align-items: $aling;
 }
