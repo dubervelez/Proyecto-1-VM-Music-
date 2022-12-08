@@ -3,6 +3,8 @@
 
 .header{
     width: 100%;
+    max-width: 1200px;
+    margin: auto;
     height: 54px;
     background-color: $bg-header;
     padding: 0 16px;
@@ -35,11 +37,12 @@
     position: absolute;
     left: 0;
     top: 0;
-    width: 240px;
-    height: 100vh;
+    max-width: 240px;
     background-color: $bg-header;
     font-family: $tipografia;
     padding: 0 16px;
+    box-shadow: 15px 15px 30px #bebebe,
+             -15px -15px 30px #ffffff;
 }
 
 .nav-mobile-ul{
@@ -52,11 +55,14 @@
     letter-spacing: 1px;
     margin-bottom: 20px;
     cursor: pointer;
+    color: $text-primary;
 }
 .close{
     margin-bottom: 52px;
     text-align: end;
+    position: relative;
 }
+
 .close .icon-nav-close{
     height: 35px;
     margin: 0;
@@ -67,11 +73,13 @@
 .nav-movile--li:last-child{
     text-align: center;
     margin-top: 10px;
+    margin-bottom: 45px;
 }
 .icon-nav-mobile{
    height: 20px;
    width: 20px;
    margin-right: 14px;
+   color: rgb(84, 76, 85);
 }
 .limitador{
     list-style: none;
@@ -79,4 +87,75 @@
     width: 100%;
     background-color: $orange;
     margin-bottom: 20px;
+}
+
+
+@media only screen and (min-width:1180px) {
+    .header{
+        transition: all 0.5s;
+        height: 80px;
+        justify-content: flex-start;
+    }
+    .hamburguer{
+        display: none;
+    }
+
+    .nav-movile{
+        position: static;
+        max-width: none;
+        padding:0 15px 0 40px;
+        box-shadow: none;
+
+    }
+    .nav-mobile-ul{
+        width: 100%;
+        padding: 0;
+        height: 80px;
+        @include mixins.flex();
+    }
+
+    .nav-movile--li{
+        margin: 0;
+        height: 100%;
+        margin-right: 30px;
+        cursor: pointer;
+        @include mixins.flex();
+        position: relative;
+    }
+    .nav-movile--li::before {
+        content: "";
+        position: absolute;
+        left:51%;
+        right: 51%;
+        bottom: 0;
+        background: $orange;
+        height: 2px;
+        transition: all 0.3s ease-out;
+    }
+    .nav-movile--li:hover::before{
+        left: 0;
+        right: 0;
+    }
+    .nav-movile--li:hover{
+        color: black;
+        scale: 1.05;
+        transition: all 0.5s;
+    }
+    .close, .nav-movile--li:last-child, .limitador{
+        display: none;
+    }
+    .icon-nav-mobile{
+        height: 15px;
+        width: 15px;
+        margin-right: 8px;
+     }
+     .nav-movile--li:nth-child(6){
+        margin:0 150px 0 0;
+    }
+     .nav-movile--li:nth-child(8){
+        margin:0 ;
+    }
+    .img-logo{
+        height: 40px;
+    }
 }

@@ -2,7 +2,7 @@
   "name": "music-vm",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://dubervelez.github.io/Proyecto-1-VM-music/",
+  "homepage": "https://dubervelez.github.io/Proyecto-1-VM-Music-/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
     "@fortawesome/free-brands-svg-icons": "^6.2.1",

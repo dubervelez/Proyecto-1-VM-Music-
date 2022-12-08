@@ -9,11 +9,12 @@ function Header() {
   return (
     <header className='header'>
         <img className='img-logo' src={Logo} alt="logo VM" />
+        <Navmobile></Navmobile>
         <div className='contenedor-menu-login'>
             <div className='login'><FontAwesomeIcon icon={faUser} /> </div>
             <FontAwesomeIcon className='hamburguer' icon={faBars} />   
         </div>
-        <Navmobile></Navmobile>
+        
     </header>
   )
 }
