@@ -9,11 +9,7 @@ function Header() {
     // funcionalidad para desplegar el menu en resoluciones medianas y pequeñas
     const [navMobile, setNavMobile] = useState(false)
     const desplegarMenu = ()=>{
-        if (navMobile){
-            setNavMobile(false)
-        }else{
-            setNavMobile(true)
-        }
+        navMobile ? setNavMobile(false): setNavMobile(true);
     }
 
   return (

@@ -35,6 +35,7 @@
 
 .nav-movile{
     position: absolute;
+    z-index: 50;
     transition: all 0.5s ease-out;
     left: -150%;
     top: 0;
