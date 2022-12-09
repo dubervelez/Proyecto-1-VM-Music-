@@ -38,8 +38,8 @@ function Slider() {
             </div>
         </div>
         <div className='btn-slider'>
-            <FontAwesomeIcon icon={faArrowCircleLeft} onClick={prevSlide}/>
-            <FontAwesomeIcon icon={faArrowAltCircleRight} onClick={nextSlide}/>
+            <FontAwesomeIcon className='btn-next' icon={faArrowCircleLeft} onClick={prevSlide}/>
+            <FontAwesomeIcon className='btn-prev' icon={faArrowAltCircleRight} onClick={nextSlide}/>
         </div>
     </div>
   )

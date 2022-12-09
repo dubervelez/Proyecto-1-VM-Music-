@@ -1,0 +1,46 @@
+@use "./mixins.scss";
+@import "./colors";
+
+.contenedor-cards{
+
+}
+.cards{
+    max-width: 343px;
+    height: 459px;
+    margin: 24px auto;
+    border-radius: 19px;
+    padding: 15px 21px;
+    background: linear-gradient(180deg, #230B2E 0%, #140B23 38.02%, rgba(17, 7, 29, 0.83) 100%);
+}
+.cards-imagen{
+    width: 100%;
+    height: auto;
+}
+.cards-imagen > img{
+    width: 100%;
+    border-radius: 14px;
+    object-fit: cover;
+}
+.cards-descripcion{
+    width: 100%;
+}
+
+.artista{
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: #EAE6E6;
+}
+.musica{
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 17px;
+    color: #EAE6E6;
+}
+.cards-datos > p{
+    font-size: 14px;
+    margin-bottom: 2px;
+    letter-spacing: 1px;
+    color: #F7BA2B ;
+}
