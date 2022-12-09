@@ -1,17 +1,20 @@
 {
   "files": {
-    "main.css": "/Proyecto-1-VM-Music-/static/css/main.47c76bb5.css",
-    "main.js": "/Proyecto-1-VM-Music-/static/js/main.f864e70c.js",
+    "main.css": "/Proyecto-1-VM-Music-/static/css/main.f00dc1f0.css",
+    "main.js": "/Proyecto-1-VM-Music-/static/js/main.6ba28d79.js",
     "static/media/slider-1.jpg": "/Proyecto-1-VM-Music-/static/media/slider-1.ed6c2055475c8b410612.jpg",
     "static/media/slider-3.jpg": "/Proyecto-1-VM-Music-/static/media/slider-3.f15fbef4b15c16fa2a85.jpg",
     "static/media/slider-2.jpg": "/Proyecto-1-VM-Music-/static/media/slider-2.25d503b32be0bb20bb94.jpg",
+    "static/media/this is not america.jpg": "/Proyecto-1-VM-Music-/static/media/this is not america.ecc65844e0670651c357.jpg",
     "static/media/cards-canguro.jpg": "/Proyecto-1-VM-Music-/static/media/cards-canguro.9d7f28174be9881ededc.jpg",
+    "static/media/El anciano y el niño.jpg": "/Proyecto-1-VM-Music-/static/media/El anciano y el niño.e3697f040fe2b827bf8c.jpg",
+    "static/media/Gatubela.jpg": "/Proyecto-1-VM-Music-/static/media/Gatubela.207f00b52adac33b34f1.jpg",
     "index.html": "/Proyecto-1-VM-Music-/index.html",
-    "main.47c76bb5.css.map": "/Proyecto-1-VM-Music-/static/css/main.47c76bb5.css.map",
-    "main.f864e70c.js.map": "/Proyecto-1-VM-Music-/static/js/main.f864e70c.js.map"
+    "main.f00dc1f0.css.map": "/Proyecto-1-VM-Music-/static/css/main.f00dc1f0.css.map",
+    "main.6ba28d79.js.map": "/Proyecto-1-VM-Music-/static/js/main.6ba28d79.js.map"
   },
   "entrypoints": [
-    "static/css/main.47c76bb5.css",
-    "static/js/main.f864e70c.js"
+    "static/css/main.f00dc1f0.css",
+    "static/js/main.6ba28d79.js"
   ]
 }
