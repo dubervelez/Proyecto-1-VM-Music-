@@ -1,0 +1,42 @@
+@use "./mixins.scss";
+@import "./colors";
+
+.contenedor-slider{
+    width: 100%;
+    position: relative;
+}
+.slider{
+    width: 100%;
+    @include mixins.flex();
+}
+.slider-item{
+    width: 100%;
+    height: 188px;
+}
+.slider-item > img{
+    width: 100%;
+    height: 188px;
+    object-fit: cover;
+    display: block;
+    transition: all animacion-slider 1s;
+    animation: animacion-slider ease 1s ;
+}
+@keyframes animacion-slider {
+    0% {
+      transform: scale(1) rotateY(0);
+    }
+    50% {
+      transform: scale(0.4) rotateY(-90deg);
+    }
+    100% {
+      transform: scale(1) rotateY(-360deg);
+    }
+}
+.btn-slider{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    padding: 0 16px;
+    @include mixins.flex(space-between);
+}

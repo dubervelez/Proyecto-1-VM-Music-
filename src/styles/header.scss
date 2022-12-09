@@ -35,9 +35,10 @@
 
 .nav-movile{
     position: absolute;
-    left: 0;
+    transition: all 0.5s ease-out;
+    left: -150%;
     top: 0;
-    max-width: 240px;
+    width: 240px;
     background-color: $bg-header;
     font-family: $tipografia;
     padding: 0 16px;
@@ -56,6 +57,7 @@
     margin-bottom: 20px;
     cursor: pointer;
     color: $text-primary;
+    
 }
 .close{
     margin-bottom: 52px;
@@ -89,6 +91,14 @@
     margin-bottom: 20px;
 }
 
+// funcionalidad de despliegue del nav en dispositivos mobiles
+.header.activo .nav-movile{
+    transition: all 0.5s ease-out;
+    left: 0;
+
+}
+
+
 
 @media only screen and (min-width:1180px) {
     .header{
@@ -102,10 +112,10 @@
 
     .nav-movile{
         position: static;
-        max-width: none;
+        left: 0;
+        width: auto;
         padding:0 15px 0 40px;
         box-shadow: none;
-
     }
     .nav-mobile-ul{
         width: 100%;
@@ -122,6 +132,8 @@
         @include mixins.flex();
         position: relative;
     }
+
+    //animacion de hover 
     .nav-movile--li::before {
         content: "";
         position: absolute;
@@ -141,6 +153,7 @@
         scale: 1.05;
         transition: all 0.5s;
     }
+    
     .close, .nav-movile--li:last-child, .limitador{
         display: none;
     }

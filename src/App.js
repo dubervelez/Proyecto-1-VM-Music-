@@ -1,6 +1,4 @@
 import './styles/App.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { } from '@fortawesome/free-solid-svg-icons';
 import Home from './pages/Home';
 
 
