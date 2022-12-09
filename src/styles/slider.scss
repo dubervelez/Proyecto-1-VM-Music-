@@ -22,7 +22,8 @@
     object-fit: cover;
     display: block;
 	transition: all 1s ;
-    animation: animacion-slider ease 1s ;
+    animation: animacion-slider linear 1s ;
+    animation-delay: 0.2s;
 }
 @keyframes animacion-slider {
     0% {
@@ -35,6 +36,7 @@
       transform: scale(1) rotateY(-360deg);
     }
 }
+
 
 .btn-slider{
     position: absolute;

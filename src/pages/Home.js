@@ -6,6 +6,7 @@ function Home() {
         <>
             <Header></Header>
             <Slider></Slider>
+            <h2 className="titulo-cards">ULTIMOS LANZAMIENTOS</h2>
             <Cards></Cards>
         </>
     );

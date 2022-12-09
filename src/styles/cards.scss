@@ -5,12 +5,17 @@
 
 }
 .cards{
-    max-width: 343px;
-    height: 459px;
+    max-width: 280px;
+    height: 400px;
     margin: 24px auto;
     border-radius: 19px;
     padding: 15px 21px;
     background: linear-gradient(180deg, #230B2E 0%, #140B23 38.02%, rgba(17, 7, 29, 0.83) 100%);
+    @include mixins.flex();
+    flex-wrap: wrap;
+}
+.cards:nth-child(even){
+    background: linear-gradient(180deg, #0C2736 0%, #092027 38.02%, rgba(7, 25, 29, 0.83) 100%);
 }
 .cards-imagen{
     width: 100%;
@@ -33,7 +38,7 @@
 }
 .musica{
     font-size: 15px;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 1px;
     margin-bottom: 17px;
     color: #EAE6E6;
@@ -43,4 +48,62 @@
     margin-bottom: 2px;
     letter-spacing: 1px;
     color: #F7BA2B ;
+}
+
+.titulo-cards{
+    font-family: $tipografia;
+    margin-top: 30px;
+    width: 100%;
+    font-size: 24px;
+    color: $text-primary;
+    text-align: center;
+    animation:text-left 2s ease ;
+}
+
+@keyframes text-left {
+    0% {
+      position: relative;
+      left: -100%;
+      top: 0;
+    }
+    20% {
+      position: relative;  
+      left: -50%;
+    }
+    40%{
+        position: relative;  
+        left: 5%; 
+    }
+    50%{
+        position: relative;  
+        left: 0%; 
+    }
+    60%{
+        position: relative;  
+        left: 5%;  
+    }
+    70%{
+        position: relative;  
+        left: 0%; 
+    }
+    80%{
+        position: relative;  
+        left: 5%;  
+    }
+    85%{
+        position: relative;  
+        left: 0%; 
+    }
+    90%{
+        position: relative;  
+        left: 5%;  
+    }
+    90%{
+        position: relative;  
+        left: 2%;  
+    }
+    100% {
+        position: relative;  
+        left: 0;
+    }
 }
