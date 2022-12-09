@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.css": "/Proyecto-1-VM-Music-/static/css/main.6b87dd48.css",
-    "main.js": "/Proyecto-1-VM-Music-/static/js/main.2c5fb66a.js",
+    "main.css": "/Proyecto-1-VM-Music-/static/css/main.47c76bb5.css",
+    "main.js": "/Proyecto-1-VM-Music-/static/js/main.f864e70c.js",
     "static/media/slider-1.jpg": "/Proyecto-1-VM-Music-/static/media/slider-1.ed6c2055475c8b410612.jpg",
     "static/media/slider-3.jpg": "/Proyecto-1-VM-Music-/static/media/slider-3.f15fbef4b15c16fa2a85.jpg",
     "static/media/slider-2.jpg": "/Proyecto-1-VM-Music-/static/media/slider-2.25d503b32be0bb20bb94.jpg",
+    "static/media/cards-canguro.jpg": "/Proyecto-1-VM-Music-/static/media/cards-canguro.9d7f28174be9881ededc.jpg",
     "index.html": "/Proyecto-1-VM-Music-/index.html",
-    "main.6b87dd48.css.map": "/Proyecto-1-VM-Music-/static/css/main.6b87dd48.css.map",
-    "main.2c5fb66a.js.map": "/Proyecto-1-VM-Music-/static/js/main.2c5fb66a.js.map"
+    "main.47c76bb5.css.map": "/Proyecto-1-VM-Music-/static/css/main.47c76bb5.css.map",
+    "main.f864e70c.js.map": "/Proyecto-1-VM-Music-/static/js/main.f864e70c.js.map"
   },
   "entrypoints": [
-    "static/css/main.6b87dd48.css",
-    "static/js/main.2c5fb66a.js"
+    "static/css/main.47c76bb5.css",
+    "static/js/main.f864e70c.js"
   ]
 }
