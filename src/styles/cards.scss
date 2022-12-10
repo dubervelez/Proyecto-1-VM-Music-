@@ -2,7 +2,11 @@
 @import "./colors";
 
 .contenedor-cards{
-
+    @include mixins.flex();
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 16px;
 }
 .cards{
     max-width: 280px;
@@ -11,11 +15,15 @@
     border-radius: 19px;
     padding: 15px 21px;
     background: linear-gradient(180deg, #230B2E 0%, #140B23 38.02%, rgba(17, 7, 29, 0.83) 100%);
-    @include mixins.flex();
-    flex-wrap: wrap;
 }
 .cards:nth-child(even){
     background: linear-gradient(180deg, #0C2736 0%, #092027 38.02%, rgba(7, 25, 29, 0.83) 100%);
+}
+.cards:hover{
+    cursor: pointer;
+    scale: 1.05;
+    box-shadow: 5px 4px 80px 0px rgba(255, 252, 252, 0.75);
+    transition: all 0.5s;
 }
 .cards-imagen{
     width: 100%;
