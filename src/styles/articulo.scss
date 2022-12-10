@@ -5,33 +5,106 @@
 .articulo{
     max-width: 1200px;
     padding: 0 16px;
-    margin-top: 30px;
     font-family: $tipografia;
-    margin: auto;
+    margin: 40px auto;
+    background:rgba(223, 223, 230, 0.5) ;
+    
 }
-
-
 
 .titulo-articulo{
     font-size: 32px;
-    text-align: center;
-    color: $text-primary;
-    margin-bottom: 15px;
+    text-align: start;
+    color: $orange;
+    margin-bottom: 30px;
+    width: 100%;
+    font-weight: 700;
+}
+.introduccion{
+    @include mixins.flex();
+    margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 .parrafo-introductorio{
     font-size: 18px;
     color: $text-secundary;
-    line-height: 20px;
-    
+    line-height: 25px;
+    max-width: 660px;
 }
 .parrafo-1, .parrafo-2{
     margin-bottom: 20px;
 }
 
 .imagen{
-    width: 100%;
-    margin-bottom: 20px;
+   max-width: 500px;
 }
 .imagen > img{
+   width: 100%;
+}
+.creditos{
+    font-family: sans-serif;
+    font-size: 10px;
+    color: $text-secundary;
+    text-decoration: none;
+}
+.creditos > a{
+    text-decoration: none;
+    color: $text-secundary;
+    cursor: pointer;
+}
+
+.parrafo-desarrollo{
+    font-size: 18px;
+    color: $text-secundary;
+    line-height: 25px;
+}
+.parrafo-3{max-width: 800px;}
+
+.card-articulo{
+    @include mixins.flex();
+    flex-wrap: wrap;
     width: 100%;
+}
+.card{
+    width: 331px;
+    height: auto;
+    padding: 7px 25px;
+    @include mixins.flex(center,center,column);
+    background-color: $bg-header;
+    margin: 20px auto;
+    box-shadow: 0 2px 4px 1px $orange;
+}
+.card > img{
+    width: 76px;
+    margin: auto;
+}
+.card > h3{
+    font-size: 28px;
+    line-height: 30px;
+    text-align: center;
+    color: $text-primary;
+}
+
+.card > p{
+    margin-top: 8px;
+    font-size: 20px;
+    color: $text-secundary;
+    text-align: center;
+}
+
+
+@media only screen and (min-width: 1190px){
+    .introduccion{
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    .parrafo-introductorio{
+        font-size: 18px;
+        color: $text-secundary;
+        line-height: 20px;
+        width: 660px;
+    }
+    .titulo-articulo{
+        text-align: center;
+        
+    }
 }
