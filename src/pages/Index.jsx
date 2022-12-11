@@ -3,7 +3,7 @@ import Slider from "../components/Slider";
 import Cards from "../components/Cards";
 import Articulo from "../components/Articulo";
 import Footer from "../components/Footer";
-function Home() {
+function Index() {
     return(
         <>
             <Header></Header>
@@ -16,4 +16,4 @@ function Home() {
     );
 };
 
-export default Home;
+export default Index;

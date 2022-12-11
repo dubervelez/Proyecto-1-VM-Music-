@@ -1,12 +1,18 @@
 import './styles/App.scss';
-import Home from './pages/Home';
-
+import Index from './pages/Index';
+import Admin from './pages/Admin';
+import Login from "./components/Login";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <Home></Home>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Index/>} />
+        <Route path='/admin' element={<Admin/>} />
+        <Route path='/login' element={<Login/>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
