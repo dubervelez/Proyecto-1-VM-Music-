@@ -3,79 +3,76 @@ $color-red: #F7BA2B;
 $color-bg: #dce2e4;
 $color-shadow: #8f8b8b;
 $color-white: #f6fafd;
+@use "./mixins.scss";
+@import "./colors";
 
-body, html {
-  background-color:$color-bg;
-}
-
-
-body, p, input, select, textarea, button {
+.form-login {
+    padding: 16px;
+    width: 350px;
+    height: 100vh;
+    @include mixins.flex(center,center,column);
+    margin: auto;
     font-family: 'Montserrat', sans-serif;
-    letter-spacing: -0.2px;
-    font-size: $ruler;
 }
 
-div, p {
-  color: #F7BA2B;
-  text-shadow: 1px 1px 1px #1D1C1C;
+.titulo-login{
+    color: $bg-header;
+    text-shadow: 1px 1px 0 $text-primary;
+    margin-bottom: 20px;
+    text-align: center;
 }
-
-
-form {
-  padding: $ruler;
-  width: $ruler*20;
-  margin: 0 auto;
-}
-
-
-.segment {
-  padding: $ruler*2 0;
-  text-align: center;
-}
-
-
-button, input {
-  border: 0;
-  outline: 0;
-  font-size: $ruler;
-  border-radius: $ruler*20;
-  padding: $ruler;
-  background-color:$color-bg;
-  text-shadow: 1px 1px 0 $color-white;
-}
-
-
-label {
-  display: block;
-  margin-bottom: $ruler*1.5;
-  width: 100%;
-}
-
-
-input {
-  margin-right: $ruler/2;
-  box-shadow:  inset 2px 2px 5px $color-shadow, inset -5px -5px 10px $color-white;
-  width: 100%;
-  box-sizing: border-box;
-  transition: all 0.2s ease-in-out;
-  appearance: none;
-
-
-  &:focus {
-    box-shadow:  inset 1px 1px 2px $color-shadow, inset -1px -1px 2px $color-white;
+.label-login{
+    display: block;
+    margin-bottom: 25px;
+    width: 100%;
   }
+.input, .button{
+    width: 100%;
+    border: 0;
+    outline: none;
+    letter-spacing: -0.2px;
+    font-size: 16px;
+    padding: 16px;
+    border-radius: 320px;
 }
 
-button {
-  color:white;
-  font-weight: bold;
+button  {
+    text-shadow: 1px 1px 0 $text-primary;
+    background-color: $text-secundary;
+}
+
+.input {
+    box-shadow:  inset 2px 2px 5px $color-shadow, inset -5px -5px 10px $color-white;
+    transition: all 0.2s ease-in-out;
+  
+    &:focus {
+      box-shadow:  inset 1px 1px 2px $color-shadow, inset -1px -1px 2px $color-white;
+    }
+}
+
+.btn-marcas{
+    margin: 30px auto;
+    text-align: center;
+}
+
+.btn-marcas .unit {
+    width: 48px;
+    height: 48px;  
+    border-radius: 8px;
+    margin: 0px 8px;
+
+}
+.icon{
+    color: #F7BA2B;
+}
+
+
+.button {
   box-shadow: -5px -5px 20px $color-white,  5px 5px 20px $color-shadow;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 700;
   
-
-
   &:hover {
     box-shadow: -2px -2px 5px $color-white, 2px 2px 5px $color-shadow;
   }
@@ -84,40 +81,8 @@ button {
     box-shadow: inset 1px 1px 2px $color-shadow, inset -1px -1px 2px $color-white;
   }
   
-  .icon {
-    margin-right: $ruler/2;
-  }
-  
-  &.unit {
-    border-radius: $ruler/2;
-    line-height: 0;
-    width: $ruler*3;
-    height: $ruler*3;
-    display:inline-flex;
-    justify-content: center;
-    align-items:center;
-    margin: 0 $ruler/2;
-    font-size: $ruler*1.2;
-    
-    .icon {
-      margin-right: 0; 
-    }
-  }
-  
   &.red {
-    display: block;
-    width: 100%;
     color:$color-red;
   }
 }
 
-.input-group {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    
-    label {
-      margin: 0;
-      flex: 1;
-    }
-  }

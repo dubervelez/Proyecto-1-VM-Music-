@@ -1,7 +1,9 @@
 import './styles/App.scss';
+import Login from "./components/Login";
 import Index from './pages/Index';
 import Admin from './pages/Admin';
-import Login from "./components/Login";
+
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
