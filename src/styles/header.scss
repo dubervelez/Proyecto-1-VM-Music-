@@ -53,12 +53,14 @@
 }
 .nav-movile--li{
     list-style: none;
-    font-size: 18px;
-    letter-spacing: 1px;
     margin-bottom: 20px;
     cursor: pointer;
+}
+.navlink{
+    text-decoration: none;
+    font-size: 18px;
+    letter-spacing: 1px;
     color: $text-primary;
-    
 }
 .close{
     margin-bottom: 52px;
