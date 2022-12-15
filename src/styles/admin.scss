@@ -1,0 +1,92 @@
+@use "./mixins.scss";
+@import "./colors";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.titulo-admin-slider{
+    font-size: 32px;
+    color: $text-primary;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.form-slider{
+    @include mixins.flex(center, center, column);
+    max-width: 320px;
+    margin: 30px auto;
+    font-family: $tipografia;
+}
+.form-select{
+    border: 0;
+    outline: 0;
+    padding: 12px;
+    width: 100%;
+    border-radius: 5px;
+}
+.form-select__option{
+    font-size: 14px;
+    color: $text-secundary;
+    background-color: $text-secundary;
+    color: $bg-header;
+    padding: 9px;
+
+}
+.label-link{
+    width: 100%;
+    padding: 20px 0;
+}
+.input-link{
+    border: 0;
+    outline: 0;
+    width: 100%;
+    padding: 12px;
+    background-color: transparent;
+    box-shadow: inset 3px 4px 5px rgb(210, 205, 205);
+    transition: all 0.3s;
+    position: relative;
+
+    &:focus{
+        box-shadow: inset 1px 1px 5px rgb(225, 225, 225);
+    }
+}
+.btn-actualizar-slider{
+    border: 0;
+    outline: 0;
+    width: 100%;
+    padding: 15px 12px;
+    border-radius: 100px;
+    color: $bg-header;
+    text-shadow: none;
+    font-weight: 700;
+    font-size: 18px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 1;
+
+    &::before {
+        content: '';
+        width: 0;
+        height: 500%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+        background: $bg-header;
+        transition: .8s ease;
+        display: block;
+        z-index: -1;
+    }
+       
+    &:hover::before {
+        width: 105%;
+    }
+       
+    &:hover {
+        color: #111;
+    }
+}

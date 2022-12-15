@@ -1,7 +1,7 @@
 import './styles/App.scss';
 import Login from "./components/Login";
 import Index from './pages/Index';
-import Admin from './pages/Admin';
+import Admin from './pages/Admin/IndexAdm';
 
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
