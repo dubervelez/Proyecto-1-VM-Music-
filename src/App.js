@@ -10,9 +10,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/login' element={ <Login/> } />
-        <Route path='/admin' element={ <Admin/> } />
-        <Route path='/' element={ <Index/> } />
+        <Route path='/Proyecto-1-VM-Music-/login' element={ <Login/> } />
+        <Route path='/Proyecto-1-VM-Music-/admin' element={ <Admin/> } />
+        <Route path='/Proyecto-1-VM-Music-/' element={ <Index/> } />
       </Routes>
     </BrowserRouter>
   );

@@ -1,0 +1,27 @@
+@use "./mixins.scss";
+@import "./colors";
+
+
+
+.contenido-bd{
+    @include mixins.flex();
+    color: rgb(158, 155, 155);
+    padding: 8px 3px;
+    font-size: 16px;
+    flex-wrap: wrap;
+
+    &:hover{
+        background-color: rgba(128, 128, 128, 0.1);
+        cursor: pointer;
+    }
+}
+
+.id{
+    width: 30%;
+}
+.link{
+    width: 70%;
+    letter-spacing: 0.2px;
+    overflow: auto;
+    font-size: 14px;
+}
