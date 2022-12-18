@@ -25,7 +25,7 @@
     @include mixins.flex(center, center, column);
     max-width: 320px;
     margin: 30px auto;
-    font-family: $tipografia;
+    font-family: $font-roboto;
 }
 .form-select{
     border: 0;

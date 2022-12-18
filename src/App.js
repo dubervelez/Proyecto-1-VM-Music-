@@ -11,8 +11,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/Proyecto-1-VM-Music-/login' element={ <Login/> } />
-        <Route path='/Proyecto-1-VM-Music-/admin' element={ <Admin/> } />
-        <Route path='/Proyecto-1-VM-Music-/' element={ <Index/> } />
+        <Route path='/Proyecto-1-VM-Music-/admin' element={ <Index/> } />
+        <Route path='/Proyecto-1-VM-Music-/' element={ <Admin/> } />
       </Routes>
     </BrowserRouter>
   );

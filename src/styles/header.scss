@@ -41,7 +41,7 @@
     top: 0;
     width: 250px;
     background-color: $bg-header;
-    font-family: $tipografia;
+    font-family: $font-roboto;
     padding: 0 16px;
     box-shadow: 15px 15px 30px #616432,
              -15px -15px 30px #dbdbd8;
@@ -142,8 +142,8 @@
         position: absolute;
         left:51%;
         right: 51%;
-        bottom: 0;
-        background: $orange;
+        bottom: 2px;
+        background: $white;
         height: 2px;
         transition: all 0.3s ease-out;
     }

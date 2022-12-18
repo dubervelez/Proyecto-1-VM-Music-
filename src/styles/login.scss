@@ -1,5 +1,3 @@
-$color-red: #F7BA2B;
-$color-bg: #dce2e4;
 $color-shadow: #8f8b8b;
 $color-white: #f6fafd;
 @use "./mixins.scss";
@@ -81,7 +79,7 @@ button  {
   }
   
   &.red {
-    color:$color-red;
+    color:$bg-header;
   }
 }
 

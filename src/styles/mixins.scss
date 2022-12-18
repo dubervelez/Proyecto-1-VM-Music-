@@ -1,8 +1,17 @@
-
+@import "./colors";
 
 @mixin flex($justity: center, $aling:center, $direccion: row){
     display: flex;
     flex-direction: $direccion;
     justify-content: $justity;
     align-items: $aling;
+}
+
+@mixin text($size:18px, $weight: 400, $color: $text-primary, $family:$font-roboto, $spacing:normal, $align:start){
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+    font-family: $family;
+    letter-spacing: $spacing;
+    text-align: $align;
 }
