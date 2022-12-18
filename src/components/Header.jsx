@@ -32,13 +32,13 @@ function Navmobile({ cerrarMenu }) {
         <nav className='nav-movile'>
             <ul className='nav-mobile-ul'>
                 <li className="nav-movile--li close" onClick={cerrarMenu}><FontAwesomeIcon className='icon-nav-close' icon={faXmark} /> </li>
-                <li className="nav-movile--li"> <NavLink className='navlink' to='/'><FontAwesomeIcon className='icon-nav-mobile' icon={faHouse} />Inicio</NavLink> </li>
+                <li className="nav-movile--li"> <NavLink className='navlink' to='/Proyecto-1-VM-Music-/'><FontAwesomeIcon className='icon-nav-mobile' icon={faHouse} />Inicio</NavLink> </li>
                 <li className="nav-movile--li"><NavLink className='navlink' to='/catalogo-musical'><FontAwesomeIcon className='icon-nav-mobile' icon={faMusic} />Catalogo Musical</NavLink></li>
                 <li className="nav-movile--li"><NavLink className='navlink' to='/tienda'><FontAwesomeIcon className='icon-nav-mobile' icon={faCartShopping} />Tienda</NavLink> </li>
                 <li className='limitador'></li>
-                <li className="nav-movile--li"><NavLink className='navlink' to='/admin'><FontAwesomeIcon className='icon-nav-mobile' icon={faLock} />Admin</NavLink></li>
+                <li className="nav-movile--li"><NavLink className='navlink' to='/Proyecto-1-VM-Music-/admin'><FontAwesomeIcon className='icon-nav-mobile' icon={faLock} />Admin</NavLink></li>
                 <li className="nav-movile--li"><NavLink className='navlink' to='/registro'><FontAwesomeIcon className='icon-nav-mobile' icon={faUserPen} />Registrarse</NavLink></li>
-                <li className="nav-movile--li"><NavLink className='navlink' to='/login'><FontAwesomeIcon className='icon-nav-mobile' icon={faUser} />Iniciar Sesión</NavLink></li>
+                <li className="nav-movile--li"><NavLink className='navlink' to='/Proyecto-1-VM-Music-/login'><FontAwesomeIcon className='icon-nav-mobile' icon={faUser} />Iniciar Sesión</NavLink></li>
                 <li className="nav-movile--li"><img src={Logo} alt="logo-VM" /></li>
             </ul>
         </nav>
