@@ -8,16 +8,12 @@
     font-family: $font-roboto;
     margin: 40px auto;
     background:rgba(223, 223, 230, 0.5) ;
-    
 }
 
 .titulo-articulo{
-    font-size: 32px;
-    text-align: start;
-    color: $orange;
+    @include mixins.text(32px, 700, $orange);
     margin-bottom: 30px;
     width: 100%;
-    font-weight: 700;
 }
 .introduccion{
     @include mixins.flex();
@@ -25,10 +21,9 @@
     flex-wrap: wrap;
 }
 .parrafo-introductorio{
-    font-size: 18px;
-    color: $text-secundary;
-    line-height: 25px;
     max-width: 660px;
+    @include mixins.text($text-md, 400, $text-secundary);
+    line-height: 25px;
 }
 .parrafo-1, .parrafo-2{
     margin-bottom: 20px;
@@ -53,8 +48,7 @@
 }
 
 .parrafo-desarrollo{
-    font-size: 18px;
-    color: $text-secundary;
+    @include mixins.text($text-md, 400, $text-secundary);
     line-height: 25px;
 }
 .parrafo-3{max-width: 800px;}
@@ -78,16 +72,14 @@
     margin: auto;
 }
 .card > h3{
-    font-size: 28px;
+    @include mixins.text(28px, 400, $text-secundary);
     line-height: 30px;
     text-align: center;
-    color: $text-primary;
 }
 
 .card > p{
+    @include mixins.text($text-lg, 400, $text-secundary);
     margin-top: 8px;
-    font-size: 20px;
-    color: $text-secundary;
     text-align: center;
 }
 
@@ -105,6 +97,5 @@
     }
     .titulo-articulo{
         text-align: center;
-        
     }
 }

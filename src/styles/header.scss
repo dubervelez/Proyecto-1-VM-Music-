@@ -4,9 +4,9 @@
 .header{
     width: 100%;
     max-width: 1200px;
-    margin: auto;
     height: 54px;
     background-color: $bg-header;
+    margin: auto;
     padding: 0 16px;
     @include mixins.flex(space-between);
 }
@@ -19,9 +19,9 @@
 .login{
     width: 32px;
     height: 32px;
+    background-color: $white;
     border-radius: 100%;
     @include mixins.flex();
-    background-color: $white;
     cursor: pointer;
 }
 .hamburguer{
@@ -58,16 +58,14 @@
 }
 .navlink{
     text-decoration: none;
-    font-size: 18px;
-    letter-spacing: 1px;
-    color: $text-primary;
+    @include mixins.text($text-md, 400, $text-primary, $font-roboto, 1px);
 }
+
 .close{
     margin-bottom: 52px;
     text-align: end;
     position: relative;
 }
-
 .close .icon-nav-close{
     height: 35px;
     margin: 0;
