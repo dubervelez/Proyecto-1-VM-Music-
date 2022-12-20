@@ -3,24 +3,18 @@ import Layout from './Layout';
 import Slider from '../../components/Slider';
 import Mapbd from '../../components/Mapbd';
 import axios from 'axios';
+import { obtenerDatosSlider, actualizarSlider, nuevoSlider } from '../../utils/Api';
 import '../../styles/admin/index.scss';
 
 function Admin() {
   
-  const [bdsliders, setBdSliders] = useState([]);
-
-  useEffect(() => {
-    const options = {method: 'GET', url: 'http://localhost:5000/admin/informacion-slider'};
-  
-    axios.request(options).then(function (response) {
-      setBdSliders(response.data);
-    }).catch(function (error) {
-      console.error(error);
-    });
-  }, [bdsliders]);
-  
-  
   const form = useRef(null);
+  const [operacion, setOperacion] = useState(false)
+  
+  const [bdsliders, setBdSliders] = useState([]);
+  useEffect( () => {
+    obtenerDatosSlider(setBdSliders);
+  }, [bdsliders]);
   
   const submitform = async (e)=>{
     e.preventDefault();
@@ -30,40 +24,11 @@ function Admin() {
       datosSlider[key] = value
     });
     if (operacion) {
-      const options = {
-        method: 'POST',
-        url: 'http://localhost:5000/admin/creacion-slider',
-        headers: {'Content-Type': 'application/json'},
-        data: {idSlider: datosSlider.idSlider , Slider: datosSlider.Slider}
-      };
-      
-      await axios.request(options).then(function (response) {
-        console.log(response.data);
-      }).catch(function (error) {
-        console.error(error);
-      }); 
+      await nuevoSlider(datosSlider);
     }else{
-      const options = {
-        method: 'PATCH',
-        url: 'http://localhost:5000/admin/modificar-slider',
-        headers: {'Content-Type': 'application/json'},
-        data: {
-          idSlider: datosSlider.idSlider,
-          Slider: datosSlider.Slider
-        }
-      };
-      
-      await axios.request(options).then(function (response) {
-        console.log(response.data);
-      }).catch(function (error) {
-        console.error(error);
-      });
+      await actualizarSlider(datosSlider);
     }
-    
   }
-
-  const [operacion, setOperacion] = useState(false)
-  
 
 
   return (
