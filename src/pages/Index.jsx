@@ -3,7 +3,9 @@ import Slider from "../components/Slider";
 import Cards from "../components/Cards";
 import Articulo from "../components/Articulo";
 import Footer from "../components/Footer";
+
 function Index() {
+
     return(
         <>
             <Header></Header>

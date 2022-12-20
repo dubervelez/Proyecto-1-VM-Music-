@@ -2,20 +2,26 @@ import React, { useState, useRef, useEffect } from 'react';
 import Layout from './Layout';
 import Slider from '../../components/Slider';
 import Mapbd from '../../components/Mapbd';
-import axios from 'axios';
 import { obtenerDatosSlider, actualizarSlider, nuevoSlider } from '../../utils/Api';
 import '../../styles/admin/index.scss';
+import axios from 'axios';
+import useSlider from '../../hooks/useSlider'
+
+
 
 function Admin() {
   
+  const {setSliderData} = useSlider();
   const form = useRef(null);
   const [operacion, setOperacion] = useState(false)
-  
   const [bdsliders, setBdSliders] = useState([]);
+
+
   useEffect( () => {
-    obtenerDatosSlider(setBdSliders);
-  }, [bdsliders]);
-  
+    obtenerDatosSlider(setBdSliders, setSliderData)
+    
+  }, []);
+
   const submitform = async (e)=>{
     e.preventDefault();
     let datosSlider = {};
@@ -27,6 +33,7 @@ function Admin() {
       await nuevoSlider(datosSlider);
     }else{
       await actualizarSlider(datosSlider);
+      
     }
   }
 
@@ -41,11 +48,11 @@ function Admin() {
           <div className='contenedor-form'>
             {!operacion ?(
             <>
-              <select required className='form-select' name="idSlider" >
-                <option disabled >Seleccion el slider</option>
-                <option className='form-select__option' >Slider No 1</option>
-                <option className='form-select__option'>Slider No 2</option>
-                <option className='form-select__option'>Slider No 3</option>
+              <select required className='form-select' name="idSlider" defaultValue={0}>
+                <option disabled value={0}>Seleccion el slider</option>
+                {bdsliders.map((slide, index)=>{
+                  return <option key={index} className='form-select__option' >{slide.idSlider}</option>
+                })}
               </select>
               <label className='label-link' htmlFor='Slider'>
                 <input required name='Slider' className='input-link' type='url' 
