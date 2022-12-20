@@ -12,8 +12,9 @@
 }
 
 .form-slider{
-    @include mixins.flex(center, flex-start);
+    @include mixins.flex();
     margin: 50px auto;
+    flex-wrap: wrap
 }
 .contenedor-form{
     @include mixins.flex(center, center, column);
@@ -116,13 +117,14 @@
 
 
 .contenedor-funciones{
-    margin-left: 100px;
+    margin-top: 30px
 }
 .funcion-p{
     @include mixins.text($text-md, 400, $text-white, $font-roboto, 1.5px );
     padding: 5px;
     margin-bottom: 20px;
     cursor: pointer;
+    text-align: center;
     &:hover{
         color: $bg-header;
     }
@@ -132,15 +134,6 @@
     font-weight: 700;
     color: $bg-header;
 }
-
-
-
-
-
-
-
-
-
 
 
 //tabla de visualizacion base de datos
@@ -164,4 +157,22 @@
 .titulos-p{
     width: 80%;
     text-align: start;
+}
+
+@media only screen and (min-width:500px){
+    .contenedor-funciones{
+        margin-left: 50px;
+    }
+}
+@media only screen and (min-width:1000px){
+    .form-slider{
+        @include mixins.flex(center, flex-start);
+    }
+    .contenedor-funciones{
+        margin-top: 0;
+        margin-left: 100px;
+    }
+    .funcion-p{
+        text-align: start;
+    }
 }
