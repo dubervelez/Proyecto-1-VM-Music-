@@ -5,16 +5,19 @@
 
 
 .titulo-admin-slider{
-    font-size: 32px;
-    color: #f2f2f2;
+    font-size: 28px;
+    color: $text-white;
     text-align: center;
-    margin: 20px 0;
+    margin: 40px 0 20px 0 ;
 }
 
 .form-slider{
+    @include mixins.flex(center, flex-start);
+    margin: 50px auto;
+}
+.contenedor-form{
     @include mixins.flex(center, center, column);
-    max-width: 320px;
-    margin: 30px auto;
+    width: 320px;
     font-family: $font-roboto;
 }
 .form-select{
@@ -25,12 +28,12 @@
     border-radius: 5px;
     cursor: pointer;
     background-color: transparent;
-    border-bottom: 2px solid #9b9b9b;
-    color: #f2f2f2;
+    border-bottom: 2px solid #2bb649;
+    color: $text-white;
 
     &:hover{
         transition: border 0.2;
-        border: 2px solid #9b9b9b;
+        border: 2px solid $bg-header;
     }
 
 }
@@ -46,6 +49,13 @@
     width: 100%;
     padding: 30px 0;
 }
+.label-link-nuevo{
+    width: 100%;
+    padding-bottom: 30px;
+}
+.label-link-nuevo .input-link{
+    border-bottom: 2px solid #2a80cf;
+}
 .input-link{
     border: 0;
     outline: 0;
@@ -54,7 +64,7 @@
     background-color: transparent;
     transition: all 0.3s;
     position: relative;
-    border-bottom: 2px solid #9b9b9b;
+    border-bottom: 2px solid #2bb649;
     color: #999999;
     letter-spacing: 1px;
 
@@ -65,6 +75,7 @@
     }
 
 }
+
 .btn-actualizar-slider{
     border: 0;
     outline: 0;
@@ -104,12 +115,39 @@
 }
 
 
+.contenedor-funciones{
+    margin-left: 100px;
+}
+.funcion-p{
+    @include mixins.text($text-md, 400, $text-white, $font-roboto, 1.5px );
+    padding: 5px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    &:hover{
+        color: $bg-header;
+    }
+}
+.funcion-p.activo{
+    border-bottom: 2px solid $text-secundary;
+    font-weight: 700;
+    color: $bg-header;
+}
+
+
+
+
+
+
+
+
+
+
+
 //tabla de visualizacion base de datos
 .contenedor-bd{
     padding: 16px;
     max-width: 900px;
     margin: 60px auto;
-
 }
 
 .titulos{
@@ -123,7 +161,6 @@
 .titulos-p-id{
     width: 20%;
 }
-
 .titulos-p{
     width: 80%;
     text-align: start;

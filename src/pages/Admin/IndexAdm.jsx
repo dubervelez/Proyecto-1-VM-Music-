@@ -29,60 +29,81 @@ function Admin() {
     datosFormulario.forEach((value, key)=>{
       datosSlider[key] = value
     });
-    /*
-    const options = {
-      method: 'POST',
-      url: 'http://localhost:5000/admin/creacion-slider',
-      headers: {'Content-Type': 'application/json'},
-      data: {idSlider: datosSlider.idSlider , Slider: datosSlider.Slider}
-    };
+    if (operacion) {
+      const options = {
+        method: 'POST',
+        url: 'http://localhost:5000/admin/creacion-slider',
+        headers: {'Content-Type': 'application/json'},
+        data: {idSlider: datosSlider.idSlider , Slider: datosSlider.Slider}
+      };
+      
+      await axios.request(options).then(function (response) {
+        console.log(response.data);
+      }).catch(function (error) {
+        console.error(error);
+      }); 
+    }else{
+      const options = {
+        method: 'PATCH',
+        url: 'http://localhost:5000/admin/modificar-slider',
+        headers: {'Content-Type': 'application/json'},
+        data: {
+          idSlider: datosSlider.idSlider,
+          Slider: datosSlider.Slider
+        }
+      };
+      
+      await axios.request(options).then(function (response) {
+        console.log(response.data);
+      }).catch(function (error) {
+        console.error(error);
+      });
+    }
     
-    await axios.request(options).then(function (response) {
-      console.log(response.data);
-    }).catch(function (error) {
-      console.error(error);
-    }); */
-
-    const options = {
-      method: 'PATCH',
-      url: 'http://localhost:5000/admin/modificar-slider',
-      headers: {'Content-Type': 'application/json'},
-      data: {
-        idSlider: datosSlider.idSlider,
-        Slider: datosSlider.Slider
-      }
-    };
-    
-    await axios.request(options).then(function (response) {
-      console.log(response.data);
-    }).catch(function (error) {
-      console.error(error);
-    });
   }
 
-
-
+  const [operacion, setOperacion] = useState(false)
   
 
 
   return (
     <Layout>
       <div>
-        <h1 className='titulo-admin-slider'>Actualizacion de imagenes</h1>
+        <h1 className='titulo-admin-slider'>Administracion Slider</h1>
         <Slider></Slider>
         
         <form ref={form} className='form-slider' onSubmit={submitform}>
-          <select required className='form-select' name="idSlider" >
-            <option disabled >Seleccion el slider</option>
-            <option className='form-select__option' >Slider No 1</option>
-            <option className='form-select__option'>Slider No 2</option>
-            <option className='form-select__option'>Slider No 3</option>
-          </select>
-          <label className='label-link' htmlFor='Slider'>
-            <input required name='Slider' className='input-link' type='url' 
-            placeholder='ingresa url imagen'/>
-          </label>
-          <button className='btn-actualizar-slider' type='submit ' >Actualizar datos</button>
+          <div className='contenedor-form'>
+            {!operacion ?(
+            <>
+              <select required className='form-select' name="idSlider" >
+                <option disabled >Seleccion el slider</option>
+                <option className='form-select__option' >Slider No 1</option>
+                <option className='form-select__option'>Slider No 2</option>
+                <option className='form-select__option'>Slider No 3</option>
+              </select>
+              <label className='label-link' htmlFor='Slider'>
+                <input required name='Slider' className='input-link' type='url' 
+                placeholder='ingresa url imagen'/>
+              </label>
+            </>):(
+            <>
+              <label className='label-link-nuevo' htmlFor='idSlider'>
+                <input required name='idSlider' className='input-link' type='text' 
+                placeholder='No del Slider'/>
+              </label>
+              <label className='label-link-nuevo' htmlFor='Slider'>
+                <input required name='Slider' className='input-link' type='url' 
+                placeholder='ingresa url imagen'/>
+              </label>
+            </>
+            )}
+            <button className='btn-actualizar-slider' type='submit ' >{!operacion ? "Actualizar": "Crear Imagen"}</button>
+          </div>
+            <div className="contenedor-funciones">
+              <p className={`funcion-p ${!operacion ? 'activo': ''}`} onClick={()=>{setOperacion(false)}} >Actualizar</p>
+              <p className={`funcion-p ${operacion ? 'activo': ''}`} onClick={()=>{setOperacion(true)}}>Agregar Imagen</p>
+            </div>
         </form>
 
         <section className='contenedor-bd'>

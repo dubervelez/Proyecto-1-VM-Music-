@@ -6,7 +6,7 @@ function Mapbd({ slider, linkImagen, imagen  }) {
         <div className='contenido-bd'>
             <p className="id">{slider}</p>
             <p className='link'>{linkImagen}</p>
-            <img className='img-miniatura' src={`${linkImagen}`} alt="" />
+            <img className='img-miniatura' src={`${linkImagen}`} alt="imagen miniatura" />
         </div>
   )
 }
