@@ -1,0 +1,168 @@
+@use "./mixins.scss";
+@import "./colors";
+
+
+// Etilos del header-admin
+.header-admin{
+    width: 100%;
+    height: 54px;
+    margin: auto;
+    padding: 0 16px;
+    @include mixins.flex(space-between);
+}
+.contenedor-menu-login{
+    @include mixins.flex();
+}
+
+.icon-home{
+    color: #eeebeb;
+    height: 25px;
+    margin-right: 10px;
+    cursor: pointer;
+    position: relative;
+    &:hover{
+        color: $bg-header;
+    }
+}
+
+
+.img-logo{
+    cursor: pointer;
+}
+
+.login{
+    width: 32px;
+    height: 32px;
+    background-color: $white;
+    border-radius: 100%;
+    @include mixins.flex();
+    cursor: pointer;
+}
+.hamburguer{
+    height: 32px;
+    margin-left: 15px;
+    cursor: pointer;
+    color: #eeebeb;
+    &:hover{
+        color: $bg-header;
+    }
+}
+
+
+
+
+//ESTILOS DEL SIDEBAR 
+.nav-movile-admin{
+    transition: all 0.5s ease-out;
+    width: 100%;
+    font-family: $font-roboto;
+    padding: 30px 16px;
+    height: 100%;
+}
+
+.header-admin .nav-movile-admin{
+    display: block;
+    position: fixed;
+    z-index: 50;
+    transition: all 0.5s ease-out;
+    left: -180%;
+    top: 0;
+    width: 250px;
+    font-family: $font-roboto;
+    padding: 50px 16px;
+    background-color: #576762;
+}
+.header-admin.activo .nav-movile-admin{
+    transition: all 0.5s ease-out;
+    left: 0;
+}
+
+//
+.sidebar--li{
+    list-style: none;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+.navlink-admin{
+    text-decoration: none;
+    @include mixins.text($text-md, 500, #eeebeb, $font-roboto, 1px);
+}
+.sidebar--li:last-child {
+    position: absolute;
+    bottom: 20px;
+    left: 30%;
+    height: auto;
+}
+.logo-vm-w{
+    height: 40px;
+}
+.icon-nav-sidebar{
+    height: 20px;
+   width: 20px;
+   margin-right: 14px;
+}
+
+
+
+// ESTILOS PARA EL SUBMENU
+.sub-nav-ul{
+    border-radius: 4px;
+    box-shadow: -0.5px 2px  rgba(0, 0, 0, 0.25);
+    height: 0;
+    overflow-y: hidden;
+    transition: all 0.5s ease;
+}
+.subnav-1.activo{
+    padding: 10px;
+    height: 105px;
+    transition: all 0.5s ease;
+}
+.subnav-2.activo{
+    padding: 10px;
+    height: 80px;
+    transition: all 0.5s ease;
+}
+.subnav-3.activo{
+    padding: 10px;
+    height: 132px;
+    transition: all 0.5s ease;
+}
+
+.sub-nav--li{
+    list-style: none;
+    padding: 5px 0;
+}
+.subnav-link{
+    text-decoration: none;
+    @include mixins.text($text-sm, 400, $text-secundary, $font-roboto, 0.5px);
+    color:#b4afaf;
+    &:hover{
+        color: $bg-header;
+        font-weight: 500;
+    }
+}
+
+.icon-subnav{
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: #eeebeb;
+    &:hover{
+        color: $bg-header;
+        font-weight: 500;
+    }
+}
+
+
+
+
+@media only screen and (min-width: 800px) {
+    .header-admin.activo .nav-movile-admin{
+        transition: all 0.5s ease-out;
+        left: -180%;
+    }
+    .header-admin{
+        padding: 0 30px;
+    }
+}

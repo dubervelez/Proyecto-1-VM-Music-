@@ -34,7 +34,7 @@
 // Estilos para el nav en pantallas tipo mobile y tablet
 
 .nav-movile{
-    position: absolute;
+    position: fixed;
     z-index: 50;
     transition: all 0.5s ease-out;
     left: -150%;
@@ -43,12 +43,11 @@
     background-color: $bg-header;
     font-family: $font-roboto;
     padding: 0 16px;
-    box-shadow: 15px 15px 30px #616432,
-             -15px -15px 30px #dbdbd8;
+    box-shadow: 5px 5px 30px 10px #2e2e2e;
 }
 
 .nav-mobile-ul{
-   width: 100%;
+    width: 100%;
     padding-top: 20px;
 }
 .nav-movile--li{
@@ -58,7 +57,7 @@
 }
 .navlink{
     text-decoration: none;
-    @include mixins.text($text-md, 400, $text-primary, $font-roboto, 1px);
+    @include mixins.text($text-md, 500, $text-primary, $font-roboto, 1px);
 }
 
 .close{
@@ -107,25 +106,25 @@
         height: 80px;
         justify-content: flex-start;
     }
-    .hamburguer{
+    .header .hamburguer{
         display: none;
     }
 
-    .nav-movile{
+    .header .nav-movile{
         position: static;
         left: 0;
         width: auto;
         padding:0 15px 0 40px;
         box-shadow: none;
     }
-    .nav-mobile-ul{
+    .header .nav-mobile-ul{
         width: 100%;
         padding: 0;
         height: 80px;
         @include mixins.flex();
     }
 
-    .nav-movile--li{
+    .header .nav-movile--li{
         margin: 0;
         height: 100%;
         margin-right: 30px;
@@ -135,7 +134,7 @@
     }
 
     //animacion de hover 
-    .nav-movile--li::before {
+    .header .nav-movile--li::before {
         content: "";
         position: absolute;
         left:51%;
@@ -145,31 +144,31 @@
         height: 2px;
         transition: all 0.3s ease-out;
     }
-    .nav-movile--li:hover::before{
+    .header .nav-movile--li:hover::before{
         left: 0;
         right: 0;
     }
-    .nav-movile--li:hover{
+    .header .nav-movile--li:hover{
         color: black;
         scale: 1.05;
         transition: all 0.5s;
     }
     
-    .close, .nav-movile--li:last-child, .limitador{
+    .header .close, .nav-movile--li:last-child, .limitador{
         display: none;
     }
-    .icon-nav-mobile{
+    .header .icon-nav-mobile{
         height: 15px;
         width: 15px;
         margin-right: 8px;
      }
-     .nav-movile--li:nth-child(6){
+     .header .nav-movile--li:nth-child(6){
         margin:0 150px 0 0;
     }
-     .nav-movile--li:nth-child(8){
+    .header .nav-movile--li:nth-child(8){
         margin:0 ;
     }
-    .img-logo{
+    .header .img-logo{
         height: 40px;
     }
 }

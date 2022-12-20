@@ -31,7 +31,7 @@ function Navmobile({ cerrarMenu }) {
     return(
         <nav className='nav-movile'>
             <ul className='nav-mobile-ul'>
-                <li className="nav-movile--li close" onClick={cerrarMenu}><FontAwesomeIcon className='icon-nav-close' icon={faXmark} /> </li>
+                <li className="nav-movile--li close" ><FontAwesomeIcon onClick={cerrarMenu} className='icon-nav-close' icon={faXmark} /> </li>
                 <li className="nav-movile--li"> <NavLink className='navlink' to='/Proyecto-1-VM-Music-/'><FontAwesomeIcon className='icon-nav-mobile' icon={faHouse} />Inicio</NavLink> </li>
                 <li className="nav-movile--li"><NavLink className='navlink' to='/catalogo-musical'><FontAwesomeIcon className='icon-nav-mobile' icon={faMusic} />Catalogo Musical</NavLink></li>
                 <li className="nav-movile--li"><NavLink className='navlink' to='/tienda'><FontAwesomeIcon className='icon-nav-mobile' icon={faCartShopping} />Tienda</NavLink> </li>

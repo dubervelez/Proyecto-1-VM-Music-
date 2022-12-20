@@ -7,12 +7,57 @@
     box-sizing: border-box;
 }
 
+
+//ESTILOS DEL LAYOUT
 .layout-contenedor{
     width: 100%;
-    min-height:120vh ;
-    background-color: #171717;
-    overflow: hidden;
+    height: 100vh;
 }
+
+.header-layout{
+    width: 100%;
+    background-color: #576762;
+}
+
+.sid-main{
+    width: 100%;
+    display: flex;
+    background-color: #272626;
+}
+.sidebar-layout{
+    background-color: $bg-header;
+    width: 280px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    padding: 10px 10px 10px 0;
+    display: none;
+}
+.main-layout{
+    position: relative;
+    width: 100%;
+    background-color: #272626;
+}   
+
+
+
+@media only screen and (min-width: 800px) {
+    .sidebar-layout{
+        display: block;
+        background-color: #7d8a933d;
+    }
+    .main-layout{
+        width: calc(100% - 280px);
+        position: relative;
+        padding: 20px 70px ;
+    }   
+}
+
+
+
+
+
+
 
 .titulo-admin-slider{
     font-size: 32px;
