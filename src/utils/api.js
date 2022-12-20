@@ -1,14 +1,8 @@
 import axios from 'axios';
 
-const obtenerDatosSlider = async(setBdSliders, setSliderData)=>{
-    const options = {method: 'GET', url: 'http://localhost:5000/admin/informacion-slider'};
-  
-    await axios.request(options).then(function (response) {
-      setBdSliders(response.data);
-      setSliderData(response.data)
-    }).catch(function (error) {
-      console.error(error);
-    });
+const obtenerDatosSlider = async(callbackSucces,callbackError)=>{
+  const options = {method: 'GET', url: 'http://localhost:5000/admin/informacion-slider'};
+  await axios.request(options).then(callbackSucces).catch(callbackError);
 }
 
 const actualizarSlider = async(datosSlider)=>{

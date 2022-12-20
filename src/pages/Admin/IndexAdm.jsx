@@ -4,7 +4,6 @@ import Slider from '../../components/Slider';
 import Mapbd from '../../components/Mapbd';
 import { obtenerDatosSlider, actualizarSlider, nuevoSlider } from '../../utils/Api';
 import '../../styles/admin/index.scss';
-import axios from 'axios';
 import useSlider from '../../hooks/useSlider'
 
 
@@ -18,9 +17,17 @@ function Admin() {
 
 
   useEffect( () => {
-    obtenerDatosSlider(setBdSliders, setSliderData)
-    
-  }, []);
+    obtenerDatosSlider(
+    (response)=>{
+      setBdSliders(response.data);
+      setSliderData(response.data)
+    }, 
+    (error)=>{
+      console.error(error);
+    }
+    );
+  },[]);
+
 
   const submitform = async (e)=>{
     e.preventDefault();
@@ -48,8 +55,8 @@ function Admin() {
           <div className='contenedor-form'>
             {!operacion ?(
             <>
-              <select required className='form-select' name="idSlider" defaultValue={0}>
-                <option disabled value={0}>Seleccion el slider</option>
+              <select className='form-select' name="idSlider" defaultValue="" required>
+                <option disabled value="">Seleccion el slider</option>
                 {bdsliders.map((slide, index)=>{
                   return <option key={index} className='form-select__option' >{slide.idSlider}</option>
                 })}
@@ -70,7 +77,7 @@ function Admin() {
               </label>
             </>
             )}
-            <button className='btn-actualizar-slider' type='submit ' >{!operacion ? "Actualizar": "Crear Imagen"}</button>
+            <button className='btn-actualizar-slider' type='submit' >{!operacion ? "Actualizar": "Crear Imagen"}</button>
           </div>
             <div className="contenedor-funciones">
               <p className={`funcion-p ${!operacion ? 'activo': ''}`} onClick={()=>{setOperacion(false)}} >Actualizar</p>

@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
 
-const ContextSlider = createContext(null);
+const ContextSlider = createContext([]);
 
 export default ContextSlider
 

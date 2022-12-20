@@ -2,7 +2,7 @@ import React from 'react'
 import "../styles/slider.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  faArrowCircleLeft, faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons';
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import useSlider from '../hooks/useSlider'
 
 let posicion = 0;
@@ -13,9 +13,9 @@ function Slider() {
     sliderData.forEach((elemento,i) => {
         imagenes[i] = elemento.Slider
     });
-  
-    const [imagenSlide, setImagenSlide] = useState() 
-    
+    const valorInicial = imagenes[0]
+    const [imagenSlide, setImagenSlide] = useState(valorInicial) 
+
     const nextSlide = ()=>{
         if (posicion === imagenes.length-1) {
             posicion =0;   
@@ -38,7 +38,7 @@ function Slider() {
     <div className='contenedor-slider'>
         <div className='slider'>
             <div className='slider-item'>
-                <img src={`${imagenSlide}`} alt="imagen de slider" />
+                <img src={`${!imagenSlide ? valorInicial: imagenSlide}`} alt="imagen de slider" />
             </div>
         </div>
         <div className='btn-slider'>

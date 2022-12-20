@@ -4,16 +4,24 @@ import Index from './pages/Index';
 import Admin from './pages/Admin/IndexAdm';
 import './styles/App.scss';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { obtenerDatosSlider } from "./utils/Api.js";
-import axios from 'axios';
+
 
 function App() {
   
   const [sliderData, setSliderData] =useState([])
 
-  
-
+  useEffect( () => {
+    obtenerDatosSlider(
+    (response)=>{
+      setSliderData(response.data)
+    }, 
+    (error)=>{
+      console.error(error);
+    }
+    );
+  },[]);
   return (
     <ContextSlider.Provider value={{sliderData, setSliderData}}>
       <BrowserRouter>
