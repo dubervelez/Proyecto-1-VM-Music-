@@ -1,34 +1,34 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react';
 import Layout from './Layout';
 import Slider from '../../components/Slider';
 import Mapbd from '../../components/Mapbd';
 import axios from 'axios';
-import '../../styles/admin.scss'
+import '../../styles/admin/index.scss';
 
 function Admin() {
   
-  const [bdsliders, setBdSliders] = useState([])
+  const [bdsliders, setBdSliders] = useState([]);
 
   useEffect(() => {
     const options = {method: 'GET', url: 'http://localhost:5000/admin/informacion-slider'};
   
     axios.request(options).then(function (response) {
-      setBdSliders(response.data)
+      setBdSliders(response.data);
     }).catch(function (error) {
       console.error(error);
     });
-  }, [bdsliders])
+  }, [bdsliders]);
   
   
   const form = useRef(null);
   
   const submitform = async (e)=>{
-    e.preventDefault()
-    let datosSlider = {}
+    e.preventDefault();
+    let datosSlider = {};
     const datosFormulario = new FormData(form.current)
     datosFormulario.forEach((value, key)=>{
       datosSlider[key] = value
-    })
+    });
     /*
     const options = {
       method: 'POST',

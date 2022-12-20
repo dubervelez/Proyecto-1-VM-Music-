@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import "../styles/headerAdmin.scss"
+import "../styles/admin/headerAdmin.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars,faHouse, faUserSecret, faXmark, faHouseChimneyUser, faFileAudio, faCartShopping, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import Logo from "../Assets/logos/logo-vm.png";
@@ -22,7 +22,8 @@ return (
         </div>
         <div className='contenedor-menu-login'>
             <div className='login'><FontAwesomeIcon icon={faUserSecret} /> </div>
-            <FontAwesomeIcon className='hamburguer' icon={faBars} onClick={desplegarMenu}/>   
+            <FontAwesomeIcon className='hamburguer' icon={faBars} onClick={desplegarMenu}/>
+            <FontAwesomeIcon className='close-menu' icon={faXmark} onClick={desplegarMenu}/> 
         </div>
         <Navmobile></Navmobile>
   </header>
@@ -36,13 +37,13 @@ function Navmobile() {
     const [subnav2, setSubnav2] = useState(false)
     const [subnav3, setSubnav3] = useState(false)
     const desplegarSubMenu = (pos)=>{
-        if (pos === 1) {
-            subnav1 ? setSubnav1(false): setSubnav1(true);
-        }else if (pos === 2){
-            subnav2 ? setSubnav2(false): setSubnav2(true);
-        }else{
-            subnav3 ? setSubnav3(false): setSubnav3(true);
-        }
+      if (pos === 1) {
+        subnav1 ? setSubnav1(false): setSubnav1(true);
+      }else if (pos === 2){
+        subnav2 ? setSubnav2(false): setSubnav2(true);
+      }else{
+        subnav3 ? setSubnav3(false): setSubnav3(true);
+      }
     }
 
 
