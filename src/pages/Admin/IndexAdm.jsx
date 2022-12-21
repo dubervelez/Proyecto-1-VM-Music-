@@ -5,8 +5,8 @@ import Mapbd from '../../components/Mapbd';
 import { obtenerDatosSlider, actualizarSlider, nuevoSlider } from '../../utils/Api';
 import '../../styles/admin/index.scss';
 import useSlider from '../../hooks/useSlider'
-
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Admin() {
   
@@ -29,8 +29,7 @@ function Admin() {
   },[]);
 
 
-  const submitform = async (e)=>{
-    e.preventDefault();
+  const submitform = async ()=>{
     let datosSlider = {};
     const datosFormulario = new FormData(form.current)
     datosFormulario.forEach((value, key)=>{
@@ -38,9 +37,14 @@ function Admin() {
     });
     if (operacion) {
       await nuevoSlider(datosSlider);
+      toast.success('Imagen Creada con Exito',{
+        theme: "light",
+      });
     }else{
       await actualizarSlider(datosSlider);
-      
+      toast.success('Datos actualizados con exito',{
+        theme: "dark",
+      });
     }
   }
 
@@ -83,6 +87,7 @@ function Admin() {
               <p className={`funcion-p ${!operacion ? 'activo': ''}`} onClick={()=>{setOperacion(false)}} >Actualizar</p>
               <p className={`funcion-p ${operacion ? 'activo': ''}`} onClick={()=>{setOperacion(true)}}>Agregar Imagen</p>
             </div>
+            <ToastContainer position="bottom-center" autoClose={1000}  />
         </form>
 
         <section className='contenedor-bd'>
