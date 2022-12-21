@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import Layout from './Layout';
 import Slider from '../../components/Slider';
 import Mapbd from '../../components/Mapbd';
-import { obtenerDatosSlider, actualizarSlider, nuevoSlider } from '../../utils/Api';
+import { obtenerDatosSlider, actualizarSlider, nuevoSlider, eliminarSliderBD } from '../../utils/Api';
 import '../../styles/admin/index.scss';
 import useSlider from '../../hooks/useSlider'
 import { ToastContainer, toast } from 'react-toastify';
@@ -39,24 +39,38 @@ function Admin() {
       await nuevoSlider(datosSlider,
       (response)=>{
         console.log(response.data);
+        toast.success('Imagen Creada con Exito',{theme: "light"});
       }, 
       (error)=>{
         console.error(error);
       });
-      toast.success('Imagen Creada con Exito',{theme: "light"});
     }else{
       await actualizarSlider(datosSlider,
         (response)=>{
           console.log(response.data);
+          toast.success('Datos actualizados con exito',{
+            theme: "dark",
+          });
         }, 
         (error)=>{
           console.error(error);
         }
       );
-      toast.success('Datos actualizados con exito',{
-        theme: "dark",
-      });
     }
+  }
+
+  const eliminarSlider = (idSlider)=>{
+    eliminarSliderBD(idSlider, 
+      (response)=>{
+        console.log(response.data);
+        toast.success('Imagen eliminada',{theme: "dark"});
+      }, 
+      (error)=>{
+        console.error(error);
+        toast.error('Error al eliminar imagen',{theme: "light"})
+      }
+    );
+    
   }
 
 
@@ -107,7 +121,7 @@ function Admin() {
               <p className="titulos-p">Link Image</p>
           </div>
           {bdsliders.map((slide, index)=>{
-            return <Mapbd key={index} slider={slide.idSlider} linkImagen={slide.Slider}></Mapbd>
+            return <Mapbd key={index} slider={slide.idSlider} linkImagen={slide.Slider} eliminarSlider={eliminarSlider}></Mapbd>
           })}
         </section>
 

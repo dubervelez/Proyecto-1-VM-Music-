@@ -29,4 +29,15 @@ const nuevoSlider = async( datosSlider,callbackSucces,callbackError )=>{
     
 }
 
-export { obtenerDatosSlider, actualizarSlider, nuevoSlider };
+const eliminarSliderBD = async(idSlider,callbackSucces,callbackError)=>{
+  const options = {
+    method: 'DELETE',
+    url: 'http://localhost:5000/admin/eliminar-slider',
+    headers: {'Content-Type': 'application/json'},
+    data: {idSlider: idSlider}
+  };
+  
+  axios.request(options).then(callbackSucces).catch(callbackError);
+}
+
+export { obtenerDatosSlider, actualizarSlider, nuevoSlider, eliminarSliderBD };
