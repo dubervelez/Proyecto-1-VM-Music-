@@ -3,10 +3,11 @@ import Layout from './Layout';
 import Slider from '../../components/Slider';
 import Mapbd from '../../components/Mapbd';
 import { obtenerDatosSlider, actualizarSlider, nuevoSlider, eliminarSliderBD } from '../../utils/Api';
-import '../../styles/admin/index.scss';
 import useSlider from '../../hooks/useSlider'
 import { ToastContainer, toast } from 'react-toastify';
+import {Dialog, DialogTitle, DialogActions, Button } from '@mui/material'
 import 'react-toastify/dist/ReactToastify.css';
+import '../../styles/admin/index.scss';
 
 function Admin() {
   
@@ -14,7 +15,8 @@ function Admin() {
   const form = useRef(null);
   const [operacion, setOperacion] = useState(false)
   const [bdsliders, setBdSliders] = useState([]);
-
+  const [openDialogo, setOpenDialogo] = useState(false)
+  const [idEliminar, setIdEliminar] = useState("")
 
   useEffect( () => {
     obtenerDatosSlider(
@@ -69,7 +71,8 @@ function Admin() {
         console.error(error);
         toast.error('Error al eliminar imagen',{theme: "light"})
       }
-    );
+      );
+    setOpenDialogo(false)  
     
   }
 
@@ -121,8 +124,17 @@ function Admin() {
               <p className="titulos-p">Link Image</p>
           </div>
           {bdsliders.map((slide, index)=>{
-            return <Mapbd key={index} slider={slide.idSlider} linkImagen={slide.Slider} eliminarSlider={eliminarSlider}></Mapbd>
+            return <Mapbd key={index} slider={slide.idSlider} linkImagen={slide.Slider} eliminarSlider={()=>{setOpenDialogo(true); setIdEliminar(slide.idSlider)}}></Mapbd>
           })}
+          <Dialog  open={openDialogo} aria-labelledby="alert-dialog-title" >
+            <DialogTitle id="alert-dialog-title">
+            {"¿Desea eliminar la imagen del Slider?"}
+            </DialogTitle>
+            <DialogActions>
+              <Button onClick={()=>{setOpenDialogo(false)}} variant="outlined" color="error">Cancelar</Button>
+              <Button onClick={()=>{eliminarSlider(idEliminar)}} autofocus variant="outlined" color="success">Aceptar</Button>
+            </DialogActions>
+          </Dialog>
         </section>
 
       </div>
