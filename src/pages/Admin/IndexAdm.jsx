@@ -36,12 +36,23 @@ function Admin() {
       datosSlider[key] = value
     });
     if (operacion) {
-      await nuevoSlider(datosSlider);
-      toast.success('Imagen Creada con Exito',{
-        theme: "light",
+      await nuevoSlider(datosSlider,
+      (response)=>{
+        console.log(response.data);
+      }, 
+      (error)=>{
+        console.error(error);
       });
+      toast.success('Imagen Creada con Exito',{theme: "light"});
     }else{
-      await actualizarSlider(datosSlider);
+      await actualizarSlider(datosSlider,
+        (response)=>{
+          console.log(response.data);
+        }, 
+        (error)=>{
+          console.error(error);
+        }
+      );
       toast.success('Datos actualizados con exito',{
         theme: "dark",
       });

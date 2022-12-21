@@ -5,7 +5,7 @@ const obtenerDatosSlider = async(callbackSucces,callbackError)=>{
   await axios.request(options).then(callbackSucces).catch(callbackError);
 }
 
-const actualizarSlider = async(datosSlider)=>{
+const actualizarSlider = async( datosSlider,callbackSucces,callbackError )=>{
     const options = {
         method: 'PATCH',
         url: 'http://localhost:5000/admin/modificar-slider',
@@ -15,26 +15,17 @@ const actualizarSlider = async(datosSlider)=>{
           Slider: datosSlider.Slider
         }
     };
-    await axios.request(options).then(function (response) {
-        console.log(response.data);
-      }).catch(function (error) {
-        console.error(error);
-    }); 
+    await axios.request(options).then(callbackSucces).catch(callbackError); 
 }
 
-const nuevoSlider = async(datosSlider)=>{
+const nuevoSlider = async( datosSlider,callbackSucces,callbackError )=>{
     const options = {
         method: 'POST',
         url: 'http://localhost:5000/admin/creacion-slider',
         headers: {'Content-Type': 'application/json'},
         data: {idSlider: datosSlider.idSlider , Slider: datosSlider.Slider}
-    };
-      
-    await axios.request(options).then(function (response) {
-        console.log(response.data);
-      }).catch(function (error) {
-        console.error(error);
-    }); 
+    }; 
+  await axios.request(options).then(callbackSucces).catch(callbackError); 
     
 }
 
