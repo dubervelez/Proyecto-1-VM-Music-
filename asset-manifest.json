@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Proyecto-1-VM-Music-/static/css/main.4fc0afd7.css",
-    "main.js": "/Proyecto-1-VM-Music-/static/js/main.e8973908.js",
+    "main.css": "/Proyecto-1-VM-Music-/static/css/main.cc44876c.css",
+    "main.js": "/Proyecto-1-VM-Music-/static/js/main.757dfc49.js",
     "static/media/this is not america.jpg": "/Proyecto-1-VM-Music-/static/media/this is not america.ecc65844e0670651c357.jpg",
     "static/media/cards-canguro.jpg": "/Proyecto-1-VM-Music-/static/media/cards-canguro.9d7f28174be9881ededc.jpg",
     "static/media/El anciano y el niño.jpg": "/Proyecto-1-VM-Music-/static/media/El anciano y el niño.e3697f040fe2b827bf8c.jpg",
@@ -10,11 +10,11 @@
     "static/media/icon-piano.svg": "/Proyecto-1-VM-Music-/static/media/icon-piano.1946fb99a5e45f2f4776496eeccab1c6.svg",
     "static/media/icon-music.svg": "/Proyecto-1-VM-Music-/static/media/icon-music.4799cca40f1ede6cbc28e393f69c9d65.svg",
     "index.html": "/Proyecto-1-VM-Music-/index.html",
-    "main.4fc0afd7.css.map": "/Proyecto-1-VM-Music-/static/css/main.4fc0afd7.css.map",
-    "main.e8973908.js.map": "/Proyecto-1-VM-Music-/static/js/main.e8973908.js.map"
+    "main.cc44876c.css.map": "/Proyecto-1-VM-Music-/static/css/main.cc44876c.css.map",
+    "main.757dfc49.js.map": "/Proyecto-1-VM-Music-/static/js/main.757dfc49.js.map"
   },
   "entrypoints": [
-    "static/css/main.4fc0afd7.css",
-    "static/js/main.e8973908.js"
+    "static/css/main.cc44876c.css",
+    "static/js/main.757dfc49.js"
   ]
 }
