@@ -6,65 +6,59 @@ import imagenCards3 from "../Assets/images/Gatubela.jpg";
 import imagenCards4 from "../Assets/images/this is not america.jpg";
 
 function Cards() {
+
+    // realizar funcionalidad con un .map para leer todo el array de objetos de la bd
+
+    const cardsData = [
+      {artista: 'Wos', 
+      cancion: 'Canguro', 
+      genero: 'Urbano',
+      album: 'Canguro',
+      fecha: '2022'
+      },
+      {artista: 'Karol G', 
+      cancion: 'Gatubela', 
+      genero: 'Urbano',
+      album: 'Canguro',
+      fecha: '2022'
+      },
+      {artista: 'Residente', 
+      cancion: 'This is not America', 
+      genero: 'Urbano',
+      album: 'Canguro',
+      fecha: '2022'},
+      {artista: 'Residente', 
+      cancion: 'This is not America', 
+      genero: 'Urbano',
+      album: 'Canguro',
+      fecha: '2022'},
+			{artista: 'Residente', 
+      cancion: 'This is not America', 
+      genero: 'Urbano',
+      album: 'Canguro',
+      fecha: '2022'}
+	]  
   return (
-    <div className="contenedor-cards">
-        <div className="cards">
-            <div className="cards-imagen">
-                <img src={imagenCards} alt="imagen artista" />
-            </div>
-            <div className="cards-descripcion">
-                <h2 className='artista'>WOS</h2>
-                <p className='musica'>Canguro</p>
-                <div className="cards-datos">
-                    <p>Genero: <b>RAP</b> </p>
-                    <p>Album: <b>Caravana</b> </p>
-                    <p>Fecha de lanzamiento: <b>2019</b> </p> 
-                </div>
-            </div>
-        </div>
-        <div className="cards">
-            <div className="cards-imagen">
-                <img src={imagenCards2} alt="imagen artista" />
-            </div>
-            <div className="cards-descripcion">
-                <h2 className='artista'>CHEO GALLEGO</h2>
-                <p className='musica'>El niño y el anciano</p>
-                <div className="cards-datos">
-                    <p>Genero: <b>RAP</b> </p>
-                    <p>Album: <b>Caravana</b> </p>
-                    <p>Fecha de lanzamiento: <b>2019</b> </p> 
-                </div>
-            </div>
-        </div>
-        <div className="cards">
-            <div className="cards-imagen">
-                <img src={imagenCards3} alt="imagen artista" />
-            </div>
-            <div className="cards-descripcion">
-                <h2 className='artista'>KAROL G</h2>
-                <p className='musica'>Gatubela</p>
-                <div className="cards-datos">
-                    <p>Genero: <b>RAP</b> </p>
-                    <p>Album: <b>Caravana</b> </p>
-                    <p>Fecha de lanzamiento: <b>2019</b> </p> 
-                </div>
-            </div>
-        </div>
-        <div className="cards">
-            <div className="cards-imagen">
-                <img src={imagenCards4} alt="imagen artista" />
-            </div>
-            <div className="cards-descripcion">
-                <h2 className='artista'>RESIDENTE</h2>
-                <p className='musica'>This is not America</p>
-                <div className="cards-datos">
-                    <p>Genero: <b>RAP</b> </p>
-                    <p>Album: <b>Caravana</b> </p>
-                    <p>Fecha de lanzamiento: <b>2019</b> </p> 
-                </div>
-            </div>
-        </div>
-    </div>
+		<div className="contenedor-cards">
+			{cardsData.map((datosCards, i)=>{
+				return(
+					<div key={i} className="cards">
+						<div className="cards-imagen">
+							<img src={imagenCards} alt="imagen artista" />
+						</div>	
+						<div className="cards-descripcion">
+							<h2 className='artista'>{datosCards.artista}</h2>
+							<p className='musica'>{datosCards.cancion}</p>
+							<div className="cards-datos">
+								<p className='cards-datos--p' >Genero: <b>{datosCards.genero}</b> </p>
+								<p className='cards-datos--p' >Album: <b>{datosCards.album}</b> </p>
+								<p className='cards-datos--p' >Fecha de lanzamiento: <b>{datosCards.fecha}</b> </p> 
+							</div>
+						</div>
+					</div>
+				)
+			})}
+		</div>
   )
 }
 

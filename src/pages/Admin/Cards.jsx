@@ -2,8 +2,10 @@ import Layout from './Layout'
 import '../../styles/admin/cards.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMusic } from '@fortawesome/free-solid-svg-icons';
+import Cards from '../../components/Cards';
+import { width } from '@mui/system';
 
-function Cards() {
+function AdminCards() {
   return (
     <Layout>
       <section className='contenedor-admin-cards'>
@@ -35,9 +37,13 @@ function Cards() {
           
           <button className='button-form-cards'>CREAR CARDS</button>
         </form>
+
+				<div >
+					<Cards></Cards>
+				</div>
       </section>
     </Layout>
   )
 }
 
-export default Cards
+export default AdminCards

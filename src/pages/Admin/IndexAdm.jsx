@@ -131,7 +131,7 @@ function IndexAdmin() {
             </DialogTitle>
             <DialogActions>
               <Button onClick={()=>{setOpenDialogo(false)}} variant="outlined" color="error">Cancelar</Button>
-              <Button onClick={()=>{eliminarSlider(idEliminar)}} autofocus variant="outlined" color="success">Aceptar</Button>
+              <Button onClick={()=>{eliminarSlider(idEliminar)}} autoFocus variant="outlined" color="success">Aceptar</Button>
             </DialogActions>
           </Dialog>
         </section>

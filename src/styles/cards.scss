@@ -3,17 +3,18 @@
 
 .contenedor-cards{
     max-width: 1200px;
-    @include mixins.flex();
-    flex-wrap: wrap;
-    margin: auto;
+    display: flex;
+    flex-wrap: nowrap;
     padding: 0 16px;
+    overflow-x: auto;
+    flex-basis: 280px;
+    margin: 30px auto;
 }
 .cards{
-    max-width: 280px;
-    height: 400px;
-    margin: 24px auto;
+    min-width: 280px;
+    margin-right: 20px;
     border-radius: 19px;
-    padding: 15px 21px;
+    padding: 15px 21px 20px 21px;
     background: linear-gradient(180deg, #230B2E 0%, #140B23 38.02%, rgba(17, 7, 29, 0.83) 100%);
 }
 .cards:nth-child(even){
@@ -21,7 +22,7 @@
 }
 .cards:hover{
     cursor: pointer;
-    scale: 1.05;
+    scale: 1;
     box-shadow: 5px 4px 10px 0px rgba(36, 35, 35, 0.75);
     transition: all 0.5s;
 }
@@ -39,13 +40,13 @@
 
 .artista{
     margin-bottom: 4px;
-    @include mixins.text($text-md, 700, #EAE6E6);
+    @include mixins.text($text-md, 700, $text-white);
 }
 .musica{
-    @include mixins.text($text-sm, 500, #EAE6E6, $font-roboto, 1px);
+    @include mixins.text($text-sm, 400, $text-white, $font-roboto, 1px);
     margin-bottom: 17px;
 }
-.cards-datos > p{
+.cards-datos .cards-datos--p{
     @include mixins.text($text-vsm, 400, $bg-header, $font-roboto, 1px);
     margin-bottom: 2px;
 }
@@ -65,5 +66,11 @@
     100% {
         position: relative;  
         left: 0;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    .contenedor-cards{
+        overflow: hidden;
     }
 }
