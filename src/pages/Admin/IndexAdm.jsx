@@ -60,8 +60,8 @@ function IndexAdmin() {
     }
   }
 
-  const eliminarSlider = (idSlider)=>{
-    eliminarSliderBD(idSlider, 
+  const eliminarSlider = async (idSlider)=>{
+    await eliminarSliderBD(idSlider, 
       (response)=>{
         console.log(response.data);
         toast.success('Imagen eliminada',{theme: "dark"});

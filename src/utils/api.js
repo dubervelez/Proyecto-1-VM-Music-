@@ -41,4 +41,23 @@ const eliminarSliderBD = async(idSlider,callbackSucces,callbackError)=>{
 }
 
 
-export { obtenerDatosSlider, actualizarSlider, nuevoSlider, eliminarSliderBD };
+// Rutas para administracion de las CARDS ultimos Lanzamientos
+
+const nuevaCard = async( datosCard,callbackSucces,callbackError )=>{
+  const options = {
+      method: 'POST',
+      url: 'http://localhost:5000/admin/ultimos-lanzamientos/nuevo',
+      headers: {'Content-Type': 'application/json'},
+      data: {
+        artista: datosCard.artista, 
+        cancion: datosCard.cancion,
+        imagen: datosCard.imagen,
+        genero: datosCard.genero,
+        album: datosCard.album,
+        fecha: datosCard.fecha
+      }
+  }; 
+  await axios.request(options).then(callbackSucces).catch(callbackError); 
+}
+
+export { obtenerDatosSlider, actualizarSlider, nuevoSlider, eliminarSliderBD, nuevaCard };

@@ -5,14 +5,15 @@
     max-width: 1200px;
     display: flex;
     flex-wrap: nowrap;
-    padding: 0 16px;
+    padding: 16px;
     overflow-x: auto;
     flex-basis: 280px;
     margin: 30px auto;
 }
 .cards{
     min-width: 280px;
-    margin-right: 20px;
+    width: 280px;
+    margin: 0 10px 20px 0;
     border-radius: 19px;
     padding: 15px 21px 20px 21px;
     background: linear-gradient(180deg, #230B2E 0%, #140B23 38.02%, rgba(17, 7, 29, 0.83) 100%);
@@ -22,7 +23,7 @@
 }
 .cards:hover{
     cursor: pointer;
-    scale: 1;
+    scale: 1.05;
     box-shadow: 5px 4px 10px 0px rgba(36, 35, 35, 0.75);
     transition: all 0.5s;
 }
@@ -72,5 +73,7 @@
 @media only screen and (min-width: 900px) {
     .contenedor-cards{
         overflow: hidden;
+        flex-wrap: wrap;
     }
 }
+

@@ -32,11 +32,6 @@ function Cards() {
       genero: 'Urbano',
       album: 'Canguro',
       fecha: '2022'},
-			{artista: 'Residente', 
-      cancion: 'This is not America', 
-      genero: 'Urbano',
-      album: 'Canguro',
-      fecha: '2022'}
 	]  
   return (
 		<div className="contenedor-cards">
