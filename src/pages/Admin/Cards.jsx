@@ -3,13 +3,28 @@ import '../../styles/admin/cards.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMusic } from '@fortawesome/free-solid-svg-icons';
 import Cards from '../../components/Cards';
-import { useState, useRef } from 'react';
-import { nuevaCard } from '../../utils/Api';
+import { useState, useRef, useEffect } from 'react';
+import { nuevaCard, obtenerCards } from '../../utils/Api';
 import { ToastContainer, toast } from 'react-toastify';
+
 
 
 function AdminCards() {
   const formCards = useRef(null)
+  const [cardsData, setCardsData] = useState([])  
+
+  useEffect(() => {
+    obtenerCards(
+      (response)=>{
+        setCardsData(response.data)
+        console.log(response.data)
+      },
+      (error)=>{
+        console.error(error);
+      }
+    )
+  
+  }, [])
   
 
   const submitFormCards = (e)=>{

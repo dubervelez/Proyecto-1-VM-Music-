@@ -60,4 +60,14 @@ const nuevaCard = async( datosCard,callbackSucces,callbackError )=>{
   await axios.request(options).then(callbackSucces).catch(callbackError); 
 }
 
-export { obtenerDatosSlider, actualizarSlider, nuevoSlider, eliminarSliderBD, nuevaCard };
+const obtenerCards = async( callbackSucces,callbackError )=>{
+  const options = {
+    method: 'GET',
+    url: 'http://localhost:5000/admin/ultimos-lanzamientos/'
+  };
+
+  await axios.request(options).then(callbackSucces).catch(callbackError);
+
+}
+
+export { obtenerDatosSlider, actualizarSlider, nuevoSlider, eliminarSliderBD, nuevaCard, obtenerCards };
