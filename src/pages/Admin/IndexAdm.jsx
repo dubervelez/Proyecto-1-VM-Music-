@@ -9,7 +9,7 @@ import {Dialog, DialogTitle, DialogActions, Button } from '@mui/material'
 import 'react-toastify/dist/ReactToastify.css';
 import '../../styles/admin/index.scss';
 
-function Admin() {
+function IndexAdmin() {
   
   const {setSliderData} = useSlider();
   const form = useRef(null);
@@ -29,7 +29,6 @@ function Admin() {
     }
     );
   },[]);
-
 
   const submitform = async ()=>{
     let datosSlider = {};
@@ -142,4 +141,4 @@ function Admin() {
   )
 }
 
-export default Admin
+export default IndexAdmin

@@ -17,7 +17,7 @@ function HeaderAdmin() {
 return (
   <header className={`header-admin ${navMobile ? "activo": ""}`.trim()}>
         <div className='contenedor-menu-login'>
-            <NavLink to='/Proyecto-1-VM-Music-/admin/'><FontAwesomeIcon className='icon-home' icon={faHouse} /></NavLink>
+            <NavLink to='/Proyecto-1-VM-Music-/'><FontAwesomeIcon className='icon-home' icon={faHouse} /></NavLink>
             <img className='img-logo' src={Logo} alt="logo VM" />
         </div>
         <div className='contenedor-menu-login'>
@@ -57,13 +57,13 @@ function Navmobile() {
                     <FontAwesomeIcon className='icon-subnav' icon={faChevronDown} onClick={()=>{desplegarSubMenu(1)}} />
                     <ul className={`sub-nav-ul subnav-1 ${subnav1 ? 'activo': ''}`}>
                         <li className="sub-nav--li">
-                            <NavLink className='subnav-link' to='/Proyecto-1-VM-Music-/'>Slider</NavLink>
+                            <NavLink className='subnav-link' to='/Proyecto-1-VM-Music-/admin'>Slider</NavLink>
                         </li>
                         <li className="sub-nav--li">
-                            <NavLink className='subnav-link' to='/catalogo-musical'>Ultimos Lanzamientos</NavLink>
+                            <NavLink className='subnav-link' to='/Proyecto-1-VM-Music-/admin/ultimos-Lanzamientos'>Ultimos Lanzamientos</NavLink>
                         </li>
                         <li className="sub-nav--li">
-                            <NavLink className='subnav-link' to='/catalogo-musical'>Articulo</NavLink>
+                            <NavLink className='subnav-link' to='/Proyecto-1-VM-Music-/admin/catalogo-musical'>Articulo</NavLink>
                         </li>
                     </ul>
                 </li>

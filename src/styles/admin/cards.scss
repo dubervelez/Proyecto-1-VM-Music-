@@ -1,0 +1,100 @@
+@use "../mixins.scss";
+@import "../colors";
+
+.contenedor-admin-cards{
+    width: 100%;
+}
+
+.titulo-adm-card{
+    @include mixins.text(28px, 500, $text-white);
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 1px rgb(35, 36, 25);
+}
+
+.form-cards{
+    margin: 30px auto;
+    max-width: 500px;
+    border: 2px solid #363535;
+    padding: 15px;
+    @include mixins.flex(center,center,column);
+    &:hover{
+        transition: all 1s;
+        border-radius: 10px;
+        border: 2px solid $bg-header;
+    }
+}
+
+.form-cards .titulo-form-cards{
+    padding: 30px;
+    @include mixins.flex(center,center,column);
+}
+.titulo-form-cards .titulo-form--h2{
+    @include mixins.text(26px, 500, $bg-header);
+    text-shadow: -1px 0 #414D68, 0 1px #414D68, 1px 0 #414D68, 0 -1px #414D68, -2px 2px 0 #414D68, 2px 2px 0 #414D68, 1px 1px #414D68, 2px 2px #414D68, 3px 3px #414D68, 4px 4px #414D68;
+}
+.titulo-form-cards .titulo-form--icon{
+    margin-top: 8px;
+    color: #ccb419;
+}
+
+label{
+    width: 100%;
+    margin: 10px 0;
+}
+.contenedor-artista-cancion{
+    width: 100%;
+    @include mixins.flex(flex-start);
+}
+.contenedor-artista-cancion .input-card-text{
+    width: 100%;
+    padding: 10px;
+}
+.contenedor-artista-cancion .label-input:first-child{
+    padding-right: 10px;
+}
+.otros-input{
+    width: 100%;
+    @include mixins.flex(center,center,column);
+}
+.otros-input .input-card-text{
+    width: 100%;
+    padding: 10px;
+}
+.input-card-text{
+    border: 0;
+    outline: 0;
+    background-color: hsl(0, 0%, 10%);
+    border: 1px solid hsl(0, 0%, 6%);
+    @include mixins.text($text-sm, 400, $text-white);
+    &:focus{
+        background-color: hsl(0, 0%, 8%);
+        border: 2px solid hsla(204, 71%, 30%, 0.829);
+    }
+    &:active {
+        box-shadow: 2px 2px 15px hsla(204, 71%, 30%, 0.829) inset;
+    }
+}
+.input-card-text::placeholder{
+    font-size: 14px;
+    color: $text-white;
+    opacity: 0.5;
+}
+
+.button-form-cards{
+    width: 200px;
+    padding: 10px;
+    border-radius: 20px;
+    border: 2px solid hsl(0, 0%, 8%) ;
+    margin: 20px auto;
+    @include mixins.text($text-md, 500, $text-white);
+    text-align: center;
+    background-color: #414D68;
+    &:hover{
+        border-color: $text-white ;
+        background-color: #414D68;
+        cursor: pointer;
+        color: $text-white;
+        text-shadow: none;
+    }
+}

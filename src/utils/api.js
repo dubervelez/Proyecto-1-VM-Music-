@@ -40,4 +40,5 @@ const eliminarSliderBD = async(idSlider,callbackSucces,callbackError)=>{
   axios.request(options).then(callbackSucces).catch(callbackError);
 }
 
+
 export { obtenerDatosSlider, actualizarSlider, nuevoSlider, eliminarSliderBD };

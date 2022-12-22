@@ -1,7 +1,7 @@
 import React from 'react'
 import "../styles/slider.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {  faArrowCircleLeft, faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons';
+import {  faArrowAltCircleLeft, faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons';
 import { useState} from 'react';
 import useSlider from '../hooks/useSlider'
 
@@ -42,7 +42,7 @@ function Slider() {
             </div>
         </div>
         <div className='btn-slider'>
-            <FontAwesomeIcon className='btn-next' icon={faArrowCircleLeft} onClick={prevSlide}/>
+            <FontAwesomeIcon className='btn-next' icon={faArrowAltCircleLeft} onClick={prevSlide}/>
             <FontAwesomeIcon className='btn-prev' icon={faArrowAltCircleRight} onClick={nextSlide}/>
         </div>
     </div>

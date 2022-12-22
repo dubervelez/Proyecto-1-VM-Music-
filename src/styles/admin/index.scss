@@ -5,10 +5,9 @@
 
 
 .titulo-admin-slider{
-    font-size: 28px;
-    color: $text-white;
+    @include mixins.text(28px, 500, $text-white);
     text-align: center;
-    margin: 40px 0 20px 0 ;
+    margin-bottom:  20px ;
 }
 
 .form-slider{

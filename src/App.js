@@ -1,7 +1,8 @@
 import ContextSlider  from "./context/context.js";
 import Login from "./components/Login";
 import Index from './pages/Index';
-import Admin from './pages/Admin/IndexAdm';
+import IndexAdmin from './pages/Admin/IndexAdm';
+import Cards from "./pages/Admin/Cards.jsx";
 import './styles/App.scss';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -26,9 +27,11 @@ function App() {
     <ContextSlider.Provider value={{sliderData, setSliderData}}>
       <BrowserRouter>
         <Routes>
+            <Route path='/Proyecto-1-VM-Music-/admin/ultimos-Lanzamientos' element={ <Cards/> } />
+            <Route path='/Proyecto-1-VM-Music-/admin' element={ <IndexAdmin/> } />
             <Route path='/Proyecto-1-VM-Music-/login' element={ <Login/> } />
-            <Route path='/Proyecto-1-VM-Music-/admin' element={ <Index/> } />
-            <Route path='/Proyecto-1-VM-Music-/' element={ <Admin/> } />
+            <Route path='/Proyecto-1-VM-Music-/' element={ <Index/> } />
+
         </Routes>
       </BrowserRouter>
     </ContextSlider.Provider>
