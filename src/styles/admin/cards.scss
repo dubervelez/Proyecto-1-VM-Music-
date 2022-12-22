@@ -98,3 +98,47 @@ label{
         text-shadow: none;
     }
 }
+
+
+.contenedor-tabla-cards{
+    margin: 50px auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto repeat(4, 1fr) auto;
+    padding: 16px;
+    max-width: 1200px;
+}
+.titulo-tabla{
+    @include mixins.flex();
+    background-color: #414D68;
+    border: 1px solid #31312ecc;
+    @include mixins.text(11px, 500, $text-white);
+    text-align: center;
+    padding: 5px;
+}
+
+.contenedor-tabla-cards .celda-tabla{
+    @include mixins.text(10px, 400, $text-white);
+    text-align: center;
+    padding: 5px;
+    background-color: #36353563;
+    border-bottom: 1px solid #1a1919dc;
+}
+
+
+@media only screen and (min-width: 550px) {
+    .contenedor-tabla-cards{
+        padding: 0px 16px;
+    }
+    .titulo-tabla{
+        @include mixins.text($text-sm, 500, $text-white);
+        padding: 5px 10px;
+        text-align: center
+    }
+    .contenedor-tabla-cards .celda-tabla{
+        @include mixins.text($text-vsm, 400, $text-white);
+        padding: 10px;
+        text-align: center;
+
+    }
+}

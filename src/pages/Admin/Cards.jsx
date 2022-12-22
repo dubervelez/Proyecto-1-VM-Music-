@@ -6,26 +6,24 @@ import Cards from '../../components/Cards';
 import { useState, useRef, useEffect } from 'react';
 import { nuevaCard, obtenerCards } from '../../utils/Api';
 import { ToastContainer, toast } from 'react-toastify';
+import { useCardsData } from '../../context/contextCards';
 
 
 
 function AdminCards() {
   const formCards = useRef(null)
-  const [cardsData, setCardsData] = useState([])  
+  const {cardsData, setCardsData} = useCardsData();
 
   useEffect(() => {
     obtenerCards(
       (response)=>{
         setCardsData(response.data)
-        console.log(response.data)
       },
       (error)=>{
         console.error(error);
       }
     )
-  
   }, [])
-  
 
   const submitFormCards = (e)=>{
     e.preventDefault();
@@ -78,12 +76,40 @@ function AdminCards() {
           <button className='button-form-cards' type='submit' >CREAR CARDS</button>
           <ToastContainer position="bottom-left" autoClose={1000}  />
         </form>
-
-				<div >
-					<Cards></Cards>
-				</div>
+        <div>
+          <TablaDatos></TablaDatos>
+        </div>
       </section>
     </Layout>
+  )
+}
+
+
+const TablaDatos = ()=>{
+  const {cardsData} = useCardsData();
+  let contador = 1;
+  return(
+    <div className="contenedor-tabla-cards">
+      <h2 className="titulo-tabla">Card No.</h2>
+      <h2 className="titulo-tabla">Artista</h2>
+      <h2 className="titulo-tabla">Cancion</h2>
+      <h2 className="titulo-tabla">Genero</h2>
+      <h2 className="titulo-tabla">Album</h2>
+      <h2 className="titulo-tabla">Fecha</h2>
+      { cardsData.map((dato, i)=>{
+        return(
+          <>
+            <p key={i} className="celda-tabla">{contador++}</p>
+            <p className="celda-tabla">{dato.artista}</p>
+            <p className="celda-tabla">{dato.cancion}</p>
+            <p className="celda-tabla">{dato.genero}</p>
+            <p className="celda-tabla">{dato.album}</p>
+            <p className="celda-tabla">{dato.fecha}</p>
+          </>
+        )
+      }) }
+      
+    </div>
   )
 }
 
