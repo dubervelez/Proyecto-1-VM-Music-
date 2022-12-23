@@ -1,9 +1,5 @@
 import React from 'react';
 import "../styles/cards.scss";
-import imagenCards from "../Assets/images/cards-canguro.jpg";
-import imagenCards2 from "../Assets/images/El anciano y el niño.jpg";
-import imagenCards3 from "../Assets/images/Gatubela.jpg";
-import imagenCards4 from "../Assets/images/this is not america.jpg";
 import { useCardsData } from '../context/contextCards';
 
 function Cards() {

@@ -32,7 +32,7 @@
 }
 .cards-imagen > img{
     width:200px;
-    height: 200px;
+    height: 180px;
     border-radius: 14px;
     object-fit: cover;
 }
@@ -42,10 +42,10 @@
 
 .artista{
     margin-bottom: 4px;
-    @include mixins.text($text-md, 700, $text-white);
+    @include mixins.text($text-sm, 700, $text-white);
 }
 .musica{
-    @include mixins.text($text-sm, 400, $text-white, $font-roboto, 1px);
+    @include mixins.text($text-vsm, 400, $text-white, $font-roboto, 1px);
     margin-bottom: 17px;
 }
 .cards-datos .cards-datos--p{
@@ -75,6 +75,7 @@
     .contenedor-cards{
         overflow: hidden;
         flex-wrap: wrap;
+        justify-content: center;
     }
 }
 

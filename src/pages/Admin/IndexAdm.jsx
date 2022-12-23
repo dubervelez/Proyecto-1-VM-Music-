@@ -8,6 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import {Dialog, DialogTitle, DialogActions, Button } from '@mui/material'
 import 'react-toastify/dist/ReactToastify.css';
 import '../../styles/admin/index.scss';
+import { nanoid } from 'nanoid';
 
 function IndexAdmin() {
   
@@ -123,7 +124,7 @@ function IndexAdmin() {
               <p className="titulos-p">Link Image</p>
           </div>
           {bdsliders.map((slide, index)=>{
-            return <Mapbd key={index} slider={slide.idSlider} linkImagen={slide.Slider} eliminarSlider={()=>{setOpenDialogo(true); setIdEliminar(slide.idSlider)}}></Mapbd>
+            return <Mapbd key={nanoid()} slider={slide.idSlider} linkImagen={slide.Slider} eliminarSlider={()=>{setOpenDialogo(true); setIdEliminar(slide.idSlider)}}></Mapbd>
           })}
           <Dialog  open={openDialogo} aria-labelledby="alert-dialog-title" >
             <DialogTitle id="alert-dialog-title">

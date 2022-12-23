@@ -1,19 +1,21 @@
 import Layout from './Layout'
 import '../../styles/admin/cards.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMusic, faTrash } from '@fortawesome/free-solid-svg-icons';
-import Cards from '../../components/Cards';
+import { faMusic, faTrash, faPen, faBan } from '@fortawesome/free-solid-svg-icons';
 import { useState, useRef, useEffect } from 'react';
-import { nuevaCard, obtenerCards } from '../../utils/Api';
+import { editarCard, eliminarCard, nuevaCard, obtenerCards } from '../../utils/Api';
 import { ToastContainer, toast } from 'react-toastify';
 import { useCardsData } from '../../context/contextCards';
-
+import { Dialog, DialogTitle, DialogActions, Button } from '@mui/material'
+import { nanoid } from 'nanoid'
 
 
 function AdminCards() {
+  const [ datosEditar, setDatosEditar] = useState({});
   const formCards = useRef(null)
-  const {cardsData, setCardsData} = useCardsData();
-
+  const { setCardsData} = useCardsData();
+  const [ operacion, setOperacion] = useState(true);
+ 
   useEffect(() => {
     obtenerCards(
       (response)=>{
@@ -32,20 +34,42 @@ function AdminCards() {
     datosFormulario.forEach((value, key) => {
       datosCards[key] = value
     });
-    nuevaCard(datosCards, 
+
+    if (operacion){
+      nuevaCard(datosCards, 
       (response)=>{
         toast.success('Card creada con exito',{theme:'dark'})
       },
       (error)=>{
         toast.error('Error en la creacion de la Card',{theme:'dark'})
       });
+    }else{
+      datosCards['id'] = datosEditar._id 
+      editarCard(datosCards, 
+      (response)=>{
+        toast.success('Card actualizada con exito',{theme:'dark'})
+      },
+      (error)=>{
+        toast.error('Error al actualizar la Card',{theme:'dark'})
+      }  
+      );
+      setOperacion(true)
+    }
+  }
+
+  const editar = (dato)=>{
+    setOperacion(false)
+    setDatosEditar(dato)  
+    console.log(dato)
   }
 
   return (
     <Layout>
       <section className='contenedor-admin-cards'>
         <h1 className='titulo-adm-card'>Administracion CARDS</h1>
-        <form ref={formCards} className='form-cards' onSubmit={submitFormCards}>
+        <form ref={formCards} className={`form-cards ${!operacion && 'form-actualizar' }`} onSubmit={submitFormCards}>
+        {operacion ? (
+        <>
 					<div className='titulo-form-cards'>
 						<h2 className='titulo-form--h2'>Crear Nueva Cards</h2>
 						<FontAwesomeIcon className='titulo-form--icon' icon={faMusic} />
@@ -65,19 +89,41 @@ function AdminCards() {
 						<label className='label-input' htmlFor="genero">
 							<input type="text" name="genero" className='input-card-text' placeholder='Genero' required />
 						</label>
-						<label className='label-input' htmlFor="album">
-							<input type="text" name="album" className='input-card-text' placeholder='Albun' required />
-						</label>
 						<label className='label-input' htmlFor="fecha">
 							<input type="text" name="fecha" className='input-card-text' placeholder='fecha de lanzamiento' required />
 						</label>
 					</div>
-          
-          <button className='button-form-cards' type='submit' >CREAR CARDS</button>
+        </>):(
+        <>
+          <div className='titulo-form-cards'>
+						<h2 className='titulo-form--h2'>Actualizar Cards</h2>
+						<FontAwesomeIcon className='titulo-form--icon' icon={faMusic} />
+					</div>
+          <div className='contenedor-artista-cancion'>
+						<label className='label-input' htmlFor="artista">
+            	<input required type="text" name="artista"  className='input-card-text' placeholder='Artista' defaultValue={datosEditar.artista}  />
+						</label>
+						<label className='label-input' htmlFor="cancion">
+            	<input type="text" name="cancion" className='input-card-text' placeholder='Canción' required defaultValue={datosEditar.cancion} />
+						</label>
+          </div>
+					<div className='otros-input'>
+						<label className='label-input' htmlFor="imagen">
+							<input type="url" name="imagen" className='input-card-text' placeholder='ingrese link de imagen http://...' required defaultValue={datosEditar.imagen} />
+						</label>
+						<label className='label-input' htmlFor="genero">
+							<input type="text" name="genero" className='input-card-text' placeholder='Genero' required defaultValue={datosEditar.genero} />
+						</label>
+						<label className='label-input' htmlFor="fecha">
+							<input type="text" name="fecha" className='input-card-text' placeholder='fecha de lanzamiento' required defaultValue={datosEditar.fecha} />
+						</label>
+					</div>
+        </>)}
+          <button className={`button-form-cards ${!operacion && 'btn-actualizar' }`} type='submit' >{!operacion ? <span className='btn-actualizar'>ACTUALIZAR</span>  :<span className='btn-crear'>CREAR CARDS</span>}</button>
           <ToastContainer position="bottom-left" autoClose={1000}  />
         </form>
         <div>
-          <TablaDatos></TablaDatos>
+          <TablaDatos operacion={editar}></TablaDatos>
         </div>
       </section>
     </Layout>
@@ -85,10 +131,27 @@ function AdminCards() {
 }
 
 
-const TablaDatos = ()=>{
+const TablaDatos = ({ operacion })=>{
   const {cardsData} = useCardsData();
   let contador = 1;
+  const [openDialogo, setOpenDialogo] = useState(false);
+  const [idEliminar, setIdEliminar] = useState("");
+  const [editarActivo, setEditarActivo] = useState(false);
+  const eliminarCardData = async (idcancion)=>{
+    eliminarCard(idcancion,
+      (response)=>{
+        toast.success('Card eliminada con exito',{theme:'dark'})
+        setOpenDialogo(false)
+      },
+      (error)=>{
+        toast.error('Error al eliminar los datos',{theme:'dark'})
+      }
+    )
+    
+  }
+
   return(
+    <>
     <div className="contenedor-tabla-cards">
       <h2 className="titulo-tabla">Card No.</h2>
       <h2 className="titulo-tabla">Artista</h2>
@@ -96,23 +159,32 @@ const TablaDatos = ()=>{
       <h2 className="titulo-tabla">Genero</h2>
       <h2 className="titulo-tabla">Fecha</h2>
       <h2 className="titulo-tabla">Acciones</h2>
-
+    </div>
       { cardsData.map((dato, i)=>{
         return(
-          <>
-            <p key={i} className="celda-tabla">{contador++}</p>
+          <div key={nanoid()} className='grid-celdas'>
+            <p className="celda-tabla">{contador++}</p>
             <p className="celda-tabla">{dato.artista}</p>
             <p className="celda-tabla">{dato.cancion}</p>
             <p className="celda-tabla">{dato.genero}</p>
             <p className="celda-tabla">{dato.fecha}</p>
-            <div className='celda-tabla'>
-             <span className='icon-delete'><FontAwesomeIcon icon={faTrash}></FontAwesomeIcon></span> 
+            <div className='celda-tabla'> 
+              <span className='icon-edit'><FontAwesomeIcon icon={faPen} onClick={ ()=>{ operacion(dato); setEditarActivo(true) } } ></FontAwesomeIcon></span> 
+              <span className='icon-delete'><FontAwesomeIcon icon={faTrash} onClick={()=>{setOpenDialogo(true); setIdEliminar(dato.cancion)}} ></FontAwesomeIcon></span> 
             </div>
-          </>
+          </div>
         )
       }) }
-      
-    </div>
+      <Dialog open={openDialogo} aria-labelledby="alert-dialog-title" >
+        <DialogTitle id="alert-dialog-title">
+        {"¿Esta seguro de eliminar la card seleccionada?"}
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={()=>{setOpenDialogo(false)}} variant="outlined" color="error">Cancelar</Button>
+          <Button onClick={()=>{eliminarCardData(idEliminar)}} autoFocus variant="outlined" color="success">Aceptar</Button>
+        </DialogActions>
+      </Dialog>
+    </>
   )
 }
 

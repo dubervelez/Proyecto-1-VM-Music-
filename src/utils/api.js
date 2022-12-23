@@ -70,4 +70,34 @@ const obtenerCards = async( callbackSucces,callbackError )=>{
 
 }
 
-export { obtenerDatosSlider, actualizarSlider, nuevoSlider, eliminarSliderBD, nuevaCard, obtenerCards };
+const eliminarCard = async ( datosCard, callbackSucces, callbackError )=>{
+
+  const options = {
+    method: 'DELETE',
+    url: 'http://localhost:5000/admin/ultimos-lanzamientos/eliminar',
+    headers: {'Content-Type': 'application/json'},
+    data: { cancion: datosCard}
+  };
+  await axios.request(options).then(callbackSucces).catch(callbackError);
+
+}
+
+const editarCard = async (datosCard, callbackSucces, callbackError)=>{
+  const options = {
+    method: "PATCH",
+    url: "http://localhost:5000/admin/ultimos-lanzamientos/editar",
+    headers: {'Content-Type': 'application/json'},
+    data: {
+      id: datosCard.id,
+      artista: datosCard.artista, 
+      cancion: datosCard.cancion,
+      imagen: datosCard.imagen,
+      genero: datosCard.genero,
+      album: datosCard.album,
+      fecha: datosCard.fecha
+    }
+  }
+  await axios.request(options).then(callbackSucces).catch(callbackError);
+}
+
+export { obtenerDatosSlider, actualizarSlider, nuevoSlider, eliminarSliderBD, nuevaCard, obtenerCards, eliminarCard,editarCard };

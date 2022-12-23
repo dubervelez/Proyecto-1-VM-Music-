@@ -22,7 +22,11 @@
         transition: all 1s;
         border-radius: 10px;
         border: 2px solid $bg-header;
+        &.form-actualizar{
+            border: 2px solid #0a6421;
+        }
     }
+
 }
 
 .form-cards .titulo-form-cards{
@@ -97,15 +101,19 @@ label{
         color: $text-white;
         text-shadow: none;
     }
+    &.btn-actualizar{
+        background-color: #0a6421;
+        border: 1px solid hsl(69, 7%, 81%) ;
+    }
 }
 
 
 .contenedor-tabla-cards{
-    margin: 50px auto;
+    margin: 50px auto 0 auto;
     width: 100%;
     display: grid;
     grid-template-columns: auto repeat(3, 1fr) auto auto;
-    padding: 16px;
+    padding: 16px 16px 0 16px;
     max-width: 1200px;
 }
 .titulo-tabla{
@@ -116,14 +124,20 @@ label{
     text-align: center;
     padding: 5px;
 }
-
-.contenedor-tabla-cards .celda-tabla{
+.grid-celdas{
+    padding: 0 16px;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 84px repeat(3, 1fr) 65px 88px;
+}
+.grid-celdas .celda-tabla{
     @include mixins.text(10px, 400, $text-white);
     text-align: center;
     padding: 5px;
     background-color: #36353563;
     border-bottom: 1px solid #1a1919dc;
-    
 }
 .icon-delete{
     color: brown;
@@ -139,6 +153,21 @@ label{
         padding: 3px;
     }
 }
+.icon-edit{
+    color: rgb(42, 151, 165);
+    cursor: pointer;
+    position: relative;
+    margin-right: 15px;
+    &:hover::after{
+        content: 'Editar';
+        background-color: #414044;
+        color: #929292;
+        position: absolute;
+        right: 110%;
+        top: 0;
+        padding: 3px;
+    }
+}
 
 
 @media only screen and (min-width: 550px) {
@@ -150,7 +179,7 @@ label{
         padding: 5px 10px;
         text-align: center
     }
-    .contenedor-tabla-cards .celda-tabla{
+    .grid-celdas .celda-tabla{
         @include mixins.text($text-vsm, 400, $text-white);
         padding: 10px;
         text-align: center;
