@@ -104,7 +104,7 @@ label{
     margin: 50px auto;
     width: 100%;
     display: grid;
-    grid-template-columns: auto repeat(4, 1fr) auto;
+    grid-template-columns: auto repeat(3, 1fr) auto auto;
     padding: 16px;
     max-width: 1200px;
 }
@@ -123,6 +123,21 @@ label{
     padding: 5px;
     background-color: #36353563;
     border-bottom: 1px solid #1a1919dc;
+    
+}
+.icon-delete{
+    color: brown;
+    cursor: pointer;
+    position: relative;
+    &:hover::after{
+        content: 'Eliminar';
+        background-color: #414D68;
+        color: #929292;
+        position: absolute;
+        left: 130%;
+        top: 0;
+        padding: 3px;
+    }
 }
 
 

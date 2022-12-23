@@ -19,12 +19,9 @@ function Cards() {
 							<img src={`${datosCards.imagen}`} alt="imagen artista" />
 						</div>	
 						<div className="cards-descripcion">
-							<h2 className='artista'>{datosCards.artista}</h2>
-							<p className='musica'>{datosCards.cancion}</p>
+							<h2 className='artista'>{datosCards.artista} / <span className='musica'>{datosCards.cancion}</span> </h2>
 							<div className="cards-datos">
-								<p className='cards-datos--p' >Genero: <b>{datosCards.genero}</b> </p>
-								<p className='cards-datos--p' >Album: <b>{datosCards.album}</b> </p>
-								<p className='cards-datos--p' >Fecha de lanzamiento: <b>{datosCards.fecha}</b> </p> 
+								<p className='cards-datos--p' > <b>{datosCards.genero}</b> / <b>{datosCards.fecha}</b> </p>
 							</div>
 						</div>
 					</div>

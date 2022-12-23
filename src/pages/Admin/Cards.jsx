@@ -1,7 +1,7 @@
 import Layout from './Layout'
 import '../../styles/admin/cards.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMusic } from '@fortawesome/free-solid-svg-icons';
+import { faMusic, faTrash } from '@fortawesome/free-solid-svg-icons';
 import Cards from '../../components/Cards';
 import { useState, useRef, useEffect } from 'react';
 import { nuevaCard, obtenerCards } from '../../utils/Api';
@@ -94,8 +94,9 @@ const TablaDatos = ()=>{
       <h2 className="titulo-tabla">Artista</h2>
       <h2 className="titulo-tabla">Cancion</h2>
       <h2 className="titulo-tabla">Genero</h2>
-      <h2 className="titulo-tabla">Album</h2>
       <h2 className="titulo-tabla">Fecha</h2>
+      <h2 className="titulo-tabla">Acciones</h2>
+
       { cardsData.map((dato, i)=>{
         return(
           <>
@@ -103,8 +104,10 @@ const TablaDatos = ()=>{
             <p className="celda-tabla">{dato.artista}</p>
             <p className="celda-tabla">{dato.cancion}</p>
             <p className="celda-tabla">{dato.genero}</p>
-            <p className="celda-tabla">{dato.album}</p>
             <p className="celda-tabla">{dato.fecha}</p>
+            <div className='celda-tabla'>
+             <span className='icon-delete'><FontAwesomeIcon icon={faTrash}></FontAwesomeIcon></span> 
+            </div>
           </>
         )
       }) }
