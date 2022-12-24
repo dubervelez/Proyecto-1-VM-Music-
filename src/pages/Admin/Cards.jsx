@@ -28,7 +28,6 @@ function AdminCards() {
   }, [])
 
   const submitFormCards = (e)=>{
-    e.preventDefault();
     let datosCards = {}
     const datosFormulario = new FormData(formCards.current) 
     datosFormulario.forEach((value, key) => {
@@ -44,23 +43,41 @@ function AdminCards() {
         toast.error('Error en la creacion de la Card',{theme:'dark'})
       });
     }else{
-      datosCards['id'] = datosEditar._id 
-      editarCard(datosCards, 
-      (response)=>{
-        toast.success('Card actualizada con exito',{theme:'dark'})
-      },
-      (error)=>{
-        toast.error('Error al actualizar la Card',{theme:'dark'})
-      }  
-      );
-      setOperacion(true)
+      const validacion = ()=>{ 
+        if(datosCards.artista === datosEditar.artista
+          && datosCards.cancion === datosEditar.cancion
+          && datosCards.imagen === datosEditar.imagen
+          && datosCards.genero === datosEditar.genero
+          && datosCards.fecha === datosEditar.fecha){
+          return false
+        }
+        else{
+          return true
+        }
+      }
+      // validacion para ejecutar la funcion de editar la BD solo si hay un cambio en los datos iniciales
+      if (validacion()){
+        datosCards['id'] = datosEditar._id 
+        editarCard(datosCards, 
+        (response)=>{
+          toast.success('Card actualizada con exito',{theme:'dark'})
+        },
+        (error)=>{
+          toast.error('Error al actualizar la Card',{theme:'dark'})
+        }  
+        );
+        setOperacion(true)
+      }else{
+        e.preventDefault();
+        toast.info('no ha hecho ninguna modificacion',{theme:'light', position:'bottom-center'})
+      };
     }
   }
 
+  // renderizacion condicional para el formulario de editar y crear
   const editar = (dato)=>{
     setOperacion(false)
     setDatosEditar(dato)  
-    console.log(dato)
   }
 
   return (
@@ -76,21 +93,21 @@ function AdminCards() {
 					</div>
           <div className='contenedor-artista-cancion'>
 						<label className='label-input' htmlFor="artista">
-            	<input required type="text" name="artista"  className='input-card-text' placeholder='Artista'  />
+            	<input required type="text" name="artista"  className='input-card-text' placeholder='Artista' defaultValue="" />
 						</label>
 						<label className='label-input' htmlFor="cancion">
-            	<input type="text" name="cancion" className='input-card-text' placeholder='Canción' required />
+            	<input type="text" name="cancion" className='input-card-text' placeholder='Canción' required defaultValue="" />
 						</label>
           </div>
 					<div className='otros-input'>
 						<label className='label-input' htmlFor="imagen">
-							<input type="url" name="imagen" className='input-card-text' placeholder='ingrese link de imagen http://...' required />
+							<input type="url" name="imagen" className='input-card-text' placeholder='ingrese link de imagen http://...' required defaultValue="" />
 						</label>
 						<label className='label-input' htmlFor="genero">
-							<input type="text" name="genero" className='input-card-text' placeholder='Genero' required />
+							<input type="text" name="genero" className='input-card-text' placeholder='Genero' required defaultValue="" />
 						</label>
 						<label className='label-input' htmlFor="fecha">
-							<input type="text" name="fecha" className='input-card-text' placeholder='fecha de lanzamiento' required />
+							<input type="text" name="fecha" className='input-card-text' placeholder='fecha de lanzamiento' required defaultValue="" />
 						</label>
 					</div>
         </>):(
@@ -120,6 +137,7 @@ function AdminCards() {
 					</div>
         </>)}
           <button className={`button-form-cards ${!operacion && 'btn-actualizar' }`} type='submit' >{!operacion ? <span className='btn-actualizar'>ACTUALIZAR</span>  :<span className='btn-crear'>CREAR CARDS</span>}</button>
+          {!operacion && ( <button className='btn-cancelar' onClick={()=>{ setOperacion(true) }}>Cancelar</button> )}
           <ToastContainer position="bottom-left" autoClose={1000}  />
         </form>
         <div>
