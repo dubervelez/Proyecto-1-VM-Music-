@@ -6,14 +6,14 @@
     max-width: 1200px;
     padding: 0 16px;
     font-family: $font-roboto;
-    margin: 40px auto;
-    background:rgba(223, 223, 230, 0.5) ;
+    margin: 70px auto;
 }
 
 .titulo-articulo{
-    @include mixins.text(32px, 700, $orange);
-    margin-bottom: 30px;
+    @include mixins.text(28px, 700, $orange);
+    margin-bottom: 52px;
     width: 100%;
+    text-transform: uppercase;
 }
 .introduccion{
     @include mixins.flex();

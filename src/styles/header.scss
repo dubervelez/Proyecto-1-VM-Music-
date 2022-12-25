@@ -3,13 +3,16 @@
 
 .header{
     width: 100%;
-    max-width: 1200px;
+    max-width: 1210px;
     height: 54px;
     background-color: $bg-header;
-    margin: auto;
     padding: 0 16px;
     @include mixins.flex(space-between);
-    position: relative;
+    position: fixed;
+    top: 0;
+    z-index: 40;
+    left: 50%;
+    transform: translateX(-50%);
 }
 .img-logo{
     cursor: pointer;

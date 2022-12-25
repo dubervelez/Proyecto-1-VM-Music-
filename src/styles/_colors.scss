@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap');
 
 //Definicion de colores
 
-$bg-web: #EAE6E6;
+$bg-web: #0f0f0f;
 $bg-web-dark:#272626;
-$bg-header: #F7BA2B;
+$bg-header: #0f0f0f;
 $bg-footer: #0C2736;
-$text-primary: #1D1C1C;
-$text-secundary: #4D4949;
+$text-primary: #f2f2f2;
+$text-secundary: #b6b4b4;
 $text-white: #f2f2f2;
 $orange: #9E4B1C;
 $white: #ffffff;
@@ -20,8 +21,9 @@ $bg-header-admin:#2f3035;
 
 
 // Definicion de tipografia
-$font-roboto: 'Roboto', sans-serif;
+$font-roboto: 'Crimson Text', 'Roboto', sans-serif;
 $text-vsm: 14px;
 $text-sm:16px;
 $text-md: 18px;
 $text-lg:20px;
+

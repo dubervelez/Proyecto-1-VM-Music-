@@ -55,7 +55,7 @@
 
 .titulo-cards{
     @include mixins.text(24px, 500, $text-primary, $font-roboto, normal, center);
-    margin-top: 30px;
+    margin-top: 70px;
     width: 100%;
     animation:text-left 2s ease-in-out ;
 }
