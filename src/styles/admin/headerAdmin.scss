@@ -10,7 +10,7 @@
     padding: 0 16px;
     @include mixins.flex(space-between);
 }
-.contenedor-menu-login{
+ .contenedor-menu-login-admin{
     @include mixins.flex();
 }
 .icon-home{
@@ -23,10 +23,14 @@
         color: $bg-header;
     }
 }
+.header-admin .avatar{
+    height: 32px;
+    width: 32px;
+}
 .img-logo{
     cursor: pointer;
 }
-.login{
+.header-admin  .login{
     width: 32px;
     height: 32px;
     background-color: $text-white;
@@ -34,7 +38,7 @@
     @include mixins.flex();
     cursor: pointer;
 }
-.header-admin .hamburguer, .close-menu{
+.header-admin .hamburguer-admin, .close-menu{
     height: 32px;
     margin-left: 15px;
     cursor: pointer;
@@ -165,7 +169,7 @@
     .header-admin{
         padding: 0 30px;
     }
-    .hamburguer{
+    .hamburguer-admin{
         display: none;
     }
 }

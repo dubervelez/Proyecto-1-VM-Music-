@@ -9,6 +9,7 @@
     margin: auto;
     padding: 0 16px;
     @include mixins.flex(space-between);
+    position: relative;
 }
 .img-logo{
     cursor: pointer;
@@ -19,15 +20,50 @@
 .login{
     width: 32px;
     height: 32px;
-    background-color: $white;
-    border-radius: 100%;
+    border-radius: 50%;
     @include mixins.flex();
     cursor: pointer;
+    background-color: aliceblue;
+}
+.avatar-icon{
+    height: 16px;
+}
+.avatar{
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
 }
 .hamburguer{
     height: 32px;
     margin-left: 15px;
     cursor: pointer;
+}
+.btn-iniciar-sesion{
+    border: 0;
+    padding: 6px;
+    margin-right: 10px;
+    background-color: transparent;
+    border-radius: 20px;
+    cursor: pointer;
+    @include mixins.text($text-sm, 400, $text-secundary);
+    &:hover{
+        outline: 1.5px solid $text-secundary;
+        background-color: #68676757;
+        font-weight: 500;
+        color: $text-white;
+    } 
+}
+.btn-cerrar-sesion{
+    border: 0;
+    padding: 5px;
+    margin-right: 10px;
+    background-color: transparent;
+    border-radius: 20px;
+    cursor: pointer;
+    @include mixins.text($text-sm, 400, $text-secundary);
+    &:hover{
+        outline: 1px solid $text-secundary;
+    }
 }
 
 
@@ -70,7 +106,7 @@
     margin: 0;
 }
 .nav-movile--li:nth-child(6){
-    margin-bottom: 300px;
+    margin-bottom: 350px;
 }
 .nav-movile--li:last-child{
     text-align: center;
@@ -109,7 +145,10 @@
     .header .hamburguer{
         display: none;
     }
-
+    .contenedor-menu-login{
+        position: absolute;
+        right: 80px;
+    }
     .header .nav-movile{
         position: static;
         left: 0;
@@ -163,12 +202,20 @@
         margin-right: 8px;
      }
      .header .nav-movile--li:nth-child(6){
-        margin:0 150px 0 0;
+        display: none;
+    }
+     .header .nav-movile--li.admin{
+        display: flex;
+
     }
     .header .nav-movile--li:nth-child(8){
         margin:0 ;
     }
     .header .img-logo{
         height: 40px;
+    }
+    .login{
+        width: 42px;
+        height: 42px;
     }
 }

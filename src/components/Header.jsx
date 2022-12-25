@@ -1,11 +1,14 @@
 import { NavLink } from "react-router-dom";
 import "../styles/header.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faUser, faXmark, faHouse, faMusic, faCartShopping, faLock, faUserPen } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faUserXmark, faXmark, faUser, faHouse, faMusic, faCartShopping, faLock } from '@fortawesome/free-solid-svg-icons';
 import Logo from "../Assets/logos/logo-vm.png";
 import { useState } from 'react';
+import { useAuth0 } from "@auth0/auth0-react";
 
 function Header() {
+    
+    const {user, isAuthenticated, loginWithRedirect ,logout } = useAuth0()
     
     // funcionalidad para desplegar el menu en resoluciones medianas y pequeñas
     const [navMobile, setNavMobile] = useState(false)
@@ -18,7 +21,17 @@ function Header() {
         <img className='img-logo' src={Logo} alt="logo VM" />
         <Navmobile cerrarMenu={desplegarMenu}></Navmobile>
         <div className='contenedor-menu-login'>
-            <div className='login'><FontAwesomeIcon icon={faUser} /> </div>
+            {isAuthenticated ? ( 
+            <>
+                <button className="btn-cerrar-sesion" onClick={() => logout({ returnTo: window.location.origin })}>Cerrar sesión</button>
+                <div className='login'> <img className="avatar" src={user.picture} alt="avatar" title={user.name} /></div>
+            </> ): 
+            (<>
+                <button className="btn-iniciar-sesion" onClick={()=>{loginWithRedirect()}}>Iniciar sesion</button>
+                <div className='login'><FontAwesomeIcon className="avatar-icon" icon={faUserXmark} /></div> 
+                
+            </>)
+            }
             <FontAwesomeIcon className='hamburguer' icon={faBars} onClick={desplegarMenu}/>   
         </div>
         
@@ -28,6 +41,9 @@ function Header() {
 
 
 function Navmobile({ cerrarMenu }) {
+
+    const { loginWithRedirect, isAuthenticated } = useAuth0();
+
     return(
         <nav className='nav-movile'>
             <ul className='nav-mobile-ul'>
@@ -36,9 +52,10 @@ function Navmobile({ cerrarMenu }) {
                 <li className="nav-movile--li"><NavLink className='navlink' to='/catalogo-musical'><FontAwesomeIcon className='icon-nav-mobile' icon={faMusic} />Catalogo Musical</NavLink></li>
                 <li className="nav-movile--li"><NavLink className='navlink' to='/tienda'><FontAwesomeIcon className='icon-nav-mobile' icon={faCartShopping} />Tienda</NavLink> </li>
                 <li className='limitador'></li>
-                <li className="nav-movile--li"><NavLink className='navlink' to='/Proyecto-1-VM-Music-/admin'><FontAwesomeIcon className='icon-nav-mobile' icon={faLock} />Admin</NavLink></li>
-                <li className="nav-movile--li"><NavLink className='navlink' to='/registro'><FontAwesomeIcon className='icon-nav-mobile' icon={faUserPen} />Registrarse</NavLink></li>
-                <li className="nav-movile--li"><NavLink className='navlink' to='/Proyecto-1-VM-Music-/login'><FontAwesomeIcon className='icon-nav-mobile' icon={faUser} />Iniciar Sesión</NavLink></li>
+                {!isAuthenticated ? (
+                <>                
+                    <li className="nav-movile--li" onClick={()=>{loginWithRedirect()}}><FontAwesomeIcon className='icon-nav-mobile' icon={faUser} />Iniciar Sesión</li>
+                </>):(<li className="nav-movile--li admin"><NavLink className='navlink' to='/Proyecto-1-VM-Music-/admin'><FontAwesomeIcon className='icon-nav-mobile' icon={faLock} />Admin</NavLink></li>)}
                 <li className="nav-movile--li"><img src={Logo} alt="logo-VM" /></li>
             </ul>
         </nav>

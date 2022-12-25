@@ -1,7 +1,7 @@
 import Layout from './Layout'
 import '../../styles/admin/cards.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMusic, faTrash, faPen, faBan } from '@fortawesome/free-solid-svg-icons';
+import { faMusic, faTrash, faPen } from '@fortawesome/free-solid-svg-icons';
 import { useState, useRef, useEffect } from 'react';
 import { editarCard, eliminarCard, nuevaCard, obtenerCards } from '../../utils/Api';
 import { ToastContainer, toast } from 'react-toastify';

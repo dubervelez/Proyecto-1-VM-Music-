@@ -5,9 +5,11 @@ import { faBars,faHouse, faUserSecret, faXmark, faHouseChimneyUser, faFileAudio,
 import Logo from "../Assets/logos/logo-vm.png";
 import LogoW from "../Assets/logos/logo-vm-white.png";
 import { useState } from 'react';
+import { useAuth0 } from "@auth0/auth0-react";
 
 function HeaderAdmin() {
 
+   const { user } = useAuth0();
   // funcionalidad para desplegar el menu en resoluciones medianas y pequeñas
   const [navMobile, setNavMobile] = useState(false)
   const desplegarMenu = ()=>{
@@ -16,13 +18,13 @@ function HeaderAdmin() {
 
 return (
   <header className={`header-admin ${navMobile ? "activo": ""}`.trim()}>
-        <div className='contenedor-menu-login'>
+        <div className='contenedor-menu-login-admin'>
             <NavLink to='/Proyecto-1-VM-Music-/'><FontAwesomeIcon className='icon-home' icon={faHouse} /></NavLink>
             <img className='img-logo' src={Logo} alt="logo VM" />
         </div>
-        <div className='contenedor-menu-login'>
-            <div className='login'><FontAwesomeIcon icon={faUserSecret} /> </div>
-            <FontAwesomeIcon className='hamburguer' icon={faBars} onClick={desplegarMenu}/>
+        <div className='contenedor-menu-login-admin'>
+            <div className='login'><img className="avatar" src={user.picture} alt="avatar" title={user.name} /></div>
+            <FontAwesomeIcon className='hamburguer-admin' icon={faBars} onClick={desplegarMenu}/>
             <FontAwesomeIcon className='close-menu' icon={faXmark} onClick={desplegarMenu}/> 
         </div>
         <Navmobile></Navmobile>

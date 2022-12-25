@@ -41,7 +41,7 @@
 @media only screen and (min-width: 800px) {
     .sidebar-layout{
         display: block;
-        background-color: #7d8a933d;
+        background-color: $bg-header-admin;
     }
     .main-layout{
         width: calc(100% - 280px);

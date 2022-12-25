@@ -8,6 +8,7 @@ import './styles/App.scss';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { obtenerCards, obtenerDatosSlider } from "./utils/Api.js";
+import { Auth0Provider } from "@auth0/auth0-react";
 
 
 function App() {
@@ -34,18 +35,24 @@ function App() {
 
 
   return (
-    <ContextSlider.Provider value={{sliderData, setSliderData}}>
-      <ContextCards.Provider value={{cardsData, setCardsData}}>
-        <BrowserRouter>
-          <Routes>
-            <Route path='/Proyecto-1-VM-Music-/admin/ultimos-Lanzamientos' element={ <AdminCards/> } />
-            <Route path='/Proyecto-1-VM-Music-/admin' element={ <IndexAdmin/> } />
-            <Route path='/Proyecto-1-VM-Music-/login' element={ <Login/> } />
-            <Route path='/Proyecto-1-VM-Music-/' element={ <Index/> } />  
-          </Routes>
-        </BrowserRouter>
-      </ContextCards.Provider>
-    </ContextSlider.Provider>
+    <Auth0Provider
+    domain="music-vm.us.auth0.com"
+    clientId="wmbhM2q0u5PHM0PF8sMkbQv6XuI1rLk8"
+    redirectUri={window.location.origin} 
+    >
+      <ContextSlider.Provider value={{sliderData, setSliderData}}>
+        <ContextCards.Provider value={{cardsData, setCardsData}}>
+          <BrowserRouter>
+            <Routes>
+              <Route path='/Proyecto-1-VM-Music-/admin/ultimos-Lanzamientos' element={ <AdminCards/> } />
+              <Route path='/Proyecto-1-VM-Music-/admin' element={ <IndexAdmin/> } />
+              <Route path='/Proyecto-1-VM-Music-/login' element={ <Login/> } />
+              <Route path='/Proyecto-1-VM-Music-/' element={ <Index/> } />  
+            </Routes>
+          </BrowserRouter>
+        </ContextCards.Provider>
+      </ContextSlider.Provider>
+    </Auth0Provider>
   );
 }
 
