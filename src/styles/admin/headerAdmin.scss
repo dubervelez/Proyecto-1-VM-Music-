@@ -14,13 +14,13 @@
     @include mixins.flex();
 }
 .icon-home{
-    color: $text-white;
+    color: $text-primary;
     height: 25px;
     margin-right: 10px;
     cursor: pointer;
     position: relative;
     &:hover{
-        color: $bg-header;
+        color: $text-secundary;
     }
 }
 .header-admin .avatar{
@@ -33,7 +33,7 @@
 .header-admin  .login{
     width: 32px;
     height: 32px;
-    background-color: $text-white;
+    background-color: $text-primary;
     border-radius: 100%;
     @include mixins.flex();
     cursor: pointer;
@@ -42,9 +42,9 @@
     height: 32px;
     margin-left: 15px;
     cursor: pointer;
-    color: $text-white;
+    color: $text-primary;
     &:hover{
-        color: $bg-header;
+        color: $bg-btn;
     }
 }
 .close-menu{
@@ -88,7 +88,7 @@
     cursor: pointer;
 }
 .navlink-admin{
-    @include mixins.text($text-md, 500, $text-white, $font-roboto, 1px);
+    @include mixins.text($text-md, 500, $text-primary, $font-roboto, 1px);
     &:hover{
         color: $white;
     }
@@ -151,7 +151,7 @@
     position: absolute;
     right: 10px;
     cursor: pointer;
-    color: $text-white;
+    color: $text-primary;
     &:hover{
         color: $bg-header;
         font-weight: 500;

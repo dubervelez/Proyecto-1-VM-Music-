@@ -1,0 +1,136 @@
+@use "./mixins.scss";
+@import "./colors";
+
+.contenedor-loading{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.creditos{
+    position: absolute;
+    bottom: 40px;
+    @include mixins.text($text-sm, 400);
+    letter-spacing: 1px;
+}
+
+.logo{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-image: url('../Assets/logos/logo-vm.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100px;
+}
+
+.loading-animacion {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    bottom: 25px;
+    
+}
+  
+.loading-animacion:before {
+  content: '';
+  width: 60px;
+  height: 5px;
+  background: $bg-btn;
+  position: absolute;
+  top: 72px;
+  left: 0;
+  border-radius: 50%;
+  animation: shadow324 0.5s linear infinite;
+}
+
+.loading-animacion:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 4px;
+    animation: jump7456 0.6s linear infinite;
+    background-color: $bg-btn;
+}
+
+@keyframes jump7456 {
+  15% {
+    border-bottom-right-radius: 3px;
+  }
+
+  25% {
+    transform: translateY(9px) rotate(22.5deg);
+  }
+
+  50% {
+    transform: translateY(18px) scale(1, .9) rotate(45deg);
+    border-bottom-right-radius: 40px;
+  }
+
+  75% {
+    transform: translateY(9px) rotate(67.5deg);
+  }
+
+  100% {
+    transform: translateY(0) rotate(90deg);
+  }
+}
+
+@keyframes shadow324 {
+
+  0%,
+    100% {
+    transform: scale(1, 1);
+  }
+
+  50% {
+    transform: scale(1.2, 1);
+  }
+}
+
+.loading-text span {
+    
+    color: transparent;
+    font-size: 1.4rem;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 2px;
+}
+  
+.loading-text span::before {
+    content: "Loading...";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    border-right: 4px solid $text-primary;
+    overflow: hidden;
+    color: $text-primary;
+    letter-spacing: 2px;
+    animation: load91371 2s linear infinite;
+}
+  
+@keyframes load91371 {
+    0%, 10%, 100% {
+      width: 0;
+    }
+  
+    10%,20%,30%,40%,50%,60%,70%,80%,90%,100% {
+      border-right-color: transparent;
+    }
+  
+    11%,21%,31%,41%,51%,61%,71%,81%,91% {
+      border-right-color: $bg-btn;
+    }
+  
+    60%, 80% {
+      width: 100%;
+    }
+}

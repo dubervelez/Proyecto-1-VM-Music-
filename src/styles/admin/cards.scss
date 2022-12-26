@@ -6,10 +6,11 @@
 }
 
 .titulo-adm-card{
-    @include mixins.text(28px, 500, $text-white);
+    @include mixins.text(28px, 500, $text-primary);
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 60px;
     text-shadow: 2px 2px 1px rgb(35, 36, 25);
+    text-transform: uppercase;
 }
 
 .form-cards{
@@ -34,7 +35,7 @@
     @include mixins.flex(center,center,column);
 }
 .titulo-form-cards .titulo-form--h2{
-    @include mixins.text(26px, 500, $bg-header);
+    @include mixins.text(28px, 600, #f7de04);
     text-shadow: -1px 0 #414D68, 0 1px #414D68, 1px 0 #414D68, 0 -1px #414D68, -2px 2px 0 #414D68, 2px 2px 0 #414D68, 1px 1px #414D68, 2px 2px #414D68, 3px 3px #414D68, 4px 4px #414D68;
 }
 .titulo-form-cards .titulo-form--icon{
@@ -70,7 +71,7 @@ label{
     outline: 0;
     background-color: hsl(0, 0%, 10%);
     border: 1px solid hsl(0, 0%, 6%);
-    @include mixins.text($text-sm, 400, $text-white);
+    @include mixins.text($text-sm, 400, $text-primary);
     &:focus{
         background-color: hsl(0, 0%, 8%);
         border: 2px solid hsla(204, 71%, 30%, 0.829);
@@ -81,7 +82,7 @@ label{
 }
 .input-card-text::placeholder{
     font-size: 14px;
-    color: $text-white;
+    color: $text-primary;
     opacity: 0.5;
 }
 
@@ -91,14 +92,14 @@ label{
     border-radius: 20px;
     border: 2px solid hsl(0, 0%, 8%) ;
     margin: 20px auto;
-    @include mixins.text($text-md, 500, $text-white);
+    @include mixins.text($text-md, 500, $text-primary);
     text-align: center;
     background-color: #414D68;
     &:hover{
-        border-color: $text-white ;
+        border-color: $text-primary ;
         background-color: #414D68;
         cursor: pointer;
-        color: $text-white;
+        color: $text-primary;
         text-shadow: none;
     }
     &.btn-actualizar{
@@ -111,13 +112,13 @@ label{
 }
 .btn-cancelar{
     background-color: rgba(180, 47, 32, 0.678);
-    color: $text-white;
+    color: $text-primary;
     cursor: pointer;
     border: 0;
     padding: 8px;
     border-radius: 20px;
     &:hover{
-        outline: 1px solid $text-white;
+        outline: 1px solid $text-primary;
     }
 }
 
@@ -133,7 +134,7 @@ label{
     @include mixins.flex();
     background-color: #414D68;
     border: 1px solid #31312ecc;
-    @include mixins.text(11px, 500, $text-white);
+    @include mixins.text(11px, 500, $text-primary);
     text-align: center;
     padding: 5px;
 }
@@ -146,7 +147,7 @@ label{
     grid-template-columns: minmax(45px, 84px) repeat(3, minmax(62px, 1fr)) minmax(auto, 65px) minmax(auto, 88px);
 }
 .grid-celdas .celda-tabla{
-    @include mixins.text(10px, 400, $text-white);
+    @include mixins.text(10px, 400, $text-primary);
     @include mixins.flex();
     text-align: center;
     padding: 5px;
@@ -189,12 +190,12 @@ label{
         padding: 0px 16px;
     }
     .titulo-tabla{
-        @include mixins.text($text-sm, 500, $text-white);
+        @include mixins.text($text-sm, 500, $text-primary);
         padding: 5px 10px;
         text-align: center
     }
     .grid-celdas .celda-tabla{
-        @include mixins.text($text-vsm, 400, $text-white);
+        @include mixins.text($text-vsm, 400, $text-primary);
         padding: 10px;
         text-align: center;
 

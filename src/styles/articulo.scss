@@ -23,10 +23,10 @@
 .parrafo-introductorio{
     max-width: 660px;
     @include mixins.text($text-md, 400, $text-secundary);
-    line-height: 25px;
 }
 .parrafo-1, .parrafo-2{
     margin-bottom: 20px;
+    line-height: 25px;
 }
 
 .imagen{
@@ -49,9 +49,12 @@
 
 .parrafo-desarrollo{
     @include mixins.text($text-md, 400, $text-secundary);
-    line-height: 25px;
 }
-.parrafo-3{max-width: 800px;}
+.parrafo-3{
+    max-width: 800px;
+    line-height: 25px;
+    margin-bottom: 16px;
+}
 
 .card-articulo{
     @include mixins.flex();
@@ -65,7 +68,7 @@
     @include mixins.flex(center,center,column);
     background-color: $bg-header;
     margin: 20px auto;
-    box-shadow: 0 2px 4px 1px $orange;
+    box-shadow: 0 2px 4px 1px rgba(0, 0, 0,0.25);
 }
 .card > img{
     width: 76px;

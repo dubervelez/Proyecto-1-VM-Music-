@@ -15,7 +15,7 @@
     max-width: 220px;
     margin: 0 10px 20px 0;
     border-radius: 19px;
-    padding: 15px 10px 15px 10px;
+    padding: 10px 10px 8px 10px;
     background: linear-gradient(180deg, #230B2E 0%, #140B23 38.02%, rgba(17, 7, 29, 0.83) 100%);
 }
 .cards:nth-child(even){
@@ -42,10 +42,10 @@
 
 .artista{
     margin-bottom: 4px;
-    @include mixins.text($text-sm, 700, $text-white);
+    @include mixins.text($text-sm, 700);
 }
 .musica{
-    @include mixins.text($text-vsm, 400, $text-white, $font-roboto, 1px);
+    @include mixins.text($text-vsm, 400, $text-primary, $font-roboto, 1px);
     margin-bottom: 17px;
 }
 .cards-datos .cards-datos--p{
