@@ -10,7 +10,7 @@
 }
 
 .titulo-articulo{
-    @include mixins.text(28px, 700, $orange);
+    @include mixins.text(28px, 700, $text-primary);
     margin-bottom: 52px;
     width: 100%;
     text-transform: uppercase;
@@ -38,17 +38,17 @@
 .creditos{
     font-family: sans-serif;
     font-size: 10px;
-    color: $text-secundary;
-    text-decoration: none;
+    color: rgba(82, 80, 80, 0.699);
 }
 .creditos > a{
     text-decoration: none;
-    color: $text-secundary;
+    color: rgba(82, 80, 80, 0.699);
     cursor: pointer;
 }
 
 .parrafo-desarrollo{
     @include mixins.text($text-md, 400, $text-secundary);
+    
 }
 .parrafo-3{
     max-width: 800px;

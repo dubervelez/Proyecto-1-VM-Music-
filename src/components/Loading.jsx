@@ -11,7 +11,7 @@ function Loading() {
     			<span>Loading...</span>
   			</div>
 			</div>
-			<span className='creditos'>By <b>Duberney Velez Moreno</b></span>
+			<span className='creditos-loading'>By <b>Duberney Velez Moreno</b></span>
     </div>
   )
 }

@@ -10,7 +10,7 @@
     align-items: center;
 }
 
-.creditos{
+.contenedor-loading .creditos-loading{
     position: absolute;
     bottom: 40px;
     @include mixins.text($text-sm, 400);

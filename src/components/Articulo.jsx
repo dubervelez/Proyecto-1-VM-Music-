@@ -25,7 +25,7 @@ function Articulo() {
 			</div>
 			<div className='imagen'>
             	<img src={imagenArticulo} alt="estudio musical" />
-				<span className='creditos'>Imagen de <a href="https://pixabay.com/es/users/dayronv-1243797/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1290087">Dayron Villaverde</a> en <a href="https://pixabay.com/es//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1290087">Pixabay</a></span>
+				<span className='creditos'>Imagen de <a href="https://pixabay.com/es/users/dayronv-1243797/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1290087">Dayron Villaverde</a> en <a href="https://pixabay.com/es//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1290087" >Pixabay</a></span>
         	</div>
         </div>
         <div className="parrafo-desarrollo">

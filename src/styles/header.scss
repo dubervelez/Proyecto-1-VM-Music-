@@ -8,11 +8,10 @@
     background-color: $bg-header;
     padding: 0 16px;
     @include mixins.flex(space-between);
-    position: fixed;
+    position: sticky;
     top: 0;
     z-index: 40;
-    left: 50%;
-    transform: translateX(-50%);
+   margin: auto;
 }
 .img-logo{
     height: 32px;
@@ -48,17 +47,16 @@
     border: 0;
     padding: 8px;
     margin-right: 10px;
-    background-color: transparent;
     border-radius: 20px;
     cursor: pointer;
     background: linear-gradient(0deg, rgba(119, 113, 33, 0.05), rgba(133, 145, 26, 0.05)), #a78b11;
-    box-shadow: 0px 2px 2px rgba(155, 155, 155, 0.3), 0px 1px 3px 1px rgba(150, 150, 150, 0.15);
+    box-shadow: 0 4px 6px rgba(241, 241, 241, 0.1), 0 1px 3px rgba(255, 255, 255, 0.1);
+    transition: filter 0.2s;
     
     @include mixins.text($text-sm, 400, $text-primary);
     &:hover{
-        transition: box-shadow 0.1s;
-        font-weight: 600;
-        box-shadow: 0px 0px 1px rgba(155, 155, 155, 0.3), 0px 1px 1px 1px  rgba(150, 150, 150, 0.15);
+        filter: brightness(80%);
+        box-shadow: 0 2px 4px rgba(241, 241, 241,  0.2), 0 1px 2px rgba(241, 241, 241,0.2);
     } 
 }
 .btn-cerrar-sesion{
@@ -91,7 +89,8 @@
     background-color: $bg-header;
     font-family: $font-roboto;
     padding: 0 16px;
-    box-shadow: 5px 5px 30px 10px #2e2e2e;
+    box-shadow: 5px 5px 30px 10px #222222a8;
+    height: 100vh;
 }
 
 .nav-mobile-ul{
@@ -102,6 +101,7 @@
     list-style: none;
     margin-bottom: 20px;
     cursor: pointer;
+    @include mixins.text($text-md, 500, $text-primary, $font-roboto, 1px);
 }
 .navlink{
     text-decoration: none;
@@ -114,8 +114,12 @@
     position: relative;
 }
 .close .icon-nav-close{
+    color: $text-primary;
     height: 35px;
     margin: 0;
+    &:hover{
+        color: $bg-btn;
+    }
 }
 .nav-movile--li:nth-child(6){
     margin-bottom: 350px;
@@ -129,16 +133,18 @@
    height: 20px;
    width: 20px;
    margin-right: 14px;
-   color: rgb(84, 76, 85);
+   color: $text-secundary;
 }
 .limitador{
     list-style: none;
     height: 2px;
     width: 100%;
-    background-color: $orange;
+    background-color: $bg-btn;
     margin-bottom: 20px;
 }
-
+.logo-nav-li{
+    height: 40px;
+}
 // funcionalidad de despliegue del nav en dispositivos mobiles
 .header.activo .nav-movile{
     transition: all 0.5s ease-out;
@@ -167,6 +173,7 @@
         width: auto;
         padding:0 15px 0 40px;
         box-shadow: none;
+        height: auto;
     }
     .header .nav-mobile-ul{
         width: 100%;
@@ -200,7 +207,7 @@
         right: 0;
     }
     .header .nav-movile--li:hover{
-        color: black;
+        color: $text-secundary;
         scale: 1.05;
         transition: all 0.5s;
     }

@@ -56,7 +56,7 @@ function Navmobile({ cerrarMenu }) {
                 <>                
                     <li className="nav-movile--li" onClick={()=>{loginWithRedirect()}}><FontAwesomeIcon className='icon-nav-mobile' icon={faUser} />Iniciar Sesión</li>
                 </>):(<li className="nav-movile--li admin"><NavLink className='navlink' to='/Proyecto-1-VM-Music-/admin'><FontAwesomeIcon className='icon-nav-mobile' icon={faLock} />Admin</NavLink></li>)}
-                <li className="nav-movile--li"><img src={Logo} alt="logo-VM" /></li>
+                <li className="nav-movile--li"><img className="logo-nav-li" src={Logo} alt="logo-VM" /></li>
             </ul>
         </nav>
 
