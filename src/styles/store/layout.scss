@@ -9,6 +9,7 @@
 
 .contenedor-layout-store .header-store{
     padding: 0 16px;
+    position: relative;
 }
 
 
@@ -54,7 +55,7 @@
 }
 .header-store .navlink-principal{
     text-decoration: none;
-    @include mixins.text(0.625rem);
+    @include mixins.text(0.625rem, 400, $text-secundary);
     text-transform: uppercase;
 }
 .header-store .navlink-informacion{
@@ -86,15 +87,16 @@
 .nav-seccion{
     @include mixins.flex();
 }
+
 .contenedor-hamburguesa{
     width: 24px;
     height: 3px;
     background-color: $text-primary;
-    margin-right: 20px;
     position: relative;
     cursor: pointer;
+    margin-right: 16px;
     transition: all 0.5s ease;
-    &:hover{
+    &.contenedor-hamburguesa.activo{
         background-color: transparent;
     }
 }
@@ -119,18 +121,23 @@
         right: 0;
         background-color: $text-primary;
     }
-    &:hover::before{
-        transform: rotate(45deg)
-    }
-    &:hover::after{
-        transform: rotate(-45deg)
+    &.menu-hamburguesa.activo{
+        
+        &::before{
+            transition: all 0.5s ease;
+            transform: rotate(45deg)
+        }
+        &::after{
+            transition: all 0.5s ease;
+            transform: rotate(-45deg)
+        }
     }
 }
 .titulo-vm-store{
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    @include mixins.text(18px, 600)
+    @include mixins.text(20px, 600)
 
 }
 .titulo-vm-store .span-vm{
@@ -175,9 +182,49 @@ display: none;
 
 
 
+//-----------------ESTILOS DE LA SUB NAVEGACION DE LA PAGINA STORE-----------------------------------------------------
+.sub-nav-store{
+    width: 270PX;
+    height: 100vh;
+    padding: 30PX 16px;
+    position: absolute;
+    left: -150%;
+    background-color: rgba(0, 0, 0, 0.911);
+    transition: all 0.5s ease;
+}
+.sub-nav-store.activo{
+    left: 0;
+}
+.sub-nav-ul{
+    height: 100%;
+    position: relative;
+}
+.sub-nav--li{
+    padding: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.navlink-sub-nav{
+    @include mixins.text(16px, 400, $text-primary);
+    letter-spacing: 1px;
+    &:hover{
+        opacity: 0.7;
+    }
+    &::after{
+        content: ">" ;
+        position: absolute;
+        right: 0;
+        color: $text-primary;
+    }
+}
+.icon-sub-nav{
+    margin-right: 6px;
+}
 
 
 
+
+// -------------------------MAQUETACION RESPONSIVE-----------------------------
 
 @media only screen and (min-width: 420px) {
     .header-store .navlink-principal{
@@ -217,8 +264,52 @@ display: none;
             font-size: 15px;
             color: #5F5656;
         }
+        &:focus{
+            border: 0;
+            outline: 1px solid rgb(161, 167, 163);
+        }
     }
     .icon-carro-compras{
         height: 25px;
+        &:hover{
+            opacity: 0.8;
+        }
+    }
+    .cantidad-productos{
+        width: 19px;
+        height: 23px;
+    }
+    .cantidad-productos--span{
+        @include mixins.text(14px, 600, #000);
+    }
+
+
+
+    //------Sub nav
+    .sub-nav-store{
+        width: 100%;
+        padding: 0;
+        position: static;
+        background-color: rgba(0, 0, 0, 0.144);
+        height: 0;
+        overflow: hidden;
+    }
+    .sub-nav-store.activo{
+        height: 70px;
+    }
+    .sub-nav-ul{
+        width: 100%;
+        position: relative;
+        @include mixins.flex()
+    }
+    .sub-nav--li{
+        margin: 0 8px;
+    }
+    .navlink-sub-nav{
+        @include mixins.text(16px, 400, $text-primary);
+       letter-spacing: 1px;
+        &::after{
+            content: none ;
+        }
     }
 }

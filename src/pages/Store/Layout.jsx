@@ -3,10 +3,15 @@ import { NavLink } from "react-router-dom";
 import Logo from '../../Assets/logos/logo-vm.png'
 import '../../styles/store/layout.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faClipboardList, faUser, faSearch, faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faClipboardList, faUser, faSearch, faCartShopping, faHeadphones, faDollar, faMusic, faKeyboard } from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react';
 
 
-function layout() {
+function Layout() {
+
+	const [subnavactive, setSubnavActive] = useState(false)
+
+
   return (
     <div className='contenedor-layout-store' >
       <header className='header-store'>
@@ -33,8 +38,8 @@ function layout() {
         </nav>
 				<nav className='nav-page-store'>
 					<div className='nav-seccion'>
-						<div className='contenedor-hamburguesa'>
-							<div className='menu-hamburguesa'></div>
+						<div className={`contenedor-hamburguesa ${subnavactive && "activo"}`} onClick={()=>{subnavactive ? setSubnavActive(false): setSubnavActive(true)}}>
+							<div className={`menu-hamburguesa ${subnavactive && "activo"}`} onClick={()=>{subnavactive ? setSubnavActive(false): setSubnavActive(true)}}></div>
 						</div>
 						<h1 className='titulo-vm-store'><span className='span-vm'>VM</span> Music Store</h1>
 					</div>
@@ -50,9 +55,19 @@ function layout() {
 						</div>
 					</div>
 				</nav>
+				<nav className={`sub-nav-store ${subnavactive && "activo"}`}>
+					<ul className='sub-nav-ul'>	
+						<li className="sub-nav--li"><NavLink className='navlink-sub-nav' to='#'><FontAwesomeIcon className='icon-sub-nav' icon={faHeadphones} />Audio y video </NavLink></li>
+						<li className="sub-nav--li"><NavLink className='navlink-sub-nav' to='#'><FontAwesomeIcon className='icon-sub-nav' icon={faMusic} />Amplificadores</NavLink></li>
+						<li className="sub-nav--li"><NavLink className='navlink-sub-nav' to='#'><FontAwesomeIcon className='icon-sub-nav' icon={faKeyboard} />Mezcladores</NavLink></li>
+						<li className="sub-nav--li"><NavLink className='navlink-sub-nav' to='#'><FontAwesomeIcon className='icon-sub-nav' icon={faMusic} />Instrumentos musicales</NavLink></li>
+						<li className="sub-nav--li"><NavLink className='navlink-sub-nav' to='#'><FontAwesomeIcon className='icon-sub-nav' icon={faDollar} />Ofertas</NavLink></li>
+						<li className="sub-nav--li"><NavLink className='navlink-sub-nav' to='#'><FontAwesomeIcon className='icon-sub-nav' icon={faCartShopping} />Mi Carrito</NavLink></li>
+					</ul>
+				</nav>
       </header>
     </div>
   )
 }
 
-export default layout
+export default Layout
