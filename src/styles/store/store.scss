@@ -3,6 +3,7 @@
 
 .contenedor-productos-mas-vendidos{
     margin-top: 60px;
+    @include mixins.flex(center, flex-start, column);
     
 }
 .contenedor-productos-mas-vendidos .titulo{
@@ -16,9 +17,34 @@
     @include mixins.flex(flex-start);
 }
 
+.btn-ver-mas{
+    margin-top: 10px;
+    border: 0;
+    outline: 0;
+    align-self: flex-end;
+    padding: 5px 10px;
+    @include mixins.text(18px, 700);
+    background-color: transparent;
+    border-bottom: 1px solid $green;
+    cursor: pointer;
+    &:hover{
+        color: $green;
+    }
+}
+
+.imagen-relleno{
+    width: 100%;
+    margin-top: 50px;
+    & > img{
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+    }
+}
+
 @media only screen and (min-width: 800px) {
     .contenedor-store-card{
-        @include mixins.flex(flex-start);
+        @include mixins.flex();
         flex-wrap: wrap;
     }
 }

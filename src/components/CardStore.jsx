@@ -19,7 +19,6 @@ function CardStore() {
                 <p className='disponibilidad'>disponible </p>
                 <span className='span-agregar-carro'><FontAwesomeIcon className='icon-agregar-carro' icon={faCartPlus} /></span> 
             </div>
-           
         </div>
     </div>
   )

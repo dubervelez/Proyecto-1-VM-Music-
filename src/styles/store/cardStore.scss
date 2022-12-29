@@ -3,10 +3,9 @@
 
 .contenedor-card{
     width: auto;
-    border-right: 2px solid $color-borde;
     background-color: $bg-card-producto;
     max-width: 232px;
-    height: 350px;
+    height: 365px;
     position: relative;
     margin-right: 1px;
 }
@@ -25,15 +24,15 @@
     padding: 4px;
 }
 .contenido-categoria{
-    @include mixins.text(14px, 400, $text-secundary);
+    @include mixins.text(16px, 400, $text-secundary);
     margin-bottom: 6px;
 }
 .contenido-producto{
-    @include mixins.text(16px, 600, $text-primary);
+    @include mixins.text(18px, 600, $text-primary);
     margin-bottom: 4px;
 }
 .contenido-precio{
-    @include mixins.text(16px, 400, $text-primary);
+    @include mixins.text(18px, 600, $text-primary);
     margin-bottom: 8px;
     &::before{
         content: "$";
@@ -79,7 +78,7 @@
     }
 }
 .icon-agregar-carro{
-    height: 18px;
+    height: 22px;
     color: $text-primary;
     cursor: pointer;
 }
