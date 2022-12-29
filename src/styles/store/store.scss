@@ -1,0 +1,24 @@
+@use "../mixins.scss";
+@import "../colors";
+
+.contenedor-productos-mas-vendidos{
+    margin-top: 60px;
+    
+}
+.contenedor-productos-mas-vendidos .titulo{
+    @include mixins.text(32px, 700);
+    font-style: italic;
+    margin-bottom: 4px
+}
+.contenedor-store-card{
+    width: 100%;
+    overflow-x: auto;
+    @include mixins.flex(flex-start);
+}
+
+@media only screen and (min-width: 800px) {
+    .contenedor-store-card{
+        @include mixins.flex(flex-start);
+        flex-wrap: wrap;
+    }
+}

@@ -7,7 +7,7 @@ import { faHeart, faClipboardList, faUser, faSearch, faCartShopping, faHeadphone
 import { useState } from 'react';
 
 
-function Layout() {
+function Layout({ children }) {
 
 	const [subnavactive, setSubnavActive] = useState(false)
 
@@ -66,6 +66,7 @@ function Layout() {
 					</ul>
 				</nav>
       </header>
+	  <main>{children}</main>
     </div>
   )
 }

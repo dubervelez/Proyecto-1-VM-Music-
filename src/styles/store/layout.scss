@@ -137,14 +137,15 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    @include mixins.text(20px, 600)
-
+    @include mixins.text(20px, 600);
+    font-style: italic;
 }
 .titulo-vm-store .span-vm{
     background: radial-gradient(50% 50% at 50% 50%, #D1D1CD 0%, #5F5B59 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    font-style: italic;
 }
 .label-buscador{
     margin-right: 10px;
@@ -180,7 +181,11 @@ display: none;
     text-align: center;
 }
 
-
+main{
+    padding: 0 16px;
+    max-width: 1200px;
+    margin: auto;
+}
 
 //-----------------ESTILOS DE LA SUB NAVEGACION DE LA PAGINA STORE-----------------------------------------------------
 .sub-nav-store{
