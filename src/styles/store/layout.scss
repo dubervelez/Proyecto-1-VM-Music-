@@ -1,0 +1,224 @@
+@use "../mixins.scss";
+@import "../colors";
+
+
+.contenedor-layout-store{
+    width: 100%;
+    background-color: $bg-web;
+}
+
+.contenedor-layout-store .header-store{
+    padding: 0 16px;
+}
+
+
+// estilos del nav general de la aplicacion
+.header-store .nav-principal{
+    height: 30px;
+    @include mixins.flex(space-between);
+}
+.nav-principal .nav-principal-seccion{
+    @include mixins.flex();
+}
+.header-store .logo-vm{
+    height: 20px;
+    margin-right: 10px
+}
+.header-store .nav-principa--ul{
+    @include mixins.flex();
+    &:first-child{
+        display: none;
+    }
+}
+.header-store .nav-principal--li{
+    list-style: none;
+    height: 100%;
+    margin: 0 8px;
+    position: relative;
+    &::before{
+        content: "";
+        position: absolute;
+        height: 2px;
+        bottom: 0;
+        left: 50%;
+        right: 50%;
+        background-color: $hover;
+        
+    }
+    &:hover::before{
+        transition: all 0.5s ease;
+        left: 0;
+        right: 0;
+        
+    }
+}
+.header-store .navlink-principal{
+    text-decoration: none;
+    @include mixins.text(0.625rem);
+    text-transform: uppercase;
+}
+.header-store .navlink-informacion{
+    @include mixins.text(12px, 400, $text-secundary)
+}
+.header-store .icon-nav{
+    height: 10px;
+    margin-right: 3px;
+    color: $text-secundary;
+}
+.header-store .contenedor-avatar{
+    height: 23px;
+    width: 23px;
+    margin-left: 10px;
+    border-radius: 50%;
+    background-color: $text-primary;
+    @include mixins.flex();
+}
+
+
+
+// estilos nav especifico de la pagita Store
+.nav-page-store{
+    width: 100%;
+    height: 47px;
+    @include mixins.flex(space-between);
+    position: relative;
+}
+.nav-seccion{
+    @include mixins.flex();
+}
+.contenedor-hamburguesa{
+    width: 24px;
+    height: 3px;
+    background-color: $text-primary;
+    margin-right: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    &:hover{
+        background-color: transparent;
+    }
+}
+.menu-hamburguesa{
+    transition: all 0.5s ease;
+    &::before{
+        content: "";
+        height: 3px;
+        position: absolute;
+        transform: translatey(-9px);
+        left: 0;
+        right: 0;
+        background-color: $text-primary;
+        
+    }
+    &::after{
+        content: "";
+        height: 3px;
+        position: absolute;
+        transform: translatey(9px);
+        left: 0;
+        right: 0;
+        background-color: $text-primary;
+    }
+    &:hover::before{
+        transform: rotate(45deg)
+    }
+    &:hover::after{
+        transform: rotate(-45deg)
+    }
+}
+.titulo-vm-store{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    @include mixins.text(18px, 600)
+
+}
+.titulo-vm-store .span-vm{
+    background: radial-gradient(50% 50% at 50% 50%, #D1D1CD 0%, #5F5B59 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.label-buscador{
+    margin-right: 10px;
+    @include mixins.flex();
+}
+.icon-buscador{
+    height: 15px;
+    color: $text-primary;
+    cursor: pointer;
+ }
+.input-buscador{
+display: none;
+}
+.contenedor-carro-compra{
+    @include mixins.flex();
+    color: $text-primary;
+}
+.icon-carro-compras{
+    height: 22px;
+    color: $green;
+    margin-right: 2px;
+    cursor: pointer;
+}
+.cantidad-productos{
+    width: 15px;
+    height: 19px;
+    border-radius: 50%;
+    background-color: $green;
+    @include mixins.flex();
+}
+.cantidad-productos--span{
+    @include mixins.text(12px, 600, #000);
+    text-align: center;
+}
+
+
+
+
+
+
+
+@media only screen and (min-width: 420px) {
+    .header-store .navlink-principal{
+        font-size: 0.75rem;
+    }
+}
+@media only screen and (min-width: 800px) {
+    .header-store .nav-principa--ul:first-child{
+        display: flex;
+    }
+    .header-store .nav-page-store{
+        transition: all 0.4s;
+        height: 60px;
+        padding: 0 10px;
+    }
+    .header-store .titulo-vm-store{
+        position: relative;
+        left: 0;
+        transform: none;
+        transition: all 0.4s;
+        font-size: 32px;
+    }
+    .nav-page-store .label-buscador{
+        margin-right: 70px;
+    }
+    .nav-page-store .input-buscador{
+        display: block;
+        width: 25vw;
+        padding: 5px;
+        border: 0;
+        outline: 0;
+        @include mixins.text(18px, 400);
+        background: linear-gradient(180deg, #0F0F0F 0%, rgba(0, 0, 0, 0.1) 100%);
+        margin-right: 4px;
+        border-bottom: 2px solid #000000;
+        &::placeholder{
+            font-size: 15px;
+            color: #5F5656;
+        }
+    }
+    .icon-carro-compras{
+        height: 25px;
+    }
+}

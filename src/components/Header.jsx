@@ -50,7 +50,7 @@ function Navmobile({ cerrarMenu }) {
                 <li className="nav-movile--li close" ><FontAwesomeIcon onClick={cerrarMenu} className='icon-nav-close' icon={faXmark} /> </li>
                 <li className="nav-movile--li"> <NavLink className='navlink' to='/Proyecto-1-VM-Music-/'><FontAwesomeIcon className='icon-nav-mobile' icon={faHouse} />Inicio</NavLink> </li>
                 <li className="nav-movile--li"><NavLink className='navlink' to='/catalogo-musical'><FontAwesomeIcon className='icon-nav-mobile' icon={faMusic} />Catalogo Musical</NavLink></li>
-                <li className="nav-movile--li"><NavLink className='navlink' to='/tienda'><FontAwesomeIcon className='icon-nav-mobile' icon={faCartShopping} />Tienda</NavLink> </li>
+                <li className="nav-movile--li"><NavLink className='navlink' to='/Proyecto-1-VM-Music-/store'><FontAwesomeIcon className='icon-nav-mobile' icon={faCartShopping} />Tienda</NavLink> </li>
                 <li className='limitador'></li>
                 {!isAuthenticated ? (
                 <>                

@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 import { obtenerCards, obtenerDatosSlider } from "./utils/Api.js";
 import { Auth0Provider } from "@auth0/auth0-react";
 import Loading from "./components/Loading.jsx";
+import Store from "./pages/Store/Store.jsx";
 
 function App() {
   
@@ -45,9 +46,9 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route path='/Proyecto-1-VM-Music-/admin/ultimos-Lanzamientos' element={ <AdminCards/> } />
+              <Route path='/Proyecto-1-VM-Music-/store' element={ <Store /> } />
               <Route path='/Proyecto-1-VM-Music-/admin' element={ <IndexAdmin/> } />
               <Route path='/Proyecto-1-VM-Music-/login' element={ <Login/> } />
-              <Route path='/Proyecto-1-VM-Music-/loading/' element={ <Loading/> } />  
               <Route path='/Proyecto-1-VM-Music-/' element={ <Index/> } />  
             </Routes>
           </BrowserRouter>
