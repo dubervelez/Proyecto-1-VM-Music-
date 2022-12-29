@@ -29,7 +29,7 @@ function IndexAdmin() {
       console.error(error);
     }
     );
-  },[]);
+  },[setSliderData]);
 
   const submitform = async ()=>{
     let datosSlider = {};

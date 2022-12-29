@@ -25,7 +25,7 @@ function AdminCards() {
         console.error(error);
       }
     )
-  }, [])
+  }, [setCardsData])
 
   const submitFormCards = (e)=>{
     let datosCards = {}

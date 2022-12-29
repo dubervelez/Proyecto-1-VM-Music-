@@ -165,7 +165,7 @@
     }
     .contenedor-menu-login{
         position: absolute;
-        right: 80px;
+        right: 16px;
     }
     .header .nav-movile{
         position: static;
@@ -208,7 +208,7 @@
     }
     .header .nav-movile--li:hover{
         color: $text-secundary;
-        scale: 1.05;
+        transform: scale(1.05);
         transition: all 0.5s;
     }
     

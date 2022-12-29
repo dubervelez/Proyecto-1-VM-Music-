@@ -6,8 +6,8 @@ function Loading() {
     <div className='contenedor-loading'>
 			<div className='logo'></div>
       <div className='loading-animacion'></div>
-      <div class="loading-text">
-  			<div class="scanner">
+      <div className="loading-text">
+  			<div className="scanner">
     			<span>Loading...</span>
   			</div>
 			</div>
