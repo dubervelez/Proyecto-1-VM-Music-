@@ -7,7 +7,7 @@ import { faHeart, faClipboardList, faUser, faSearch, faCartShopping, faHeadphone
 import { useState } from 'react';
 
 
-function Layout({ children }) {
+function Layout({ children, productosSeleccionados }) {
 
 	const [subnavactive, setSubnavActive] = useState(false)
 
@@ -50,7 +50,7 @@ function Layout({ children }) {
 						<div className='contenedor-carro-compra'>
 							<FontAwesomeIcon className='icon-carro-compras' icon={faCartShopping}></FontAwesomeIcon>
 							<div className='cantidad-productos'>
-								<span className='cantidad-productos--span' >0</span>
+								<span className='cantidad-productos--span' >{productosSeleccionados}</span>
 							</div>
 						</div>
 					</div>

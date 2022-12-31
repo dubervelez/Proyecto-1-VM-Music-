@@ -1,5 +1,6 @@
 import ContextSlider  from "./context/context.js";
 import { ContextCards } from "./context/contextCards.js";
+import { ContextCarroCompras } from "./context/contextStore.js";
 import Login from "./components/Login";
 import Index from './pages/Index';
 import IndexAdmin from './pages/Admin/IndexAdm';
@@ -9,13 +10,13 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { obtenerCards, obtenerDatosSlider } from "./utils/Api.js";
 import { Auth0Provider } from "@auth0/auth0-react";
-import Loading from "./components/Loading.jsx";
 import Store from "./pages/Store/Store.jsx";
 
 function App() {
   
   const [sliderData, setSliderData] =useState([])
   const [cardsData, setCardsData] =useState([])
+  const [carroCompra, setCarroCompra] =useState(0)
 
   useEffect( () => {
     obtenerDatosSlider(
@@ -43,6 +44,7 @@ function App() {
     >
       <ContextSlider.Provider value={{sliderData, setSliderData}}>
         <ContextCards.Provider value={{cardsData, setCardsData}}>
+        <ContextCarroCompras.Provider value={{carroCompra, setCarroCompra}}>
           <BrowserRouter>
             <Routes>
               <Route path='/Proyecto-1-VM-Music-/admin/ultimos-Lanzamientos' element={ <AdminCards/> } />
@@ -52,6 +54,7 @@ function App() {
               <Route path='/Proyecto-1-VM-Music-/' element={ <Index/> } />  
             </Routes>
           </BrowserRouter>
+        </ContextCarroCompras.Provider>
         </ContextCards.Provider>
       </ContextSlider.Provider>
     </Auth0Provider>
