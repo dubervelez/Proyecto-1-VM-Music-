@@ -100,4 +100,5 @@ const editarCard = async (datosCard, callbackSucces, callbackError)=>{
   await axios.request(options).then(callbackSucces).catch(callbackError);
 }
 
+
 export { obtenerDatosSlider, actualizarSlider, nuevoSlider, eliminarSliderBD, nuevaCard, obtenerCards, eliminarCard,editarCard };
