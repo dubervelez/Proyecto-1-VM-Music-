@@ -1,0 +1,127 @@
+@use "../mixins.scss";
+@import "../colors";
+
+.contenedor-page-producto{
+    @include mixins.flex(flex-start, flex-start);
+}
+.contenedor-imagenes{
+    max-width: 50%;
+    padding: 30px;
+}
+.contenedor-imagenes > img{
+    width: 100%;
+}
+
+.img-medios-pago{
+    width: 100%;
+    margin-top: 30px;
+}
+
+.contenedor-info-producto{
+    width: 50%;
+    padding: 30px;
+    color: $text-primary;
+}
+.info-nombre{
+    @include mixins.text(28px, 400, $text-primary, $font-roboto, 1.2px);
+    text-transform: uppercase;
+}
+
+.contenedor-precios{
+    margin: 30px 0;
+    border-top: 1px solid $color-borde;
+}
+
+.info-precio{
+    @include mixins.text(24px, 400, $text-secundary, $font-roboto, 1px);
+}
+.info-precio-span{
+    color: $text-primary;
+    &::before{  
+        content: "$";   
+        color: $green;
+        margin-right: 3px;
+    }
+}
+.info-cantidad{
+    width: 100%;
+    margin: 10px 0;
+    padding: 8px 0;
+    @include mixins.text(20px, 400, $text-primary, $font-roboto, 1px);
+}
+.label{
+   margin-right: 12px;
+   color: $text-secundary
+}
+.btn-cantidad{
+    padding: 0px 10px;
+    cursor: pointer;
+    border: 1px solid gray;
+   &.btn-cantidad:hover{
+    color: $hover;
+    background-color: black;
+   }
+}
+.span-cantidad{
+    border: 1px solid gray;
+    padding: 0px 15px;
+}
+
+.info-valorTotal{
+    @include mixins.text(22px, 400, $text-primary, $font-roboto, 1px);
+    &::before{  
+        content: "Valor Total: $";   
+        color: $text-secundary;
+        margin-right: 3px;
+    }
+    
+}
+
+
+// ESTILOS PARA BOTONES DE COMPRAR - AGREGAR AL CARRO Y FAVORITOS 
+.btn-acciones-producto{
+    @include mixins.flex();
+    margin-top: 20px;
+    border-top: 1px solid $color-borde;
+    padding-top: 40px ;
+}
+.btn-producto{
+    border: 0;
+    outline: 0;
+    @include mixins.text(18px, 600);
+    padding: 5px 10px;
+    margin-right: 8px;
+    width: 180px;
+    text-align: center;
+    background-color: $bg-btn;
+    cursor: pointer;
+}
+.btn-favoritos{
+    border: 0;
+    background-color: transparent;
+    margin-left: 20px;
+    border: 2px solid $green;
+    padding: 4px;
+    position: relative;
+    cursor: pointer;
+    &:hover::after{
+        content: "Agregar a favoritos";
+        position: absolute;
+        @include mixins.text(12px, 400, $text-primary);
+        width: max-content;
+        left: 120%;
+        background-color: rgb(75, 74, 74);
+        padding: 2px;
+        border-radius: 5px;
+        
+    }
+    &:hover{
+        background-color: rgb(0, 0, 0);
+        border-color: $hover;
+    }
+    &.btn-favoritos .icon-favoritos{
+        height: 22px;
+        color: $text-primary;
+    }
+}
+

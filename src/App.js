@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 import { obtenerCards, obtenerDatosSlider } from "./utils/Api.js";
 import { Auth0Provider } from "@auth0/auth0-react";
 import Store from "./pages/Store/Store.jsx";
+import InfoProducto from "./pages/Store/InfoProducto.jsx";
 
 function App() {
   
@@ -48,6 +49,7 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route path='/Proyecto-1-VM-Music-/admin/ultimos-Lanzamientos' element={ <AdminCards/> } />
+              <Route path='/Proyecto-1-VM-Music-/store/producto' element={ <InfoProducto /> } />
               <Route path='/Proyecto-1-VM-Music-/store' element={ <Store /> } />
               <Route path='/Proyecto-1-VM-Music-/admin' element={ <IndexAdmin/> } />
               <Route path='/Proyecto-1-VM-Music-/login' element={ <Login/> } />
