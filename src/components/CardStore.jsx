@@ -4,13 +4,13 @@ import '../styles/store/cardStore.scss'
 import { useCarroCompras } from '../context/contextStore';
 
 
-function CardStore({ categoria, producto, precio, estado, miniatura }) {
+function CardStore({ categoria, producto, precio, estado, miniatura, clickProducto }) {
 
   const { carroCompra ,setCarroCompra } = useCarroCompras()
 
 
   return (
-    <div className='contenedor-card'>
+    <div className='contenedor-card' onClick={()=>{ clickProducto(producto, precio) }}>
         <div className='contenedor-imagen'>
             <img className='imagen' src={`${miniatura}`} alt="miniatura-producto" />
         </div>

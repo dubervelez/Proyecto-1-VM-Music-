@@ -11,7 +11,9 @@ import { useCarroCompras } from '../../context/contextStore'
 import { Link } from 'react-router-dom';
 
 function Store() {
+  // hook que almacena los datos de la base de datos - pendiente cambia por un context
   const [productosData, setProductosData] = useState([])
+  
 
   const datadePrueba = {
     "producto": "amplificador Orange",
@@ -20,9 +22,9 @@ function Store() {
     "stock": "4",
     "estado": "ultimas existencias",
   "miniatura": "https://cdn.shopify.com/s/files/1/0512/9116/0767/products/2db5b8b5-9f97-4eb1-9762-a3f407a81158_200x.jpg?v=1605561857"
-  }
+  };
 
-  const {carroCompra} = useCarroCompras()
+  const {carroCompra, setCarroCompras} = useCarroCompras();
 
   useEffect(() => {
     const cargaDatos =  async ()=>{
@@ -37,9 +39,16 @@ function Store() {
     }
     cargaDatos();
   }, [])
-    
+  
+  // pendiente funcionalidad para guardar los datos del producto al hacer clic en la card
+  const [first, setfirst] = useState(2)
+  const datosCompra = (producto, precio)=>{
+    console.log("el producto es:", producto, "...y el precio es: ", precio);
+    setfirst(25)
+    console.log(first)
+  }
   return (
-    <Layout productosSeleccionados={carroCompra}>
+    <Layout productosSeleccionados='1'>
       <div className='imagen-relleno'>
         <img src={ImagenRelleno2} alt="" />
       </div>
@@ -48,13 +57,17 @@ function Store() {
         <div className='contenedor-store-card' >
         {
           productosData.map((producto, index)=>{
-            return  <CardStore key={nanoid()}
-                      categoria={producto.categoria} 
-                      producto={producto.producto} 
-                      precio={producto.precio}
-                      estado={producto.estado}
-                      miniatura={producto.miniatura}
-                      />
+            return(  
+            <Link key={nanoid()} className='link-producto' to="/Proyecto-1-VM-Music-/store/producto" >
+              <CardStore 
+                categoria={producto.categoria} 
+                producto={producto.producto} 
+                precio={producto.precio}
+                estado={producto.estado}
+                miniatura={producto.miniatura}
+                clickProducto={datosCompra}
+                />
+            </Link>) 
           })
         }
         </div>
@@ -66,7 +79,7 @@ function Store() {
       <div className='contenedor-productos-mas-vendidos'> 
         <h2 className='titulo'>Novedades...</h2>
         <div className='contenedor-store-card' >
-          <Link to="/Proyecto-1-VM-Music-/store/producto">
+          <Link className='link-producto' to="/Proyecto-1-VM-Music-/store/producto">
             <CardStore
               categoria={datadePrueba.categoria} 
               producto={datadePrueba.producto} 
@@ -82,7 +95,7 @@ function Store() {
             estado={datadePrueba.estado}
             miniatura={datadePrueba.miniatura}
             />
-          <CardStore
+          <CardStore 
             categoria={datadePrueba.categoria} 
             producto={datadePrueba.producto} 
             precio={datadePrueba.precio}

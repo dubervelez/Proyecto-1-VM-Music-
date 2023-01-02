@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Producto from '../../components/Producto'
 import Layout from './Layout'
+import CardStore from '../../components/CardStore'
 
 function InfoProducto() {
     const productoData = {
@@ -24,6 +25,44 @@ function InfoProducto() {
         cantidad={cantidadProducto}
         valorTotal={valorTotal}
         ></Producto>
+        <div className='contenedor-store-card' >
+
+          <CardStore
+              categoria={productoData.categoria} 
+              producto={productoData.producto} 
+              precio={productoData.precio}
+              estado={productoData.estado}
+              miniatura="https://cdn.shopify.com/s/files/1/0512/9116/0767/products/thumb_200x.jpg?v=1605551015"
+            />
+          <CardStore
+              categoria={productoData.categoria} 
+              producto={productoData.producto} 
+              precio={productoData.precio}
+              estado={productoData.estado}
+              miniatura="https://cdn.shopify.com/s/files/1/0512/9116/0767/products/thumb_200x.jpg?v=1605551015"
+            />
+          <CardStore
+              categoria={productoData.categoria} 
+              producto={productoData.producto} 
+              precio={productoData.precio}
+              estado={productoData.estado}
+              miniatura="https://cdn.shopify.com/s/files/1/0512/9116/0767/products/thumb_200x.jpg?v=1605551015"
+            />
+          <CardStore
+              categoria={productoData.categoria} 
+              producto={productoData.producto} 
+              precio={productoData.precio}
+              estado={productoData.estado}
+              miniatura="https://cdn.shopify.com/s/files/1/0512/9116/0767/products/thumb_200x.jpg?v=1605551015"
+            />
+          <CardStore
+              categoria={productoData.categoria} 
+              producto={productoData.producto} 
+              precio={productoData.precio}
+              estado={productoData.estado}
+              miniatura="https://cdn.shopify.com/s/files/1/0512/9116/0767/products/thumb_200x.jpg?v=1605551015"
+            />
+        </div>
     </Layout>
   )
 }

@@ -4,13 +4,23 @@
 .contenedor-page-producto{
     @include mixins.flex(flex-start, flex-start);
     flex-wrap:wrap;
+    margin-bottom: 70px;
 }
 
-// SECCION IMAGENES DEL PRODUCTO 
-.contenedor-imagenes{
+// Estilos de la columna No. 1 ---------------------------
+.contenedor-columna-1{
     min-width: 340px;
     max-width: 80%;
     padding: 30px;
+    position: relative;
+}
+// SECCION IMAGENES DEL PRODUCTO 
+.contenedor-imagenes{
+    width: 100%;
+    position: relative;
+}
+.contenedor-imagenes > img{
+    width: 100%;
     position: relative;
 }
 .btn-image-miniatura{
@@ -33,10 +43,53 @@
         opacity: 0.9;
     }
 }
-.contenedor-imagenes > img{
+
+.contenedor-descripcion-producto{
     width: 100%;
+    background-color: rgb(50 48 47 / 42%);
+    padding: 8px;
+    height: 45px;
+    overflow: hidden;
+    transition: all 1s ease;
+}
+.contenedor-descripcion-producto.activo{
+    transition: all 1s ease;
+    height: 300px;
+}
+.caracteristicas-titulo{
+    @include mixins.text(22px, 600, $hover, $font-roboto, 1px);
+    padding-bottom: 10px;
     position: relative;
 }
+.icon-descripcion-desplegar{
+    text-align: end;
+    position: absolute;
+    right: 16px;
+    height: 20px;
+    top: 10% ;
+    &:hover{
+        cursor: pointer;
+        color: $text-primary;
+    }
+}
+.caracteristicas-nombre{
+    @include mixins.text(20px, 700, $text-primary, $font-roboto, 1px);
+    text-transform: uppercase;
+    font-style: italic;
+}
+.caracteristicas-producto{
+    width: 100%;
+    padding-left: 15px;
+}
+.caracteristicas-ul{
+    padding: 20px 0;
+}
+.caracteristicas-ul--li{
+    @include mixins.text(16px, 400, $text-primary, $font-roboto, 1px);
+    padding: 6px;
+}
+
+
 
 .img-medios-pago{
     width: 100%;
@@ -136,6 +189,11 @@
    left: 50%;
    transform: translate(-50%, -51%);
    width: max-content;
+
+   &.btn-agregar .icon{
+        height: 15px;
+        color: $text-primary;
+   }
 }
 .btn-producto:hover .btn-agregar{
     transition: all 0.5s;
@@ -192,10 +250,12 @@
     .contenedor-page-producto{
        justify-content: flex-start;
     }
-    .contenedor-imagenes{
+    .contenedor-columna-1{
         width: 50%;
     }
     .contenedor-info-producto{
         width: 50%;
+        position: sticky;
+        top: 0;
     }
 }
