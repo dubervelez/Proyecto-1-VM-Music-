@@ -8,7 +8,8 @@ function InfoProducto() {
 		"categoria": "Amplificadores",
 		"precio": "275500",
 		"stock": "4",
-		"estado": "ultimas existencias"
+		"estado": "ultimas existencias",
+        "imagen1": 'https://cdn.shopify.com/s/files/1/0512/9116/0767/products/3eeda39d-7258-4095-bf08-008cea425230_600x.jpg?v=1605561857'
 	}
 
     const [cantidadProducto, setCantidadProducto] = useState(1)
@@ -17,6 +18,7 @@ function InfoProducto() {
   return (
     <Layout>
         <Producto
+        imagen={productoData.imagen1}
         producto={productoData.producto}
         precio={productoData.precio}
         cantidad={cantidadProducto}

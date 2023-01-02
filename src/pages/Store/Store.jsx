@@ -8,7 +8,7 @@ import { obtenerProductos } from '../../utils/ApiStore.js'
 import { useState } from 'react'
 import { nanoid } from 'nanoid';
 import { useCarroCompras } from '../../context/contextStore'
-
+import { Link } from 'react-router-dom';
 
 function Store() {
   const [productosData, setProductosData] = useState([])
@@ -66,13 +66,15 @@ function Store() {
       <div className='contenedor-productos-mas-vendidos'> 
         <h2 className='titulo'>Novedades...</h2>
         <div className='contenedor-store-card' >
-          <CardStore
-            categoria={datadePrueba.categoria} 
-            producto={datadePrueba.producto} 
-            precio={datadePrueba.precio}
-            estado={datadePrueba.estado}
-            miniatura={datadePrueba.miniatura}
-            />
+          <Link to="/Proyecto-1-VM-Music-/store/producto">
+            <CardStore
+              categoria={datadePrueba.categoria} 
+              producto={datadePrueba.producto} 
+              precio={datadePrueba.precio}
+              estado={datadePrueba.estado}
+              miniatura={datadePrueba.miniatura}
+              />
+          </Link>
           <CardStore
             categoria={datadePrueba.categoria} 
             producto={datadePrueba.producto} 

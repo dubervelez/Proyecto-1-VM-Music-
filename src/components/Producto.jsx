@@ -1,14 +1,19 @@
 import '../styles/store/producto.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faCartShopping, faMoneyCheck } from '@fortawesome/free-solid-svg-icons';
 
 
-function Producto({ producto, precio, cantidad, valorTotal  }) {
+function Producto({ producto, precio, cantidad, valorTotal, imagen  }) {
 
   return (
     <div className='contenedor-page-producto'>
 			<div className='contenedor-imagenes'>
+				<div className='btn-image-miniatura'>
 				<img src="https://cdn.shopify.com/s/files/1/0512/9116/0767/products/3eeda39d-7258-4095-bf08-008cea425230_600x.jpg?v=1605561857" alt="producto" />
+				<img src="https://cdn.shopify.com/s/files/1/0512/9116/0767/products/3eeda39d-7258-4095-bf08-008cea425230_600x.jpg?v=1605561857" alt="producto" />
+				<img src="https://cdn.shopify.com/s/files/1/0512/9116/0767/products/3eeda39d-7258-4095-bf08-008cea425230_600x.jpg?v=1605561857" alt="producto" />
+				</div>
+				<img src={imagen} alt="producto" />
 			</div>
 			<div className='contenedor-info-producto'>
 				<h2 className='info-nombre'>{producto}</h2>
@@ -24,8 +29,8 @@ function Producto({ producto, precio, cantidad, valorTotal  }) {
 					<p className='info-valorTotal'> {valorTotal}</p>
 				</div>
 				<div className='btn-acciones-producto'>
-					<button className='btn-producto' >Comprar</button>
-					<button className='btn-producto' >Agregar al Carrito</button>
+					<button className='btn-producto' >Comprar </button>
+					<button className='btn-producto' > <span className='btn-agregar'>Agregar al Carrito</span> <span className='btn-icono-cart' ><FontAwesomeIcon icon={faCartShopping} /></span> </button>
 					<button className='btn-favoritos'> <FontAwesomeIcon className='icon-favoritos' icon={faHeart} /> </button>
 				</div>
 			</div>
