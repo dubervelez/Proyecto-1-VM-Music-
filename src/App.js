@@ -12,12 +12,13 @@ import { obtenerCards, obtenerDatosSlider } from "./utils/Api.js";
 import { Auth0Provider } from "@auth0/auth0-react";
 import Store from "./pages/Store/Store.jsx";
 import InfoProducto from "./pages/Store/InfoProducto.jsx";
+import Layout from "./pages/Store/Layout.jsx";
 
 function App() {
   
   const [sliderData, setSliderData] =useState([])
   const [cardsData, setCardsData] =useState([])
-  const [carroCompra, setCarroCompra] =useState([])
+  const [carroCompra, setCarroCompra] =useState([{cantidadCarrito: 1 },{}])
 
   useEffect( () => {
     obtenerDatosSlider(
@@ -47,13 +48,13 @@ function App() {
         <ContextCards.Provider value={{cardsData, setCardsData}}>
         <ContextCarroCompras.Provider value={{carroCompra, setCarroCompra}}>
           <BrowserRouter>
-            <Routes>
-              <Route path='/Proyecto-1-VM-Music-/admin/ultimos-Lanzamientos' element={ <AdminCards/> } />
-              <Route path='/Proyecto-1-VM-Music-/store/producto' element={ <InfoProducto /> } />
-              <Route path='/Proyecto-1-VM-Music-/store' element={ <Store /> } />
-              <Route path='/Proyecto-1-VM-Music-/admin' element={ <IndexAdmin/> } />
-              <Route path='/Proyecto-1-VM-Music-/login' element={ <Login/> } />
-              <Route path='/Proyecto-1-VM-Music-/' element={ <Index/> } />  
+            <Routes >
+            <Route path='/Proyecto-1-VM-Music-/store/producto' element={ <Layout productosSelecionados={carroCompra[0].cantidadCarrito}> <InfoProducto /> </Layout> } />
+            <Route path='/Proyecto-1-VM-Music-/store' element={ <Layout productosSelecionados={carroCompra[0].cantidadCarrito}> <Store /> </Layout>  } />
+            <Route path='/Proyecto-1-VM-Music-/admin/ultimos-Lanzamientos' element={ <AdminCards/> } />
+            <Route path='/Proyecto-1-VM-Music-/admin' element={ <IndexAdmin/> } />
+            <Route path='/Proyecto-1-VM-Music-/login' element={ <Login/> } />
+            <Route path='/Proyecto-1-VM-Music-' element={ <Index/> } />  
             </Routes>
           </BrowserRouter>
         </ContextCarroCompras.Provider>

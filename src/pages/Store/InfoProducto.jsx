@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Producto from '../../components/Producto'
 import Layout from './Layout'
 import CardStore from '../../components/CardStore'
+import { useCarroCompras } from '../../context/contextStore';
 
 function InfoProducto() {
     const productoData = {
@@ -15,17 +16,20 @@ function InfoProducto() {
 
     const [cantidadProducto, setCantidadProducto] = useState(1)
     const [valorTotal, setValorTotal] = useState(cantidadProducto * productoData.precio)
+    const { carroCompra ,setCarroCompra } = useCarroCompras()
 
+    console.log(carroCompra)
   return (
-    <Layout>
-        <Producto
-        imagen={productoData.imagen1}
-        producto={productoData.producto}
-        precio={productoData.precio}
-        cantidad={cantidadProducto}
-        valorTotal={valorTotal}
-        ></Producto>
-        <div className='contenedor-store-card' >
+    <>
+      <Producto
+      imagen={carroCompra[1].imagen}
+      producto={carroCompra[1].nombreProducto}
+      precio={carroCompra[1].precio}
+      cantidad={carroCompra[1].cantidad}
+      valorTotal={carroCompra[1].valorTotal}
+      listaCaracteristicas = {carroCompra[1].caracteristicas}
+      ></Producto>
+      <div className='contenedor-store-card' >
 
           <CardStore
               categoria={productoData.categoria} 
@@ -62,8 +66,9 @@ function InfoProducto() {
               estado={productoData.estado}
               miniatura="https://cdn.shopify.com/s/files/1/0512/9116/0767/products/thumb_200x.jpg?v=1605551015"
             />
-        </div>
-    </Layout>
+      </div>
+    </>
+
   )
 }
 

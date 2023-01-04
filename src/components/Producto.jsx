@@ -1,23 +1,35 @@
 import '../styles/store/producto.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faCartShopping, faMoneyCheck, faPlus } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useCarroCompras } from '../context/contextStore'
+import { nanoid } from 'nanoid';
 
-function Producto({ producto, precio, cantidad, valorTotal, imagen  }) {
-	const {carroCompra, setCarroCompras} = useCarroCompras();
+
+
+function Producto({ producto, precio, cantidad, valorTotal, imagen, listaCaracteristicas  }) {
+  //
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+	const {carroCompra, setCarroCompra} = useCarroCompras();
 	const [descripcionactiva, setDescripcionActiva ] = useState(false);
+	
+  const agregarAlCarrito = ()=>{
+    setCarroCompra((prevState)=>{
+      return [{ ...prevState[0], cantidadCarrito: carroCompra[0].cantidadCarrito + 1 }, prevState[1]]
+    })
+  }
 	
   return (
     <div className='contenedor-page-producto'>
 			<div className='contenedor-columna-1'>
 				<div className='contenedor-imagenes'>
 					<div className='btn-image-miniatura'>
-					<img src="https://cdn.shopify.com/s/files/1/0512/9116/0767/products/3eeda39d-7258-4095-bf08-008cea425230_600x.jpg?v=1605561857" alt="producto" />
-					<img src="https://cdn.shopify.com/s/files/1/0512/9116/0767/products/3eeda39d-7258-4095-bf08-008cea425230_600x.jpg?v=1605561857" alt="producto" />
-					<img src="https://cdn.shopify.com/s/files/1/0512/9116/0767/products/3eeda39d-7258-4095-bf08-008cea425230_600x.jpg?v=1605561857" alt="producto" />
+						<img src={`${imagen}`} alt="miniatur producto" />
 					</div>
-					<img src={imagen} alt="producto" />
+					<img src={`${imagen}`} alt="producto" title={`VM Music Store - ${producto}`}/>
 				</div>
 				<div className= {`contenedor-descripcion-producto ${descripcionactiva && 'activo'}`}>
 					<h3 className='caracteristicas-titulo' >Descripcion <FontAwesomeIcon className='icon-descripcion-desplegar' icon={faPlus} 
@@ -26,11 +38,11 @@ function Producto({ producto, precio, cantidad, valorTotal, imagen  }) {
 					<p className='caracteristicas-nombre'>{producto}</p>
 					<div className='caracteristicas-producto'>
 						<ul className='caracteristicas-ul'>
-							<li className='caracteristicas-ul--li'>Parlante inalámbrico </li>
-							<li className='caracteristicas-ul--li'>Modelo S-101</li>
-							<li className='caracteristicas-ul--li'>Color blanco</li>
-							<li className='caracteristicas-ul--li'>Con entrada auxiliar 3.5 mm</li>
-							<li className='caracteristicas-ul--li'>Entrada USB</li>
+							{
+								listaCaracteristicas && listaCaracteristicas.map((el)=>{
+									return <li key={nanoid()} className='caracteristicas-ul--li'>{el}</li>
+								})
+							}
 						</ul>
 					</div>
 				</div>
@@ -50,8 +62,8 @@ function Producto({ producto, precio, cantidad, valorTotal, imagen  }) {
 				</div>
 				<div className='btn-acciones-producto'>
 					<button className='btn-producto' >Comprar </button>
-					<button className='btn-producto' > <span className='btn-agregar'>Agregar <FontAwesomeIcon className='icon' icon={faCartShopping} /></span> <span className='btn-icono-cart' ><FontAwesomeIcon icon={faCartShopping} /></span> </button>
-					<button className='btn-favoritos'> <FontAwesomeIcon className='icon-favoritos' icon={faHeart} /> </button>
+					<button className='btn-producto' onClick={()=>{agregarAlCarrito()}}> <span className='btn-agregar'>Agregar <FontAwesomeIcon className='icon' icon={faCartShopping} /></span> <span className='btn-icono-cart' ><FontAwesomeIcon icon={faCartShopping} /></span> </button>
+					<button className='btn-favoritos' > <FontAwesomeIcon className='icon-favoritos' icon={faHeart} /> </button>
 				</div>
 			</div>
 		</div>

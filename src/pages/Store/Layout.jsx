@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavLink } from "react-router-dom";
 import Logo from '../../Assets/logos/logo-vm.png'
 import '../../styles/store/layout.scss'
@@ -6,11 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faClipboardList, faUser, faSearch, faCartShopping, faHeadphones, faDollar, faMusic, faKeyboard } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 
-
-function Layout({ children, productosSeleccionados }) {
+function Layout({ children, productosSelecionados }) {
 
 	const [subnavactive, setSubnavActive] = useState(false)
-
 
   return (
     <div className='contenedor-layout-store' >
@@ -50,7 +48,7 @@ function Layout({ children, productosSeleccionados }) {
 						<div className='contenedor-carro-compra'>
 							<FontAwesomeIcon className='icon-carro-compras' icon={faCartShopping}></FontAwesomeIcon>
 							<div className='cantidad-productos'>
-								<span className='cantidad-productos--span' >{productosSeleccionados}</span>
+								<span className='cantidad-productos--span' >{productosSelecionados}</span>
 							</div>
 						</div>
 					</div>

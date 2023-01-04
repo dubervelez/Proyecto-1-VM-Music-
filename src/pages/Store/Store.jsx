@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import Layout from '../Store/Layout'
 import CardStore from '../../components/CardStore'
 import '../../styles/store/store.scss'
 import ImagenRelleno from '../../Assets/images/relleno.jpg'
@@ -41,14 +40,11 @@ function Store() {
   }, [])
   
   // pendiente funcionalidad para guardar los datos del producto al hacer clic en la card
-  const [first, setfirst] = useState(2)
-  const datosCompra = (producto, precio)=>{
-    console.log("el producto es:", producto, "...y el precio es: ", precio);
-    setfirst(25)
-    console.log(first)
-  }
+  
+  
   return (
-    <Layout productosSeleccionados='1'>
+    <>
+    
       <div className='imagen-relleno'>
         <img src={ImagenRelleno2} alt="" />
       </div>
@@ -58,16 +54,14 @@ function Store() {
         {
           productosData.map((producto, index)=>{
             return(  
-            <Link key={nanoid()} className='link-producto' to="/Proyecto-1-VM-Music-/store/producto" >
-              <CardStore 
+              <CardStore key={nanoid()}
                 categoria={producto.categoria} 
                 producto={producto.producto} 
                 precio={producto.precio}
                 estado={producto.estado}
                 miniatura={producto.miniatura}
-                clickProducto={datosCompra}
                 />
-            </Link>) 
+            )
           })
         }
         </div>
@@ -120,7 +114,7 @@ function Store() {
         </div>
         <button className='btn-ver-mas'>ver Todos...</button>
       </div>
-    </Layout>
+    </>
   )
 }
 
