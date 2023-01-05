@@ -14,8 +14,30 @@ function InfoProducto() {
 	}
 
     const { carroCompra ,setCarroCompra } = useCarroCompras()
-
-    console.log(carroCompra)
+    const sumarCantidad = ()=>{
+      setCarroCompra((prevState) => {
+        return [
+          prevState[0], 
+          { ...prevState[1], 
+            cantidad: prevState[1].cantidad++,
+          }, 
+          prevState[2] ];
+      })
+      console.log('click en sumar cantidad:', carroCompra[1])
+    }
+    const restarCantidad = ()=>{
+      setCarroCompra((prevState) => {
+        const cantidad = Math.max(prevState[1].cantidad--, 1)
+        return [
+          prevState[0], 
+          { ...prevState[1], 
+            cantidad: cantidad,
+          }, 
+          prevState[2] ];
+      })
+      console.log('click en restar cantidad:', carroCompra[1])
+    }
+    
   return (
     <>
       <Producto
@@ -25,6 +47,8 @@ function InfoProducto() {
         cantidad={carroCompra[1].cantidad}
         valorTotal={carroCompra[1].valorTotal}
         listaCaracteristicas = {carroCompra[1].caracteristicas}
+        sumarCantidad={sumarCantidad}
+        restarCantidad={restarCantidad}
       >
       </Producto>
       <div className='contenedor-store-card' >

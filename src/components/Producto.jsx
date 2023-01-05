@@ -7,7 +7,7 @@ import { nanoid } from 'nanoid';
 
 
 
-function Producto({ producto, precio, cantidad, valorTotal, imagen, listaCaracteristicas  }) {
+function Producto({ producto, precio, cantidad, valorTotal, imagen, listaCaracteristicas, sumarCantidad, restarCantidad  }) {
   //
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -18,9 +18,16 @@ function Producto({ producto, precio, cantidad, valorTotal, imagen, listaCaracte
 	
   const agregarAlCarrito = ()=>{
     setCarroCompra((prevState)=>{
-      return [{ ...prevState[0], cantidadCarrito: carroCompra[0].cantidadCarrito + 1 }, prevState[1], prevState[2]]
+	  return [
+        { ...prevState[0], cantidadCarrito: carroCompra[0].cantidadCarrito + 1  }, 
+        {...prevState[1]},
+        {...prevState[2], ['producto' + carroCompra[0].cantidadCarrito]  : {producto: carroCompra[1].nombreProducto, precio: carroCompra[1].precio, imagen: carroCompra[1].imagen}  },
+      ];
     })
+    console.log('hiciste click en btn-agregar, objeto actualizado a:', carroCompra )
   }
+
+  
 	
   return (
     <div className='contenedor-page-producto'>
@@ -54,9 +61,9 @@ function Producto({ producto, precio, cantidad, valorTotal, imagen, listaCaracte
 					<p className='info-precio'>Precio Unitario: <span className='info-precio-span'>{precio}</span> </p>
 					<div className='info-cantidad'>
 						<span className='label'>Cantidad:</span>
-						<span className='btn-cantidad'>-</span>
+						<span className='btn-cantidad' onClick={restarCantidad}>-</span>
 						<span className='span-cantidad'>{cantidad}</span>
-						<span className='btn-cantidad'>+</span>
+						<span className='btn-cantidad' onClick={sumarCantidad}>+</span>
 					</div>
 					<p className='info-valorTotal'> {valorTotal}</p>
 				</div>

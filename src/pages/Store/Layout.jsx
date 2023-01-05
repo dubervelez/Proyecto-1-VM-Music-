@@ -64,30 +64,8 @@ function Layout({ children, productosSelecionados }) {
 							</div>
               <div className={`modal-carrito-compras ${modalActivo && 'activo'}`}>
                 <div className='modal-contenedor-productos'>
-              {
-                carroCompra[2] && (
-                  Object.values(carroCompra[2]).map((el)=>{
-                    return(
-                      <div className='modal-producto' key={nanoid()} >
-                        <img className='modal-img' src={el.imagen} alt="miniatura producto" />
-                        <div className='modal-producto-descripcion'>
-                            <h3 className='modal-name'>{el.producto} <br />{el.precio} </h3>
-                        </div>
-                        <div className='info-cantidad-modal'>
-                          <div>
-                            <span className='btn-cantidad'>-</span>
-                            <span className='span-cantidad'>1</span>
-                            <span className='btn-cantidad'>+</span>
-                          </div>
-                          <span className='quitar-producto'>Quitar</span>
-                        </div>
-                      </div>
-                        
-                        
-                        )
-                      })
-                      
-                      )
+                {
+                  carroCompra[2] && ( <ModalCarrito /> )
                 }
                 </div>
                 <div className='btn-modal'>
@@ -114,4 +92,72 @@ function Layout({ children, productosSelecionados }) {
   )
 }
 
+const ModalCarrito = ()=>{
+
+  const { carroCompra ,setCarroCompra } = useCarroCompras()
+
+
+  //Sumar una unidad al producto
+  const sumarCantidad = (index, num) => {
+    const { cantidad, ...rest } = carroCompra[2]['producto'+index];
+    const updatedProducto = { cantidad: num + 1 , ...rest };
+    const updatedCarroCompra = [...carroCompra];
+    updatedCarroCompra[2]['producto'+index] = updatedProducto;
+    setCarroCompra(updatedCarroCompra);
+  };
+ 
+  const restarCantidad = (index, num)=>{
+    let cantidadNueva = Math.max( num - 1 , 1); 
+    const { cantidad, ...rest } = carroCompra[2]['producto'+index];
+    const updatedProducto = { cantidad: cantidadNueva , ...rest };
+    const updatedCarroCompra = [...carroCompra];
+    updatedCarroCompra[2]['producto'+index] = updatedProducto;
+    setCarroCompra(updatedCarroCompra);
+  };
+
+  const eliminarProducto = (index)=>{
+    console.log('se debe eliminar este', carroCompra[2]['producto'+index], 'que es el producto-',index )
+    delete carroCompra[2]['producto'+index]
+    const updateProducto = {...carroCompra[2] }
+    const llaves = Object.keys(updateProducto);
+    const productosOrganizados = {};
+    let contador = 0
+    llaves.map((el)=>{ 
+      productosOrganizados['producto'+contador]= carroCompra[2][el]; 
+      contador++; 
+    })
+    const updatedCarroCompra = [...carroCompra]
+    updatedCarroCompra[2] = productosOrganizados;
+    updatedCarroCompra[0].cantidadCarrito = updatedCarroCompra[0].cantidadCarrito - 1
+    setCarroCompra(updatedCarroCompra)
+  }
+
+  return(
+    Object.values(carroCompra[2]).map((value, index)=>{
+      return(
+        <div className='modal-producto' key={nanoid()} >
+          <img className='modal-img' src={value.imagen} alt="miniatura producto" />
+          <div className='modal-producto-descripcion'>
+              <h3 className='modal-name'>{value.producto} <br />{value.precio} </h3>
+          </div>
+          <div className='info-cantidad-modal'>
+            <div>
+              <span className='btn-cantidad' onClick={()=>{restarCantidad(index, value.cantidad)}}>-</span>
+              <span className='span-cantidad'>{value.cantidad}</span>
+              <span className='btn-cantidad' onClick={()=>{sumarCantidad(index, value.cantidad)}}>+</span>
+            </div>
+            <span className='quitar-producto' onClick={()=>{eliminarProducto(index)}}>Quitar</span>
+          </div>
+        </div>
+      )
+    })
+
+    
+  )
+
+}
+
 export default Layout
+
+
+

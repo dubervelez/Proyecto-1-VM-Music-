@@ -4,8 +4,6 @@ import '../styles/store/cardStore.scss'
 import { useCarroCompras } from '../context/contextStore';
 import { Link } from 'react-router-dom';
 
-
-let contador = 0;
 function CardStore({ categoria, producto, precio, estado, miniatura }) {
 
   const { carroCompra ,setCarroCompra } = useCarroCompras();
@@ -21,20 +19,17 @@ function CardStore({ categoria, producto, precio, estado, miniatura }) {
         valorTotal:     productoPrecio,
         imagen:         productoImagen,
         caracteristicas: ["caracteristicas1", 'caracteristicas2','caracteristicas3','caracteristicas4', 'caracteristicas5' ]
-      }];
+      }, prevState[2]];
     }) 
   }
   
   // Actualización de la cantidad almacenada en el carrito
   const cantidadCarrito = (producto, precio, miniatura)=>{
-    console.log(contador)
-    contador = contador + 1
-    console.log(contador)
     setCarroCompra((prevState) => {
       return [
         { ...prevState[0], cantidadCarrito: carroCompra[0].cantidadCarrito + 1  }, 
         {...prevState[1]},
-        {...prevState[2], ['producto' + contador]  : {producto: producto, precio: precio, imagen: miniatura}  },
+        {...prevState[2], ['producto' + carroCompra[0].cantidadCarrito]  : {producto: producto, precio: precio, imagen: miniatura, cantidad: 1}  },
       ];
     }) 
     console.log(carroCompra)
