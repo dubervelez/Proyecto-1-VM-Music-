@@ -16,15 +16,16 @@ function Producto({ producto, precio, cantidad, valorTotal, imagen, listaCaracte
 	const {carroCompra, setCarroCompra} = useCarroCompras();
 	const [descripcionactiva, setDescripcionActiva ] = useState(false);
 	
-  const agregarAlCarrito = ()=>{
+  const agregarAlCarrito = (numAgregados)=>{
+	let cantidadProductos = numAgregados;
     setCarroCompra((prevState)=>{
 	  return [
-        { ...prevState[0], cantidadCarrito: carroCompra[0].cantidadCarrito + 1  }, 
+        { ...prevState[0], cantidadCarrito: carroCompra[0].cantidadCarrito + cantidadProductos  }, 
         {...prevState[1]},
-        {...prevState[2], ['producto' + carroCompra[0].cantidadCarrito]  : {producto: carroCompra[1].nombreProducto, precio: carroCompra[1].precio, imagen: carroCompra[1].imagen}  },
+        {...prevState[2], ['producto' + carroCompra[3].cantidadProductos]  : {producto: carroCompra[1].nombreProducto, precio: carroCompra[1].precio, imagen: carroCompra[1].imagen, cantidad: cantidadProductos}  },
+		{ ...prevState[3], cantidadProductos: prevState[3].cantidadProductos + 1}
       ];
     })
-    console.log('hiciste click en btn-agregar, objeto actualizado a:', carroCompra )
   }
 
   
@@ -69,7 +70,7 @@ function Producto({ producto, precio, cantidad, valorTotal, imagen, listaCaracte
 				</div>
 				<div className='btn-acciones-producto'>
 					<button className='btn-producto' >Comprar </button>
-					<button className='btn-producto' onClick={()=>{agregarAlCarrito()}}> <span className='btn-agregar'>Agregar <FontAwesomeIcon className='icon' icon={faCartShopping} /></span> <span className='btn-icono-cart' ><FontAwesomeIcon icon={faCartShopping} /></span> </button>
+					<button className='btn-producto' onClick={()=>{agregarAlCarrito(cantidad)}}> <span className='btn-agregar'>Agregar <FontAwesomeIcon className='icon' icon={faCartShopping} /></span> <span className='btn-icono-cart' ><FontAwesomeIcon icon={faCartShopping} /></span> </button>
 					<button className='btn-favoritos' > <FontAwesomeIcon className='icon-favoritos' icon={faHeart} /> </button>
 				</div>
 			</div>

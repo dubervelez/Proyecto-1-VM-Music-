@@ -103,6 +103,8 @@ const ModalCarrito = ()=>{
     const updatedProducto = { cantidad: num + 1 , ...rest };
     const updatedCarroCompra = [...carroCompra];
     updatedCarroCompra[2]['producto'+index] = updatedProducto;
+    updatedCarroCompra[0]['cantidadCarrito'] = updatedCarroCompra[0]['cantidadCarrito'] + 1;
+    
     setCarroCompra(updatedCarroCompra);
   };
  
@@ -112,11 +114,13 @@ const ModalCarrito = ()=>{
     const updatedProducto = { cantidad: cantidadNueva , ...rest };
     const updatedCarroCompra = [...carroCompra];
     updatedCarroCompra[2]['producto'+index] = updatedProducto;
+    updatedCarroCompra[0]['cantidadCarrito'] = updatedCarroCompra[0]['cantidadCarrito'] - 1;
     setCarroCompra(updatedCarroCompra);
   };
 
   const eliminarProducto = (index)=>{
     console.log('se debe eliminar este', carroCompra[2]['producto'+index], 'que es el producto-',index )
+    const cantidad = carroCompra[2]['producto'+index].cantidad
     delete carroCompra[2]['producto'+index]
     const updateProducto = {...carroCompra[2] }
     const llaves = Object.keys(updateProducto);
@@ -128,7 +132,8 @@ const ModalCarrito = ()=>{
     })
     const updatedCarroCompra = [...carroCompra]
     updatedCarroCompra[2] = productosOrganizados;
-    updatedCarroCompra[0].cantidadCarrito = updatedCarroCompra[0].cantidadCarrito - 1
+    updatedCarroCompra[0].cantidadCarrito = updatedCarroCompra[0].cantidadCarrito - cantidad
+    updatedCarroCompra[3].cantidadProductos = updatedCarroCompra[3].cantidadProductos - 1
     setCarroCompra(updatedCarroCompra)
   }
 

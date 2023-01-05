@@ -10,7 +10,6 @@ function CardStore({ categoria, producto, precio, estado, miniatura }) {
 
   // Obtención de los datos del producto al cual se le ha hecho click
   const datosCompra = (productoNombre, productoPrecio, productoImagen)=>{
-    console.log("el producto es:", productoNombre, "...y el precio es: ", productoPrecio); 
     setCarroCompra((prevState) => {
       return [prevState[0], { ...prevState[1], 
         nombreProducto: productoNombre, 
@@ -19,20 +18,25 @@ function CardStore({ categoria, producto, precio, estado, miniatura }) {
         valorTotal:     productoPrecio,
         imagen:         productoImagen,
         caracteristicas: ["caracteristicas1", 'caracteristicas2','caracteristicas3','caracteristicas4', 'caracteristicas5' ]
-      }, prevState[2]];
+      }, prevState[2], prevState[3]];
     }) 
   }
   
   // Actualización de la cantidad almacenada en el carrito
-  const cantidadCarrito = (producto, precio, miniatura)=>{
+  const añadirCarrito = (producto, precio, miniatura)=>{
+    let cantidadProductos = 1
+    const llaves = Object.keys(carroCompra[2]);
+    llaves.map((el)=>{ 
+      cantidadProductos = carroCompra[2][el].cantidad + cantidadProductos; 
+    })
     setCarroCompra((prevState) => {
       return [
-        { ...prevState[0], cantidadCarrito: carroCompra[0].cantidadCarrito + 1  }, 
+        { ...prevState[0], cantidadCarrito: cantidadProductos  }, 
         {...prevState[1]},
-        {...prevState[2], ['producto' + carroCompra[0].cantidadCarrito]  : {producto: producto, precio: precio, imagen: miniatura, cantidad: 1}  },
+        {...prevState[2], ['producto' + carroCompra[3].cantidadProductos]  : {producto: producto, precio: precio, imagen: miniatura, cantidad: 1}  },
+        { ...prevState[3], cantidadProductos: prevState[3].cantidadProductos + 1}
       ];
     }) 
-    console.log(carroCompra)
   }
 
   return (
@@ -49,7 +53,7 @@ function CardStore({ categoria, producto, precio, estado, miniatura }) {
             <div className='contenido-disponibilidad'>
               <p className='disponibilidad'>{estado}</p>
               <span className='span-agregar-carro'><FontAwesomeIcon className='icon-agregar-carro' icon={faCartPlus} 
-                onClick={()=>{cantidadCarrito(producto, precio, miniatura)}} /></span> 
+                onClick={()=>{añadirCarrito(producto, precio, miniatura)}} /></span> 
             </div>
         </div>
     </div>

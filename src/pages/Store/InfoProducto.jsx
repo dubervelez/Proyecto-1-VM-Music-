@@ -21,9 +21,8 @@ function InfoProducto() {
           { ...prevState[1], 
             cantidad: prevState[1].cantidad++,
           }, 
-          prevState[2] ];
+          prevState[2],prevState[3] ];
       })
-      console.log('click en sumar cantidad:', carroCompra[1])
     }
     const restarCantidad = ()=>{
       setCarroCompra((prevState) => {
@@ -33,9 +32,8 @@ function InfoProducto() {
           { ...prevState[1], 
             cantidad: cantidad,
           }, 
-          prevState[2] ];
+          prevState[2],prevState[3] ];
       })
-      console.log('click en restar cantidad:', carroCompra[1])
     }
     
   return (
