@@ -1,6 +1,6 @@
 import '../styles/store/producto.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faCartShopping, faMoneyCheck, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faCartShopping, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import { useCarroCompras } from '../context/contextStore'
 import { nanoid } from 'nanoid';
@@ -18,7 +18,7 @@ function Producto({ producto, precio, cantidad, valorTotal, imagen, listaCaracte
 	
   const agregarAlCarrito = ()=>{
     setCarroCompra((prevState)=>{
-      return [{ ...prevState[0], cantidadCarrito: carroCompra[0].cantidadCarrito + 1 }, prevState[1]]
+      return [{ ...prevState[0], cantidadCarrito: carroCompra[0].cantidadCarrito + 1 }, prevState[1], prevState[2]]
     })
   }
 	

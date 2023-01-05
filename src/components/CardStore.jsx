@@ -3,8 +3,9 @@ import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import '../styles/store/cardStore.scss'
 import { useCarroCompras } from '../context/contextStore';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 
+
+let contador = 0;
 function CardStore({ categoria, producto, precio, estado, miniatura }) {
 
   const { carroCompra ,setCarroCompra } = useCarroCompras();
@@ -23,12 +24,20 @@ function CardStore({ categoria, producto, precio, estado, miniatura }) {
       }];
     }) 
   }
-
+  
   // Actualización de la cantidad almacenada en el carrito
-  const cantidadCarrito = ()=>{
+  const cantidadCarrito = (producto, precio, miniatura)=>{
+    console.log(contador)
+    contador = contador + 1
+    console.log(contador)
     setCarroCompra((prevState) => {
-      return [{ ...prevState[0], cantidadCarrito: carroCompra[0].cantidadCarrito + 1  }, prevState[1]];
+      return [
+        { ...prevState[0], cantidadCarrito: carroCompra[0].cantidadCarrito + 1  }, 
+        {...prevState[1]},
+        {...prevState[2], ['producto' + contador]  : {producto: producto, precio: precio, imagen: miniatura}  },
+      ];
     }) 
+    console.log(carroCompra)
   }
 
   return (
@@ -44,7 +53,8 @@ function CardStore({ categoria, producto, precio, estado, miniatura }) {
             <p className='contenido-precio'>{precio}</p>
             <div className='contenido-disponibilidad'>
               <p className='disponibilidad'>{estado}</p>
-              <span className='span-agregar-carro'><FontAwesomeIcon className='icon-agregar-carro' icon={faCartPlus} onClick={cantidadCarrito} /></span> 
+              <span className='span-agregar-carro'><FontAwesomeIcon className='icon-agregar-carro' icon={faCartPlus} 
+                onClick={()=>{cantidadCarrito(producto, precio, miniatura)}} /></span> 
             </div>
         </div>
     </div>

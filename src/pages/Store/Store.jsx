@@ -7,7 +7,7 @@ import { obtenerProductos } from '../../utils/ApiStore.js'
 import { useState } from 'react'
 import { nanoid } from 'nanoid';
 import { useCarroCompras } from '../../context/contextStore'
-import { Link } from 'react-router-dom';
+
 
 function Store() {
   // hook que almacena los datos de la base de datos - pendiente cambia por un context
@@ -73,7 +73,6 @@ function Store() {
       <div className='contenedor-productos-mas-vendidos'> 
         <h2 className='titulo'>Novedades...</h2>
         <div className='contenedor-store-card' >
-          <Link className='link-producto' to="/Proyecto-1-VM-Music-/store/producto">
             <CardStore
               categoria={datadePrueba.categoria} 
               producto={datadePrueba.producto} 
@@ -81,7 +80,6 @@ function Store() {
               estado={datadePrueba.estado}
               miniatura={datadePrueba.miniatura}
               />
-          </Link>
           <CardStore
             categoria={datadePrueba.categoria} 
             producto={datadePrueba.producto} 

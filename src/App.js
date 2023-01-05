@@ -18,7 +18,7 @@ function App() {
   
   const [sliderData, setSliderData] =useState([])
   const [cardsData, setCardsData] =useState([])
-  const [carroCompra, setCarroCompra] =useState([{cantidadCarrito: 1 },{}])
+  const [carroCompra, setCarroCompra] =useState([{cantidadCarrito: 0 },{},{}])
 
   useEffect( () => {
     obtenerDatosSlider(
