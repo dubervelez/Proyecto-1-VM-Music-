@@ -1,0 +1,117 @@
+@use "../mixins.scss";
+@import "../colors";
+
+
+.contenedor-page-mi-carrito{
+    margin-top: 80px;
+    width: 100%;
+    @include mixins.flex(flex-start, flex-start);
+}
+.contenedor-page-mi-carrito .contenedor-listado{
+    
+    width: 70%;
+    padding: 16px;
+}
+.contenedor-listado .titulo-listado{
+    @include mixins.text(30px, 600);
+    font-style: italic;
+    margin-bottom: 30px;
+}
+.contenedor-listado .listado-de-productos{
+    padding: 20px 5px;
+    @include mixins.flex();
+    border-bottom: 1px solid black;
+}
+.producto-descripcion{
+    width: 60%;
+    @include mixins.flex(flex-start);
+}
+.descripcion-img{
+    max-width: 70px;
+    margin-right: 10px
+}
+.descripcion-nombre{
+    @include mixins.text(24px, 600);
+}
+.descripcion-nombre .precio{
+    @include mixins.text(20px, 400, $text-secundary);
+    &::before{
+        content: "$";
+        margin: 4px;
+        color: $green;
+    }
+}
+.listado-info-cantidad{
+    width: 20%;
+    color: $text-primary;
+}
+.total-compra{
+    width: 20%;
+}
+.total-compra--p{
+    @include mixins.text(22px, 600, rgba(8, 217, 15, 0.765));
+    &::before{
+        content: "$";
+        margin: 4px;
+        color: $green;
+    }
+}
+
+.contenedor-total-compra{
+    width: 30%;
+    @include mixins.flex(center, flex-start, column);
+    background: linear-gradient( rgba(3, 3, 3, 0.165) 40%, rgba(1, 1, 1, 0.733));
+    padding: 10px 10px 20px 10px;
+    margin-top: 30px;
+    position: sticky;
+    top: 0;
+    &:hover{
+        transition: all 0.5s ;
+        border: 1px solid $green;
+    }
+
+}
+.valor-compra{
+    width: 100%;
+    @include mixins.flex(space-between);
+    padding: 20px 10px;
+    border-bottom: 1px solid gray;
+}
+.valor-compra-p{
+    @include mixins.text(22px, 600,);
+}
+.valor-compra-p:last-child{
+    font-variant-numeric: tabular-nums;
+    &::before{
+        content: "$";
+        margin-right: 3px;
+        color: $green;
+        
+    }
+}
+
+.descripcion-impuestos{
+    @include mixins.text(16px, 400, $text-secundary);
+    padding: 10px;
+    border-bottom: 1px solid gray;
+}
+
+.btn-comprar-carrito{
+    border: 0;
+    outline: 0;
+    width: 60%;
+    margin-top: 16px;
+    @include mixins.text(18px, 700, rgba(0, 0, 0, 0.863));
+    text-align: center;
+    align-self: center;
+    padding: 8px;
+
+    &:hover{
+        cursor: pointer;
+        transition: all 0.5s;
+        color: rgb(2, 23, 29);
+        background: linear-gradient( rgba(215, 214, 214, 0.868) 40%, rgba(194, 193, 193, 0.733));
+       transform: scale(0.98);
+        
+    }
+}

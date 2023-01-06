@@ -13,7 +13,7 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import Store from "./pages/Store/Store.jsx";
 import InfoProducto from "./pages/Store/InfoProducto.jsx";
 import Layout from "./pages/Store/Layout.jsx";
-
+import MiCarrito from "./pages/Store/MiCarrito.jsx";
 function App() {
   
   const [sliderData, setSliderData] =useState([])
@@ -49,6 +49,7 @@ function App() {
         <ContextCarroCompras.Provider value={{carroCompra, setCarroCompra}}>
           <BrowserRouter>
             <Routes >
+            <Route path='/Proyecto-1-VM-Music-/store/mi-carrito' element={ <Layout productosSelecionados={carroCompra[0].cantidadCarrito}> <MiCarrito /> </Layout> } />
             <Route path='/Proyecto-1-VM-Music-/store/producto' element={ <Layout productosSelecionados={carroCompra[0].cantidadCarrito}> <InfoProducto /> </Layout> } />
             <Route path='/Proyecto-1-VM-Music-/store' element={ <Layout productosSelecionados={carroCompra[0].cantidadCarrito}> <Store /> </Layout>  } />
             <Route path='/Proyecto-1-VM-Music-/admin/ultimos-Lanzamientos' element={ <AdminCards/> } />

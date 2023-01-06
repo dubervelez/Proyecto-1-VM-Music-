@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import Logo from '../../Assets/logos/logo-vm.png'
 import '../../styles/store/layout.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -30,7 +30,7 @@ function Layout({ children, productosSelecionados }) {
 						<img className='logo-vm' src={Logo} alt="logo-VM-music" />
 						<ul className='nav-principa--ul'>
 							<li className="nav-principal--li"> <NavLink className='navlink-principal' to='/Proyecto-1-VM-Music-/'>Inicio</NavLink> </li>
-							<li className="nav-principal--li"><NavLink className='navlink-principal' to='/Proyecto-1-VM-Music-/catalogo-musical'>Catalogo Musical</NavLink></li>
+							<li className="nav-principal--li"><NavLink className='navlink-principal' to='/Proyecto-1-VM-Music-/store/mi-carrito'>Catalogo Musical</NavLink></li>
 							<li className="nav-principal--li"><NavLink className='navlink-principal' to='/Proyecto-1-VM-Music-/store'>Tienda</NavLink> </li>
 							<li className="nav-principal--li"><NavLink className='navlink-principal' to='/Proyecto-1-VM-Music-/admin/'>Admin</NavLink> </li>
 						</ul>
@@ -69,7 +69,7 @@ function Layout({ children, productosSelecionados }) {
                 }
                 </div>
                 <div className='btn-modal'>
-                  <button className='btn-producto modal' >Ver Carrito </button>
+                  <Link to='/Proyecto-1-VM-Music-/store/mi-carrito'><button className='btn-producto modal' >Ver Carrito </button></Link>
                   <button className='btn-producto modal'> Comprar Ahora </button>
                 </div>
                 </div>
@@ -96,7 +96,6 @@ const ModalCarrito = ()=>{
 
   const { carroCompra ,setCarroCompra } = useCarroCompras()
 
-
   //Sumar una unidad al producto
   const sumarCantidad = (index, num) => {
     const { cantidad, ...rest } = carroCompra[2]['producto'+index];
@@ -114,7 +113,8 @@ const ModalCarrito = ()=>{
     const updatedProducto = { cantidad: cantidadNueva , ...rest };
     const updatedCarroCompra = [...carroCompra];
     updatedCarroCompra[2]['producto'+index] = updatedProducto;
-    updatedCarroCompra[0]['cantidadCarrito'] = updatedCarroCompra[0]['cantidadCarrito'] - 1;
+    const min = Object.keys(updatedCarroCompra[2]).length 
+    updatedCarroCompra[0]['cantidadCarrito'] = Math.max (updatedCarroCompra[0]['cantidadCarrito'] - 1, min);
     setCarroCompra(updatedCarroCompra);
   };
 

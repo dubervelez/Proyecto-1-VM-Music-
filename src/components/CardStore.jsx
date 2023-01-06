@@ -33,7 +33,7 @@ function CardStore({ categoria, producto, precio, estado, miniatura }) {
       return [
         { ...prevState[0], cantidadCarrito: cantidadProductos  }, 
         {...prevState[1]},
-        {...prevState[2], ['producto' + carroCompra[3].cantidadProductos]  : {producto: producto, precio: precio, imagen: miniatura, cantidad: 1}  },
+        {...prevState[2], ['producto' + carroCompra[3].cantidadProductos]  : {producto: producto, precio: precio, imagen: miniatura, cantidad: 1, valorTotal: precio }  },
         { ...prevState[3], cantidadProductos: prevState[3].cantidadProductos + 1}
       ];
     }) 

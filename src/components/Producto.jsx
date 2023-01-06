@@ -22,7 +22,7 @@ function Producto({ producto, precio, cantidad, valorTotal, imagen, listaCaracte
 	  return [
         { ...prevState[0], cantidadCarrito: carroCompra[0].cantidadCarrito + cantidadProductos  }, 
         {...prevState[1]},
-        {...prevState[2], ['producto' + carroCompra[3].cantidadProductos]  : {producto: carroCompra[1].nombreProducto, precio: carroCompra[1].precio, imagen: carroCompra[1].imagen, cantidad: cantidadProductos}  },
+        {...prevState[2], ['producto' + carroCompra[3].cantidadProductos]  : {producto: carroCompra[1].nombreProducto, precio: carroCompra[1].precio, imagen: carroCompra[1].imagen, cantidad: cantidadProductos, valorTotal:carroCompra[1].precio * cantidadProductos }  },
 		{ ...prevState[3], cantidadProductos: prevState[3].cantidadProductos + 1}
       ];
     })
