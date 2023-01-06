@@ -3,17 +3,18 @@
 
 
 .contenedor-page-mi-carrito{
-    margin-top: 80px;
+    margin: 70px 0;
     width: 100%;
-    @include mixins.flex(flex-start, flex-start);
+    @include mixins.flex();
+    flex-wrap: wrap;
 }
 .contenedor-page-mi-carrito .contenedor-listado{
-    
-    width: 70%;
+    background: linear-gradient( rgba(3, 3, 3, 0.018) 40%, rgba(1, 1, 1, 0.239));
+    width: 100%;
     padding: 16px;
 }
 .contenedor-listado .titulo-listado{
-    @include mixins.text(30px, 600);
+    @include mixins.text(16px, 600);
     font-style: italic;
     margin-bottom: 30px;
 }
@@ -28,13 +29,14 @@
 }
 .descripcion-img{
     max-width: 70px;
+    width: 40px;
     margin-right: 10px
 }
 .descripcion-nombre{
-    @include mixins.text(24px, 600);
+    @include mixins.text(16px, 600);
 }
 .descripcion-nombre .precio{
-    @include mixins.text(20px, 400, $text-secundary);
+    @include mixins.text(14px, 400, $text-secundary);
     &::before{
         content: "$";
         margin: 4px;
@@ -45,11 +47,17 @@
     width: 20%;
     color: $text-primary;
 }
+.listado-info-cantidad .btn-cantidad, .listado-info-cantidad .span-cantidad{
+    padding: 3px;
+    text-align: center;
+    font-size: 12px;
+}
+
 .total-compra{
     width: 20%;
 }
 .total-compra--p{
-    @include mixins.text(22px, 600, rgba(8, 217, 15, 0.765));
+    @include mixins.text(16px, 600, rgba(8, 217, 15, 0.765));
     &::before{
         content: "$";
         margin: 4px;
@@ -57,8 +65,13 @@
     }
 }
 
+
+
+
+//Seccion Resumen de la compra
 .contenedor-total-compra{
-    width: 30%;
+    min-width: 218px;
+    width: 80%;
     @include mixins.flex(center, flex-start, column);
     background: linear-gradient( rgba(3, 3, 3, 0.165) 40%, rgba(1, 1, 1, 0.733));
     padding: 10px 10px 20px 10px;
@@ -67,7 +80,6 @@
     top: 0;
     &:hover{
         transition: all 0.5s ;
-        border: 1px solid $green;
     }
 
 }
@@ -113,5 +125,39 @@
         background: linear-gradient( rgba(215, 214, 214, 0.868) 40%, rgba(194, 193, 193, 0.733));
        transform: scale(0.98);
         
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    .contenedor-page-mi-carrito{
+        margin-top: 80px;
+        width: 100%;
+        @include mixins.flex(flex-start, flex-start);
+        flex-wrap: wrap;
+    }
+    .contenedor-page-mi-carrito .contenedor-listado{
+        background: linear-gradient( rgba(3, 3, 3, 0.018) 40%, rgba(1, 1, 1, 0.239));
+        width: 70%;
+        padding: 16px;
+    }
+    .contenedor-total-compra{
+        width: 30%;
+    }
+    .contenedor-listado .titulo-listado{
+        @include mixins.text(30px, 600);
+    }
+    .descripcion-nombre{
+        @include mixins.text(24px, 600);
+    }
+    .descripcion-nombre .precio{
+        @include mixins.text(20px, 400, $text-secundary);
+    }
+    
+    .total-compra--p{
+        @include mixins.text(22px, 600, rgba(8, 217, 15, 0.765));
+    }
+    .listado-info-cantidad .btn-cantidad, .listado-info-cantidad .span-cantidad{
+        padding: 8px;
+        font-size: 18px;
     }
 }
