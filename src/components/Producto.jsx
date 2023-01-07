@@ -27,8 +27,6 @@ function Producto({ producto, precio, cantidad, valorTotal, imagen, listaCaracte
       ];
     })
   }
-
-  
 	
   return (
     <div className='contenedor-page-producto'>
