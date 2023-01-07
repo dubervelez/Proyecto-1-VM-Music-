@@ -4,6 +4,7 @@ import '../../styles/store/miCarrito.scss'
 import { Dialog, DialogTitle, DialogActions, Button } from '@mui/material'
 import { ToastContainer, toast } from 'react-toastify';
 import { useState } from 'react';
+import { crearCompra } from '../../utils/ApiStore';
 
 function MiCarrito() {
     const { carroCompra ,setCarroCompra } = useCarroCompras()
@@ -35,7 +36,14 @@ function MiCarrito() {
 
     const ComprarProductos = ()=>{
       setOpenDialogo(false)
-      toast.success('Compra Realizada con exito',{theme:'dark', position:'bottom-center'})
+      crearCompra(carroCompra, valorTotal, 
+        (response)=>{
+          toast.success('Compra Realizada con exito',{theme:'dark', position:'bottom-center'})
+        },
+        (err)=>{
+          toast.error('Error al realizar la compra',{theme:'dark', position:'bottom-center'})
+          
+        })
     }
 
   
