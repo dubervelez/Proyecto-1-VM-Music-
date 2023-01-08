@@ -10,17 +10,102 @@
     flex-wrap: wrap;
     margin-bottom: 80px;
 }
+
+
+//-------------------------------------------ESTILOS COLIMNA DE FILTROS------------------------------------------------------------------------
 .contenedor-col-filtro{
     width: 100%;
     background-color: beige;
     padding: 10px;
     align-self: flex-start;
+}
+
+.contenedor-filtros-activos{
+    margin-bottom: 16px
+}
+.titulo-filtros{
+    @include mixins.text(24px, 600, #eb2323);
+    margin-bottom: 6px;
+}
+.lista-filtro-activos{
+    padding: 8px;
+}
+.item-listado-filtros{
+    @include mixins.flex(flex-start);
+}
+.filtros-activos{
+    margin-bottom: 6px;
+    width: max-content;
+    list-style: none;
+    padding: 5px 7px;
+    background-color: rgba(0, 0, 0, 0.648);
+    border-radius: 20px;
+}
+.icon-quitar-filtro{
+    color: $text-secundary;
+    margin-left: 10px;
+    &:hover{
+        color: #eb2323;
+        cursor: pointer;
+    }
+}
+.span-icon-quitar{
 
 }
+
+.contenedor-filtros-generos{
+    margin-bottom: 10px
+}
+.titulo-filtro-genero{
+    @include mixins.text(20px, 600, rgba(0, 0, 0, 0.846));
+}
+.filtros-generos{
+    height: 0;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    @include mixins.flex(flex-start, flex-start, column);
+    &.filtros-generos.activo{
+        padding: 8px;
+    }
+}
+
+
+.icon-desplegar-filtro{
+    color: rgba(0, 0, 0, 0.776);
+    cursor: pointer;
+    margin-left: 8px;
+    transition: all 0.2s;
+    &:hover{
+        color: #eb2323
+    }
+    &.icon-desplegar-filtro.activo{
+        transition: all 0.2s;
+        transform: rotate(180deg);
+        position: relative;
+        top: 4px
+    }
+}
+.label-checkbox{
+    @include mixins.text(16px, 600, rgba(0, 0, 0, 0.846), $font-roboto, 1px);
+}
+.input-checkbox{
+    margin-right: 4px;
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #c4c4c8;
+    box-shadow: 0 1px #c4c4c866;
+    border-radius: 2px;
+}
+
+
+
+
 .contenedor-col-productos{
     width: 100%;
-    padding: 16px 0;
-
+    padding: 16px 0 16px 8px;
 }
 
 .titulo-categoria{
@@ -37,6 +122,25 @@
     @include mixins.flex(space-between);
     &.contenedor-informacion-filtros p{
         @include mixins.text(14px, 600, $text-secundary);
+    }
+}
+.label-mostrar-paginas{
+    @include mixins.text(14px, 600, $text-secundary);
+}
+.select-mostrar-paginas{
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    @include mixins.text(14px, 600, $text-primary);
+    padding: 2px;
+    &:hover{
+        cursor: pointer;
+        color: $green;
+    }
+    &.select-mostrar-paginas option{
+        background-color: rgba(0, 0, 0, 0.763);
+        color: $text-primary;
+        cursor: pointer;
     }
 }
 
@@ -76,6 +180,10 @@
     transform: scale(0.9);
     opacity: 0.5;
 }
+
+
+
+
 
 @media only screen and (min-width: 700px) {
     .contenedor-colleccion-productos{

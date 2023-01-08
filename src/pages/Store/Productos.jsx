@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import '../../styles/store/AllProductos.scss'
 import CardStore from '../../components/CardStore'
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretDown, faXmark } from '@fortawesome/free-solid-svg-icons';
+
 
 function Productos() {
     
@@ -101,39 +104,97 @@ function Productos() {
     "miniatura": "https://cdn.shopify.com/s/files/1/0385/1232/8844/products/Adele_3_30_600x.jpg?v=1640122340"
     }
   ]);
-
+  const [filtrosActivos, setFiltrosActivos] = useState([])
+  const referencia = React.useRef()
+  const [expandir, setExpandir] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const [productosXPagina, setProductosXPagina] = useState(4);
+  // numero de paginas a mostrar
+  const numPagina = Math.ceil(products.length / productosXPagina);
+  // funcion para cambiar de pagina, se ejecuta con el evento clic en el boton de paginación
+  const cambiarPagina = (page)=>(setCurrentPage(page))
+  // Creacion de array para mostrar en componente
+  const productosMostrados = products.slice((currentPage - 1) * productosXPagina, currentPage * productosXPagina);
 
-  const numPages = Math.ceil(products.length / 4);
-
-  console.log(numPages)
-  console.log(products.length)
-
-  function cambiarPagina(page) {
-    setCurrentPage(page);
+  const añadirFiltros = (event)=>{
+   if ( event.target.checked){
+     setFiltrosActivos([...filtrosActivos, `${event.target.value}`]) 
+   }else{
+    const filtroActualizado = filtrosActivos.filter((item) => item !== `${event.target.value}`);
+    setFiltrosActivos(filtroActualizado)
+    console.log('desactivado', event.target.value)
+   }  
   }
-
-  const valor = Array.from(Array(numPages).keys())
-
-  const productsOnCurrentPage = products.slice((currentPage - 1) * 4, currentPage * 4);
-  console.log(valor)
 
   return (
     <div className='contenedor-page-allproductos'>
       <div className='contenedor-colleccion-productos'>
         <div className='contenedor-col-filtro'>
-          filtro
+          <div className='contenedor-filtros-activos'>
+            <h2 className='titulo-filtros'>Filtros</h2>
+            <ul className='lista-filtro-activos'>
+              {
+                filtrosActivos && (
+                  filtrosActivos.map((el)=>{
+                    return(
+                      <div className='item-listado-filtros' key={ nanoid() }>
+                        <li className='filtros-activos'>{el}</li>
+                        <span className='span-icon-quitar'><FontAwesomeIcon className='icon-quitar-filtro' icon={ faXmark } /> </span>
+                      </div>
+                      
+                    )
+                  })
+                )
+              }
+            </ul>
+          </div>
+          <div className='contenedor-filtros-generos'>
+            <h3 className='titulo-filtro-genero'  >Generos <FontAwesomeIcon className={`icon-desplegar-filtro ${expandir && 'activo'}`} icon={ faCaretDown } onClick={()=>(expandir ? setExpandir(false) :setExpandir(true))} /></h3>
+            <div className={`filtros-generos ${expandir && 'activo'}`} ref={referencia} style={{height: expandir ? `${referencia.current.scrollHeight}px` : '0px',}}>
+              <label className='label-checkbox' htmlFor="Urbano"> 
+                <input className='input-checkbox' type="checkbox" name="Urbano" value={'Urbano'} onChange={añadirFiltros} /> Urbano
+              </label>
+              <label className='label-checkbox' htmlFor="Vallenato"> 
+                <input className='input-checkbox' type="checkbox" name="Vallenato" value={'Vallenato'}  onChange={añadirFiltros} /> Vallenato
+              </label>
+              <label className='label-checkbox' htmlFor="Pop"> 
+                <input className='input-checkbox' type="checkbox" name="Pop" value={'Pop'} onChange={añadirFiltros} /> Pop
+              </label>
+              <label className='label-checkbox' htmlFor="Rap"> 
+                <input className='input-checkbox' type="checkbox" name="Rap" value={'Rap'} onChange={añadirFiltros} /> Rap
+              </label>
+              <label className='label-checkbox' htmlFor="Salsa"> 
+                <input className='input-checkbox' type="checkbox" name="Salsa" value={'Salsa'} onChange={añadirFiltros}  /> Salsa
+              </label>
+            </div>
+          </div>
         </div>
         <div className='contenedor-col-productos'>
           <h1 className='titulo-categoria'>Categoria</h1>
           <div className='contenedor-informacion-filtros'>
-            <p>Mostrando 1 - 48 de 504 productos</p>
-            <p>Mostrar 28 por paginas</p>
-            <p>ordenar por: mas vendidos</p>
+            <p>Mostrando  {(currentPage - 1) * productosXPagina + 1 } - {Math.min(currentPage * productosXPagina, products.length )} de { products.length} productos</p>
+            <div>
+              <label className='label-mostrar-paginas' htmlFor="paginas">mostrar: </label>
+              <select className='select-mostrar-paginas' name="paginas" onChange={(event)=>{setProductosXPagina(event.target.value); cambiarPagina(1) }}>
+                <option value={4} >20 por paginas</option>
+                <option value={8}>28 por paginas</option>
+                <option value={12}>36 por paginas</option>
+              </select>
+            </div>
+            <div>
+              <label className='label-mostrar-paginas' htmlFor="paginas">ordenar por: </label>
+              <select className='select-mostrar-paginas' name="paginas">
+                <option value="">Ultimos Agregados</option>
+                <option value="">Más Vendidos</option>
+                <option value="">precio: menor a mayor</option>
+                <option value="">precio: mayor a menor</option>
+              </select>
+            </div>
+            
           </div>
           <div className='listado-productos-all'>
             { 
-              productsOnCurrentPage.map((product) => {
+              productosMostrados.map((product) => {
                 return (
                   <CardStore
                     key={nanoid()} 
@@ -148,13 +209,12 @@ function Productos() {
             }
           </div>
           <div className='contenedor-paginacion'>
-            {Array.from(Array(numPages).keys()).map(page => (
-              <button className='btn-paginacion'
-                key={page}
-                onClick={() => cambiarPagina(page + 1)}
-                disabled={page + 1 === currentPage}
+            {Array.from(Array(numPagina).keys()).map(pagina => (
+              <button className='btn-paginacion' key={nanoid()}
+                onClick={() => cambiarPagina(pagina + 1)}
+                disabled={pagina + 1 === currentPage}
               >
-                {page + 1}
+                {pagina + 1}
               </button>
             ))}
           </div>
