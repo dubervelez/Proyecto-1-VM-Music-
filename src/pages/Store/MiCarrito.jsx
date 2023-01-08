@@ -9,24 +9,22 @@ import { sumarCantidad, restarCantidad } from '../../funtions/funcionesReutiliza
 
 
 function MiCarrito() {
-    const { carroCompra ,setCarroCompra } = useCarroCompras()
-    let valorTotal = 0
+  const { carroCompra ,setCarroCompra } = useCarroCompras()
+  const [openDialogo, setOpenDialogo] = useState(false);
+  let valorTotal = 0
 
-
-    const [openDialogo, setOpenDialogo] = useState(false);
-
-    const ComprarProductos = ()=>{
-      setOpenDialogo(false)
-      crearCompra(carroCompra, valorTotal, 
-        (response)=>{
-          toast.success('Compra Realizada con exito',{theme:'dark', position:'bottom-center'})
-        },
-        (err)=>{
-          toast.error('Error al realizar la compra',{theme:'dark', position:'bottom-center'})
-          
-        }
-      )
-    }
+  const ComprarProductos = ()=>{
+    setOpenDialogo(false)
+    crearCompra(carroCompra, valorTotal, 
+      (response)=>{
+        toast.success('Compra Realizada con exito',{theme:'dark', position:'bottom-center'})
+      },
+      (err)=>{
+        toast.error('Error al realizar la compra',{theme:'dark', position:'bottom-center'})
+        
+      }
+    )
+  }
 
   
   return (

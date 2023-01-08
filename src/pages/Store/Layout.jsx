@@ -31,8 +31,8 @@ function Layout({ children, productosSelecionados }) {
 						<img className='logo-vm' src={Logo} alt="logo-VM-music" />
 						<ul className='nav-principa--ul'>
 							<li className="nav-principal--li"> <NavLink className='navlink-principal' to='/Proyecto-1-VM-Music-/'>Inicio</NavLink> </li>
-							<li className="nav-principal--li"><NavLink className='navlink-principal' to='/Proyecto-1-VM-Music-/store/mi-carrito'>Catalogo Musical</NavLink></li>
 							<li className="nav-principal--li"><NavLink className='navlink-principal' to='/Proyecto-1-VM-Music-/store'>Tienda</NavLink> </li>
+							<li className="nav-principal--li"><NavLink className='navlink-principal' to='/Proyecto-1-VM-Music-/store/mi-carrito'>Mi Carrito</NavLink></li>
 							<li className="nav-principal--li"><NavLink className='navlink-principal' to='/Proyecto-1-VM-Music-/admin/'>Admin</NavLink> </li>
 						</ul>
 					</div>
@@ -79,7 +79,7 @@ function Layout({ children, productosSelecionados }) {
 				</nav>
 				<nav className={`sub-nav-store ${subnavactive && "activo"}`}>
 					<ul className='sub-nav-ul'>	
-						<li className="sub-nav--li"><NavLink className='navlink-sub-nav' to='#'><FontAwesomeIcon className='icon-sub-nav' icon={faHeadphones} />Audio y video </NavLink></li>
+						<li className="sub-nav--li"><NavLink className='navlink-sub-nav' to='/Proyecto-1-VM-Music-/store/listado-productos'><FontAwesomeIcon className='icon-sub-nav' icon={faHeadphones} />Audio y video </NavLink></li>
 						<li className="sub-nav--li"><NavLink className='navlink-sub-nav' to='#'><FontAwesomeIcon className='icon-sub-nav' icon={faMusic} />Amplificadores</NavLink></li>
 						<li className="sub-nav--li"><NavLink className='navlink-sub-nav' to='#'><FontAwesomeIcon className='icon-sub-nav' icon={faKeyboard} />Mezcladores</NavLink></li>
 						<li className="sub-nav--li"><NavLink className='navlink-sub-nav' to='#'><FontAwesomeIcon className='icon-sub-nav' icon={faMusic} />Instrumentos musicales</NavLink></li>

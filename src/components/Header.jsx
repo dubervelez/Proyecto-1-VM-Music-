@@ -45,20 +45,20 @@ function Navmobile({ cerrarMenu }) {
     const { loginWithRedirect, isAuthenticated } = useAuth0();
 
     return(
-        <nav className='nav-movile'>
-            <ul className='nav-mobile-ul'>
-                <li className="nav-movile--li close" ><FontAwesomeIcon onClick={cerrarMenu} className='icon-nav-close' icon={faXmark} /> </li>
-                <li className="nav-movile--li"> <NavLink className='navlink' to='/Proyecto-1-VM-Music-/'><FontAwesomeIcon className='icon-nav-mobile' icon={faHouse} />Inicio</NavLink> </li>
-                <li className="nav-movile--li"><NavLink className='navlink' to='/catalogo-musical'><FontAwesomeIcon className='icon-nav-mobile' icon={faMusic} />Catalogo Musical</NavLink></li>
-                <li className="nav-movile--li"><NavLink className='navlink' to='/Proyecto-1-VM-Music-/store'><FontAwesomeIcon className='icon-nav-mobile' icon={faCartShopping} />Tienda</NavLink> </li>
-                <li className='limitador'></li>
-                {!isAuthenticated ? (
-                <>                
-                    <li className="nav-movile--li" onClick={()=>{loginWithRedirect()}}><FontAwesomeIcon className='icon-nav-mobile' icon={faUser} />Iniciar Sesión</li>
-                </>):(<li className="nav-movile--li admin"><NavLink className='navlink' to='/Proyecto-1-VM-Music-/admin'><FontAwesomeIcon className='icon-nav-mobile' icon={faLock} />Admin</NavLink></li>)}
-                <li className="nav-movile--li"><img className="logo-nav-li" src={Logo} alt="logo-VM" /></li>
-            </ul>
-        </nav>
+      <nav className='nav-movile'>
+        <ul className='nav-mobile-ul'>
+          <li className="nav-movile--li close" ><FontAwesomeIcon onClick={cerrarMenu} className='icon-nav-close' icon={faXmark} /> </li>
+					<li className="nav-movile--li"> <NavLink className='navlink' to='/Proyecto-1-VM-Music-/'><FontAwesomeIcon className='icon-nav-mobile' icon={faHouse} />Inicio</NavLink> </li>
+					<li className="nav-movile--li"><NavLink className='navlink' to='/Proyecto-1-VM-Music-/store'><FontAwesomeIcon className='icon-nav-mobile' icon={faCartShopping} />Tienda</NavLink> </li>
+					<li className="nav-movile--li"><NavLink className='navlink' to='/catalogo-musical'><FontAwesomeIcon className='icon-nav-mobile' icon={faMusic} />Mi Carrito</NavLink></li>
+					<li className='limitador'></li>
+					{!isAuthenticated ? (
+					<>                
+							<li className="nav-movile--li" onClick={()=>{loginWithRedirect()}}><FontAwesomeIcon className='icon-nav-mobile' icon={faUser} />Iniciar Sesión</li>
+					</>):(<li className="nav-movile--li admin"><NavLink className='navlink' to='/Proyecto-1-VM-Music-/admin'><FontAwesomeIcon className='icon-nav-mobile' icon={faLock} />Admin</NavLink></li>)}
+					<li className="nav-movile--li"><img className="logo-nav-li" src={Logo} alt="logo-VM" /></li>
+       	</ul>
+      </nav>
 
     )
 }
