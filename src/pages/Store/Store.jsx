@@ -6,7 +6,7 @@ import ImagenRelleno2 from '../../Assets/images/relleno-2.jpg'
 import { obtenerProductos } from '../../utils/ApiStore.js'
 import { useState } from 'react'
 import { nanoid } from 'nanoid';
-import { useCarroCompras } from '../../context/contextStore'
+
 
 
 function Store() {
@@ -23,7 +23,6 @@ function Store() {
   "miniatura": "https://cdn.shopify.com/s/files/1/0512/9116/0767/products/2db5b8b5-9f97-4eb1-9762-a3f407a81158_200x.jpg?v=1605561857"
   };
 
-  const {carroCompra, setCarroCompras} = useCarroCompras();
 
   useEffect(() => {
     const cargaDatos =  async ()=>{

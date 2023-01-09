@@ -1,14 +1,16 @@
 import axios from 'axios';
 
+const puertoAcces = "https://api-music-vm.up.railway.app/";
+
 const obtenerDatosSlider = async(callbackSucces,callbackError)=>{
-  const options = {method: 'GET', url: 'http://localhost:5000/admin/informacion-slider'};
+  const options = {method: 'GET', url: `${ puertoAcces }admin/informacion-slider`};
   await axios.request(options).then(callbackSucces).catch(callbackError);
 }
 
 const actualizarSlider = async( datosSlider,callbackSucces,callbackError )=>{
     const options = {
         method: 'PATCH',
-        url: 'http://localhost:5000/admin/modificar-slider',
+        url: `${ puertoAcces }admin/modificar-slider`,
         headers: {'Content-Type': 'application/json'},
         data: {
           idSlider: datosSlider.idSlider,
@@ -21,7 +23,7 @@ const actualizarSlider = async( datosSlider,callbackSucces,callbackError )=>{
 const nuevoSlider = async( datosSlider,callbackSucces,callbackError )=>{
     const options = {
         method: 'POST',
-        url: 'http://localhost:5000/admin/creacion-slider',
+        url: `${ puertoAcces }admin/creacion-slider`,
         headers: {'Content-Type': 'application/json'},
         data: {idSlider: datosSlider.idSlider , Slider: datosSlider.Slider}
     }; 
@@ -32,7 +34,7 @@ const nuevoSlider = async( datosSlider,callbackSucces,callbackError )=>{
 const eliminarSliderBD = async(idSlider,callbackSucces,callbackError)=>{
   const options = {
     method: 'DELETE',
-    url: 'http://localhost:5000/admin/eliminar-slider',
+    url: `${ puertoAcces }admin/eliminar-slider`,
     headers: {'Content-Type': 'application/json'},
     data: {idSlider: idSlider}
   };
@@ -46,7 +48,7 @@ const eliminarSliderBD = async(idSlider,callbackSucces,callbackError)=>{
 const nuevaCard = async( datosCard,callbackSucces,callbackError )=>{
   const options = {
       method: 'POST',
-      url: 'http://localhost:5000/admin/ultimos-lanzamientos/nuevo',
+      url: `${ puertoAcces }admin/ultimos-lanzamientos/nuevo`,
       headers: {'Content-Type': 'application/json'},
       data: {
         artista: datosCard.artista, 
@@ -63,7 +65,7 @@ const nuevaCard = async( datosCard,callbackSucces,callbackError )=>{
 const obtenerCards = async( callbackSucces,callbackError )=>{
   const options = {
     method: 'GET',
-    url: 'http://localhost:5000/admin/ultimos-lanzamientos/'
+    url: `${ puertoAcces }admin/ultimos-lanzamientos/`
   };
 
   await axios.request(options).then(callbackSucces).catch(callbackError);
@@ -74,7 +76,7 @@ const eliminarCard = async ( datosCard, callbackSucces, callbackError )=>{
 
   const options = {
     method: 'DELETE',
-    url: 'http://localhost:5000/admin/ultimos-lanzamientos/eliminar',
+    url: `${ puertoAcces }admin/ultimos-lanzamientos/eliminar`,
     headers: {'Content-Type': 'application/json'},
     data: { cancion: datosCard}
   };
@@ -85,7 +87,7 @@ const eliminarCard = async ( datosCard, callbackSucces, callbackError )=>{
 const editarCard = async (datosCard, callbackSucces, callbackError)=>{
   const options = {
     method: "PATCH",
-    url: "http://localhost:5000/admin/ultimos-lanzamientos/editar",
+    url: `${ puertoAcces }admin/ultimos-lanzamientos/editar`,
     headers: {'Content-Type': 'application/json'},
     data: {
       id: datosCard.id,
