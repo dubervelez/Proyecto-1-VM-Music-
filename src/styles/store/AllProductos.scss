@@ -15,7 +15,7 @@
 //-------------------------------------------ESTILOS COLIMNA DE FILTROS------------------------------------------------------------------------
 .contenedor-col-filtro{
     width: 100%;
-    background-color: beige;
+    background-color: rgba(31, 55, 73, 0.425);
     padding: 10px;
     align-self: flex-start;
 }
@@ -49,15 +49,13 @@
         cursor: pointer;
     }
 }
-.span-icon-quitar{
 
-}
 
 .contenedor-filtros-generos{
     margin-bottom: 10px
 }
 .titulo-filtro-genero{
-    @include mixins.text(20px, 600, rgba(0, 0, 0, 0.846));
+    @include mixins.text(20px, 600, rgba(207, 204, 204, 0.846));
 }
 .filtros-generos{
     height: 0;
@@ -71,22 +69,23 @@
 
 
 .icon-desplegar-filtro{
-    color: rgba(0, 0, 0, 0.776);
+    color: rgba(207, 204, 204, 0.846);
     cursor: pointer;
     margin-left: 8px;
     transition: all 0.2s;
     &:hover{
-        color: #eb2323
+        color: #eb2323;
     }
     &.icon-desplegar-filtro.activo{
         transition: all 0.2s;
         transform: rotate(180deg);
         position: relative;
-        top: 4px
+        top: 4px;
+        color: #eb2323;
     }
 }
 .label-checkbox{
-    @include mixins.text(16px, 600, rgba(0, 0, 0, 0.846), $font-roboto, 1px);
+    @include mixins.text(16px, 600, rgba(207, 204, 204, 0.846), $font-roboto, 1px);
 }
 .input-checkbox{
     margin-right: 4px;
@@ -95,12 +94,8 @@
     outline: 0;
     width: 14px;
     height: 14px;
-    border: 1px solid #c4c4c8;
-    box-shadow: 0 1px #c4c4c866;
     border-radius: 2px;
 }
-
-
 
 
 .contenedor-col-productos{
@@ -120,8 +115,10 @@
     border-bottom: 1px solid gray;
     margin-bottom: 16px;
     @include mixins.flex(space-between);
+    flex-wrap: wrap;
     &.contenedor-informacion-filtros p{
         @include mixins.text(14px, 600, $text-secundary);
+        margin-bottom: 3px
     }
 }
 .label-mostrar-paginas{
@@ -132,7 +129,7 @@
     outline: 0;
     background-color: transparent;
     @include mixins.text(14px, 600, $text-primary);
-    padding: 2px;
+    padding: 3px;
     &:hover{
         cursor: pointer;
         color: $green;
@@ -150,7 +147,7 @@
     
 }
 .listado-productos-all .contenedor-card{
-    width: 140px;
+    width: 49%;
 }
 .listado-productos-all .contenedor-imagen{
     width: 100%;
@@ -193,7 +190,7 @@
         max-width: 230px;
     }
     .contenedor-col-filtro{
-        margin-top: 118px;
+        margin-top: 128px;
         position: sticky;
         top: 0;
     }

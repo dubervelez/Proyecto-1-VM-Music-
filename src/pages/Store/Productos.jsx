@@ -14,91 +14,91 @@ function Productos() {
     {
       "producto": "CD Carlos Vives - Vives",
       "categoria": "Vallenato",
-      "precio": "42000",
+      "precio": 42000,
       "stock": "30",
       "estado": "Disponible",
     "miniatura": "https://cdn.shopify.com/s/files/1/0385/1232/8844/products/811OqtOh_3L._SL1418_1024x1024_2x_33a0a0d7-c656-47c1-a533-f3f27dd12fa7_600x.jpg?v=1590757068"
     },{
       "producto": "Karol G – Unstoppable",
       "categoria": "Urbano",
-      "precio": "42900",
+      "precio": 30900,
       "stock": "30",
       "estado": "Disponible",
     "miniatura": "https://cdn.shopify.com/s/files/1/0385/1232/8844/products/KarolG_UnstoppableCD_600x.jpg?v=1597497195"
     },{
       "producto": "Andrés Cepeda - Basado en una historia real",
       "categoria": "Pop",
-      "precio": "42900",
+      "precio": 52900,
       "stock": "30",
       "estado": "ultimas existencias",
     "miniatura": "https://cdn.shopify.com/s/files/1/0385/1232/8844/products/Andr_C3_A9s-cepeda-222_opt_400x.jpg?v=1590757535"
     },{
       "producto": "Diomedes Díaz · 30 grandes éxitos",
       "categoria": "Vallenato",
-      "precio": "42900",
+      "precio": 22900,
       "stock": "30",
       "estado": "ultimas existencias",
     "miniatura": "https://cdn.shopify.com/s/files/1/0385/1232/8844/products/img20221019_11274165_600x.jpg?v=1666196883"
     },{
       "producto": "CD Adele - 30",
       "categoria": "pop-soul",
-      "precio": "64900",
+      "precio": 164900,
       "stock": "30",
       "estado": "ultimas existencias",
     "miniatura": "https://cdn.shopify.com/s/files/1/0385/1232/8844/products/Adele_3_30_600x.jpg?v=1640122340"
     },{
       "producto": "CD Adele - 30",
       "categoria": "pop-soul",
-      "precio": "64900",
+      "precio": 64900,
       "stock": "30",
       "estado": "ultimas existencias",
     "miniatura": "https://cdn.shopify.com/s/files/1/0385/1232/8844/products/Adele_3_30_600x.jpg?v=1640122340"
     },{
       "producto": "Diomedes Díaz · 30 grandes éxitos",
       "categoria": "Vallenato",
-      "precio": "42900",
+      "precio": 42900,
       "stock": "30",
       "estado": "ultimas existencias",
     "miniatura": "https://cdn.shopify.com/s/files/1/0385/1232/8844/products/img20221019_11274165_600x.jpg?v=1666196883"
     },{
       "producto": "CD Carlos Vives - Vives",
       "categoria": "Vallenato",
-      "precio": "42000",
+      "precio": 42000,
       "stock": "30",
       "estado": "Disponible",
     "miniatura": "https://cdn.shopify.com/s/files/1/0385/1232/8844/products/811OqtOh_3L._SL1418_1024x1024_2x_33a0a0d7-c656-47c1-a533-f3f27dd12fa7_600x.jpg?v=1590757068"
     },{
       "producto": "Karol G – Unstoppable",
       "categoria": "Urbano",
-      "precio": "42900",
+      "precio": 42900,
       "stock": "30",
       "estado": "Disponible",
     "miniatura": "https://cdn.shopify.com/s/files/1/0385/1232/8844/products/KarolG_UnstoppableCD_600x.jpg?v=1597497195"
     },{
       "producto": "Andrés Cepeda - Basado en una historia real",
-      "categoria": "Pop",
-      "precio": "42900",
+      "categoria": "Rap",
+      "precio": 42900,
       "stock": "30",
       "estado": "ultimas existencias",
     "miniatura": "https://cdn.shopify.com/s/files/1/0385/1232/8844/products/Andr_C3_A9s-cepeda-222_opt_400x.jpg?v=1590757535"
     },{
       "producto": "Diomedes Díaz · 30 grandes éxitos",
       "categoria": "Vallenato",
-      "precio": "42900",
+      "precio": 22900,
       "stock": "30",
       "estado": "ultimas existencias",
     "miniatura": "https://cdn.shopify.com/s/files/1/0385/1232/8844/products/img20221019_11274165_600x.jpg?v=1666196883"
     },{
       "producto": "CD Adele - 30",
       "categoria": "pop-soul",
-      "precio": "64900",
+      "precio": 44900,
       "stock": "30",
       "estado": "ultimas existencias",
     "miniatura": "https://cdn.shopify.com/s/files/1/0385/1232/8844/products/Adele_3_30_600x.jpg?v=1640122340"
     },{
       "producto": "CD Adele - 30",
       "categoria": "pop-soul",
-      "precio": "64900",
+      "precio": 64900,
       "stock": "30",
       "estado": "ultimas existencias",
     "miniatura": "https://cdn.shopify.com/s/files/1/0385/1232/8844/products/Adele_3_30_600x.jpg?v=1640122340"
@@ -109,12 +109,17 @@ function Productos() {
   const [expandir, setExpandir] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [productosXPagina, setProductosXPagina] = useState(4);
+  
+  //Filtracion de productos
+  const palabrasClaves = new RegExp(filtrosActivos.join('|'))
+  const productosFiltrados = products.filter((item) => palabrasClaves.test(item.categoria))
   // numero de paginas a mostrar
-  const numPagina = Math.ceil(products.length / productosXPagina);
+  const numPagina = Math.ceil(productosFiltrados.length / productosXPagina);
   // funcion para cambiar de pagina, se ejecuta con el evento clic en el boton de paginación
   const cambiarPagina = (page)=>(setCurrentPage(page))
   // Creacion de array para mostrar en componente
-  const productosMostrados = products.slice((currentPage - 1) * productosXPagina, currentPage * productosXPagina);
+  const productosMostrados = productosFiltrados.slice((currentPage - 1) * productosXPagina, currentPage * productosXPagina);
+
 
   const añadirFiltros = (event)=>{
    if ( event.target.checked){
@@ -122,9 +127,25 @@ function Productos() {
    }else{
     const filtroActualizado = filtrosActivos.filter((item) => item !== `${event.target.value}`);
     setFiltrosActivos(filtroActualizado)
-    console.log('desactivado', event.target.value)
    }  
   }
+
+  const eliminarFiltro = (filtro)=>{
+    const filtroActualizado = filtrosActivos.filter((item) => item !== `${filtro}`);
+    setFiltrosActivos(filtroActualizado)
+    console.log('eliminado el filtro:', filtro)
+  }
+
+  const [ordenProductos, setOrdenProductos] = useState('default')
+  //pendiente 
+  const comparaciones = {
+    precioAsc: (a, b) => a.precio - b.precio,
+    precioDes: (a, b) => b.precio - a.precio,
+    masVendidos: (a, b) => b.ventas - a.ventas,
+    default: (a, b) => a.producto.localeCompare(b.producto)
+  }
+  const ordenado = products.sort( comparaciones[`${ordenProductos}`] );
+ 
 
   return (
     <div className='contenedor-page-allproductos'>
@@ -134,17 +155,7 @@ function Productos() {
             <h2 className='titulo-filtros'>Filtros</h2>
             <ul className='lista-filtro-activos'>
               {
-                filtrosActivos && (
-                  filtrosActivos.map((el)=>{
-                    return(
-                      <div className='item-listado-filtros' key={ nanoid() }>
-                        <li className='filtros-activos'>{el}</li>
-                        <span className='span-icon-quitar'><FontAwesomeIcon className='icon-quitar-filtro' icon={ faXmark } /> </span>
-                      </div>
-                      
-                    )
-                  })
-                )
+                filtrosActivos &&  <Filtros listaFiltros={filtrosActivos} eliminarFiltro={ eliminarFiltro }/>
               }
             </ul>
           </div>
@@ -172,7 +183,7 @@ function Productos() {
         <div className='contenedor-col-productos'>
           <h1 className='titulo-categoria'>Categoria</h1>
           <div className='contenedor-informacion-filtros'>
-            <p>Mostrando  {(currentPage - 1) * productosXPagina + 1 } - {Math.min(currentPage * productosXPagina, products.length )} de { products.length} productos</p>
+            <p>Mostrando  {(currentPage - 1) * productosXPagina + 1 } - {Math.min(currentPage * productosXPagina, productosFiltrados.length )} de { productosFiltrados.length} productos</p>
             <div>
               <label className='label-mostrar-paginas' htmlFor="paginas">mostrar: </label>
               <select className='select-mostrar-paginas' name="paginas" onChange={(event)=>{setProductosXPagina(event.target.value); cambiarPagina(1) }}>
@@ -183,11 +194,11 @@ function Productos() {
             </div>
             <div>
               <label className='label-mostrar-paginas' htmlFor="paginas">ordenar por: </label>
-              <select className='select-mostrar-paginas' name="paginas">
-                <option value="">Ultimos Agregados</option>
-                <option value="">Más Vendidos</option>
-                <option value="">precio: menor a mayor</option>
-                <option value="">precio: mayor a menor</option>
+              <select className='select-mostrar-paginas' name="paginas" onChange={(event)=>{setOrdenProductos(event.target.value) }}>
+                <option value="default">Alfabeticamente A-Z</option>
+                <option value="masVendidos">Más Vendidos</option>
+                <option value="precioAsc">precio: menor a mayor</option>
+                <option value="precioDes">precio: mayor a menor</option>
               </select>
             </div>
             
@@ -221,6 +232,25 @@ function Productos() {
         </div>
       </div>
     </div>
+  )
+}
+
+
+const Filtros = ({ listaFiltros, eliminarFiltro})=>{
+
+
+  return(
+    listaFiltros.map((el)=>{
+      return(
+        <div className='item-listado-filtros' key={ nanoid() }>
+          <li className='filtros-activos'>{el}</li>
+          <span className='span-icon-quitar'>
+            <FontAwesomeIcon className='icon-quitar-filtro' icon={ faXmark } onClick={()=> eliminarFiltro(el) } /> 
+          </span>
+        </div>
+        
+      )
+    })
   )
 }
 
