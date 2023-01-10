@@ -96,7 +96,7 @@ function Navmobile() {
                             <NavLink className='subnav-link' to='/catalogo-musical'>Ventas</NavLink>
                         </li>
                         <li className="sub-nav--li">
-                            <NavLink className='subnav-link' to='/catalogo-musical'>Productos</NavLink>
+                            <NavLink className='subnav-link' to='/Proyecto-1-VM-Music-/admin/store/productos'>Productos</NavLink>
                         </li>
                         <li className="sub-nav--li">
                             <NavLink className='subnav-link' to='/catalogo-musical'>Clientes</NavLink>
