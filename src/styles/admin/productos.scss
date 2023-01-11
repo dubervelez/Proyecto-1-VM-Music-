@@ -19,6 +19,7 @@
     overflow: auto;
     margin-bottom: 40px;
     cursor: pointer;
+    
     &.contenedor-acciones-store .btn-accion-form{
         min-width: 150px;
         min-height: 150px;
@@ -30,8 +31,8 @@
             background-color: #b92626a4;
         }
         &.btn-accion-form .imagen-accion{
-            width: 130px;
-            height: 130px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
         }
     }
@@ -78,6 +79,50 @@
         grid-template-columns: minmax(auto, 500px); 
         justify-content: center;  
     }
+    & .listado-productos-buscados{
+        height:122px;
+        padding: 10px;
+        overflow: auto;
+
+        & .producto-a-eliminar{
+            @include mixins.flex(flex-start);
+            position: relative;
+            &:hover{
+                background-color: #b92626a4;
+            }
+        }
+
+        & .icon-eliminar{
+            position: absolute;
+            right: 20px;
+            cursor: pointer;
+            &:hover{
+                color: $text-primary;
+            }
+            &::after{
+                content: "eliminar";
+                position: absolute;
+                right: 20px;
+                background-color: #111111;
+                display: none;
+                top: 0;
+                padding: 3px;
+                color: $text-secundary;
+                border-radius: 10px;
+            }
+            &:hover::after{
+                display: block;
+            }
+        }
+    }
+    & .item-producto-buscado{
+        padding: 8px;
+        margin-bottom: 2px;
+        @include mixins.text(18px, 400);        
+    }
+    & .mensaje-coincidencias{
+        @include mixins.text(18px, 400, $text-secundary);
+    }
 }
 
 hr{
@@ -90,6 +135,12 @@ hr{
 
 .contenedor-tabla-productos{
     padding: 16px;
+
+    & .titulo-tabla-productos{
+        margin-bottom: 20px;
+        @include mixins.text(26px, 600, $text-primary);
+        text-align: center;
+    }
 }
 .tabla-productos{
     width: 100%;
@@ -102,15 +153,15 @@ hr{
 
     &.tabla-productos .item-tabla.titulo{
         padding: 10px 0;
-        @include mixins.text(12px, 600, $text-secundary);
+        @include mixins.text(12px, 600, $text-primary);
         text-align: center;
         background-color: #33523a;
     }
     &.tabla-productos .item-tabla{
         padding: 10px 4px;
-        @include mixins.text(10px, 600, #a19c9c);
+        @include mixins.text(10px, 400, #a19c9c);
         text-align: center;
-        border: 1px solid gray;
+        border: 1px solid rgba(15, 15, 15, 0.432);
         @include mixins.flex();
     }
 }
@@ -132,9 +183,13 @@ hr{
 
 
 @media only screen and (min-width: 1000px){
-    .contenedor-acciones-store .btn-accion-form{
-        width: 200px;
-        height: 200px;
+    .contenedor-acciones-store{
+        justify-content: center;
+        
+        & .btn-accion-form{
+            min-width: 240px;
+            min-height: 240px;
+        }
     }
     .tabla-productos{
         grid-template-columns: 40px minmax(93px, 1fr)  130px 100px 100px 1fr  ;

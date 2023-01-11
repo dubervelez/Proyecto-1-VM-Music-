@@ -7,13 +7,15 @@ import iconCrear from '../../../Assets/images/iconCrear.png'
 import iconEliminar from '../../../Assets/images/iconEliminar.png'
 import iconBuscar from '../../../Assets/images/iconBuscar.png'
 import { useState } from 'react'
-import { crearProducto, obtenerProductos } from '../../../utils/ApiStore'
+import { crearProducto, eliminarProducto, obtenerProductos } from '../../../utils/ApiStore'
 import { ToastContainer, toast } from 'react-toastify';
 import { nanoid } from 'nanoid'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 function AdminProductos() {
   const [accionForm, setAccionForm] = useState('true')
-  const [productosAll, setProductosAll] = useState('true')
+  const [productosAll, setProductosAll] = useState([])
   const [defaultValue, setDefaultValue] = useState({
     Ref: "",
     producto: "",
@@ -47,7 +49,7 @@ function AdminProductos() {
     datosFormulario.forEach((value, key)=>{
       datosProucto[key] = value
     });
-    console.log(datosProucto)
+    
     crearProducto( 
       datosProucto,
       (response)=> ( toast.success('producto creado con exito', { theme:'dark' }) ),
@@ -55,6 +57,18 @@ function AdminProductos() {
     )
   }
 
+  const [busqueda, setBusqueda] = useState('')
+  const productoFiltrado = productosAll.filter((element) =>  element['producto'].toUpperCase().includes(busqueda.toUpperCase()))
+
+ 
+  const quitarProducto = (producto)=>{
+    
+    eliminarProducto( producto, 
+      ()=> toast.success('producto eliminado con exito', { theme:'dark' }),
+      ()=> toast.error('Error al crear nuevo producto', { theme:'dark' })
+    )
+
+  }
 
   return (
     <Layout>
@@ -69,9 +83,6 @@ function AdminProductos() {
           </div>
           <div className='btn-accion-form'>
             <img className='imagen-accion' src={iconEliminar} alt="icono" onClick={()=> setAccionForm(false)}  />
-          </div>
-          <div className='btn-accion-form'>
-            <img className='imagen-accion' src={iconBuscar} alt="icono" />
           </div>
         </div>
       </div>
@@ -112,7 +123,15 @@ function AdminProductos() {
           </>
         ):(
           <>
-            <Input label='Buscar Producto....' name='Caracteristicas' defaultValue={defaultValue.caracteristicas} />
+            <div className='contenedor-input-admin-store'>
+              <input required type='text' name='eliminar' autoComplete='off' className='input-admin-store' onChange={(e)=> setBusqueda(e.target.value) }  />
+              <label className='user-label'>Buscar Producto....</label>
+            </div>
+            <div className='listado-productos-buscados'>
+              {
+                busqueda && ( <BusquedaProductos listado={ productoFiltrado } clicEliminar={quitarProducto} />)
+              }
+            </div>
           </>
         ) 
         }
@@ -120,6 +139,7 @@ function AdminProductos() {
           <ToastContainer position="bottom-left" autoClose={1000}  />
       </form>
       <div className='contenedor-tabla-productos'>
+        <h3 className='titulo-tabla-productos'>Tabla de productos</h3>
         <div className='tabla-productos' >
         <p className='item-tabla titulo'>ref</p>
         <p className='item-tabla titulo'>Productos</p>
@@ -157,6 +177,31 @@ const Input = ({ name, label, type='text', defaultValue })=>{
     </div>
     
     
+  )
+}
+
+
+const BusquedaProductos = ({ listado, clicEliminar })=>{
+  return( 
+    <>  
+      {
+        !listado[0] && <p className='mensaje-coincidencias'>no se ha encontrado coincidencias...</p>
+      }
+    {
+      Object.values(listado).map((value, index)=>{
+        return(
+          <div className='producto-a-eliminar'>
+            <p key={nanoid()} className='item-producto-buscado'>{value.producto}</p>
+            <span className='icon-eliminar' onClick={() => clicEliminar(value._id) }> <FontAwesomeIcon icon={faTrash} /> </span>
+          </div>
+        ) 
+      })
+    }
+  
+  </>
+
+
+
   )
 }
 

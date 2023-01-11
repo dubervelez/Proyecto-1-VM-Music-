@@ -13,28 +13,39 @@ export const obtenerProductos = async(callbackSucces, callbackError)=>{
 }
 
 export const crearProducto = async (datosProducto, callbackSucces, callbackError)=>{
-    const options = {
-        method: 'POST',
-        url: 'https://api-music-vm.up.railway.app/store/nuevo-producto',
-        headers: {'Content-Type': 'application/json'},
-        data: {
-            ref: datosProducto.ref ,
-            producto: datosProducto.producto ,
-            artista: datosProducto.artista ,
-            precio: datosProducto.precio ,
-            oferta: datosProducto.oferta ,
-            stock: datosProducto.stock ,
-            estado: datosProducto.estado ,
-            categoria: datosProducto.categoria ,
-            caracteristicas: datosProducto.caracteristicas ,
-            miniatura: datosProducto.miniatura ,
-        }
+  const options = {
+    method: 'POST',
+    url: 'https://api-music-vm.up.railway.app/store/nuevo-producto',
+    headers: {'Content-Type': 'application/json'},
+    data: {
+      ref: datosProducto.ref ,
+      producto: datosProducto.producto ,
+      artista: datosProducto.artista ,
+      precio: datosProducto.precio ,
+      oferta: datosProducto.oferta ,
+      stock: datosProducto.stock ,
+      estado: datosProducto.estado ,
+      categoria: datosProducto.categoria ,
+      caracteristicas: datosProducto.caracteristicas ,
+      miniatura: datosProducto.miniatura ,
+			ventas: 0
     }
+  }
 
     await axios.request(options).then(callbackSucces).catch(callbackError);
 }
 
-export const eliminarProducto = async ()=>{
+export const eliminarProducto = async (id, callbackSucces, callbackError)=>{
+
+  const options = {
+		method: 'DELETE',
+		url: 'https://api-music-vm.up.railway.app/store/eliminar-producto',
+		headers: {'Content-Type': 'application/json'},
+  	data: {_id: id }
+	}
+
+	await axios.request(options).then(callbackSucces).catch(callbackError);
+
 
 }
 
