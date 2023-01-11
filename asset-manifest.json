@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Proyecto-1-VM-Music-/static/css/main.8604c52e.css",
-    "main.js": "/Proyecto-1-VM-Music-/static/js/main.106b9d2b.js",
+    "main.css": "/Proyecto-1-VM-Music-/static/css/main.5e19e073.css",
+    "main.js": "/Proyecto-1-VM-Music-/static/js/main.46b4a302.js",
     "static/media/iconEditar.png": "/Proyecto-1-VM-Music-/static/media/iconEditar.e3bd6095336c0dba6f87.png",
     "static/media/relleno-2.jpg": "/Proyecto-1-VM-Music-/static/media/relleno-2.201244a6783f124e5efd.jpg",
     "static/media/relleno.jpg": "/Proyecto-1-VM-Music-/static/media/relleno.372875b3bd7b87faf4ea.jpg",
@@ -12,11 +12,11 @@
     "static/media/icon-piano.svg": "/Proyecto-1-VM-Music-/static/media/icon-piano.1946fb99a5e45f2f4776496eeccab1c6.svg",
     "static/media/icon-music.svg": "/Proyecto-1-VM-Music-/static/media/icon-music.4799cca40f1ede6cbc28e393f69c9d65.svg",
     "index.html": "/Proyecto-1-VM-Music-/index.html",
-    "main.8604c52e.css.map": "/Proyecto-1-VM-Music-/static/css/main.8604c52e.css.map",
-    "main.106b9d2b.js.map": "/Proyecto-1-VM-Music-/static/js/main.106b9d2b.js.map"
+    "main.5e19e073.css.map": "/Proyecto-1-VM-Music-/static/css/main.5e19e073.css.map",
+    "main.46b4a302.js.map": "/Proyecto-1-VM-Music-/static/js/main.46b4a302.js.map"
   },
   "entrypoints": [
-    "static/css/main.8604c52e.css",
-    "static/js/main.106b9d2b.js"
+    "static/css/main.5e19e073.css",
+    "static/js/main.46b4a302.js"
   ]
 }
