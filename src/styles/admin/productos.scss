@@ -62,9 +62,9 @@
         border-radius: 20px;
         border: 2px solid hsl(0, 0%, 8%) ;
         margin: 20px auto;
-        @include mixins.text($text-md, 500, black);
+        @include mixins.text($text-md, 500);
         text-align: center;
-        background-color: #33523a;
+        background-color: #05202b;
         &:hover{
             border-color: $text-primary;
             cursor: pointer;
@@ -102,8 +102,31 @@
             &::after{
                 content: "eliminar";
                 position: absolute;
+                right: 15px;
+                background-color: #420f0f;
+                display: none;
+                top: 0;
+                padding: 3px;
+                color: $text-secundary;
+                border-radius: 10px;
+                z-index: 80;
+            }
+            &:hover::after{
+                display: block;
+            }
+        }
+        & .icon-editar{
+            position: absolute;
+            right: 50px;
+            cursor: pointer;
+            &:hover{
+                color: $text-primary;
+            }
+            &::after{
+                content: "Editar";
+                position: absolute;
                 right: 20px;
-                background-color: #111111;
+                background-color: #111036;
                 display: none;
                 top: 0;
                 padding: 3px;
@@ -124,6 +147,19 @@
         @include mixins.text(18px, 400, $text-secundary);
     }
 }
+
+.btn-editar-productos{
+    margin: auto;
+    &.btn-editar-productos .button-form-cards{
+        background-color: #558969;
+        &:last-child{
+            background-color: #420f0f;
+            margin-left: 3px;
+        }
+    }
+}
+
+
 
 hr{
     height: 2px;
@@ -155,7 +191,7 @@ hr{
         padding: 10px 0;
         @include mixins.text(12px, 600, $text-primary);
         text-align: center;
-        background-color: #33523a;
+        background-color: #05202b;
     }
     &.tabla-productos .item-tabla{
         padding: 10px 4px;

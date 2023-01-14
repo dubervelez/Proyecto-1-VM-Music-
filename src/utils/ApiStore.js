@@ -49,6 +49,29 @@ export const eliminarProducto = async (id, callbackSucces, callbackError)=>{
 
 }
 
+export const editarProductos = async (id, datosProducto, callbackSucces, callbackError)=>{
+  const options = {
+    method: 'PATCH',
+    url: 'https://api-music-vm.up.railway.app/store/modificar-producto',
+    headers: {'Content-Type': 'application/json'},
+    data: {
+      _id: id,
+      ref: datosProducto.ref ,
+      producto: datosProducto.producto ,
+      artista: datosProducto.artista ,
+      precio: datosProducto.precio ,
+      oferta: datosProducto.oferta ,
+      stock: datosProducto.stock ,
+      estado: datosProducto.estado ,
+      categoria: datosProducto.categoria ,
+      caracteristicas: datosProducto.caracteristicas ,
+      miniatura: datosProducto.miniatura ,
+			
+    }
+  }
+  await axios.request(options).then(callbackSucces).catch(callbackError);
+}
+
 
 
 
