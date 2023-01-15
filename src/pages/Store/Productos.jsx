@@ -95,6 +95,9 @@ function Productos() {
               <label className='label-checkbox' htmlFor="Pop"> 
                 <input className='input-checkbox' type="checkbox" name="Pop" value={'Pop'} onChange={añadirFiltros} /> Pop
               </label>
+              <label className='label-checkbox' htmlFor="Bachata"> 
+                <input className='input-checkbox' type="checkbox" name="Bachata" value={'Bachata'} onChange={añadirFiltros} /> Bachata
+              </label>
               <label className='label-checkbox' htmlFor="Rap"> 
                 <input className='input-checkbox' type="checkbox" name="Rap" value={'Rap'} onChange={añadirFiltros} /> Rap
               </label>

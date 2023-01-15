@@ -10,8 +10,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import { nanoid } from 'nanoid'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { useProductos } from '../../../context/contextStore'
 
 function AdminProductos() {
+  const {productos, setProductos} = useProductos()
   const [accionForm, setAccionForm] = useState(true)
   const [idEditar, setIdEditar] = useState('')
   const [accionEditar, setAccionEditar] = useState(false)
@@ -48,17 +50,10 @@ function AdminProductos() {
 
   useEffect(() => {
     const cargaDatos =  async ()=>{
-      await obtenerProductos(
-        (response)=>{
-          setProductosAll(response.data)
-        },
-        (error)=>{
-          console.error(error)
-        }
-      )
+      setProductosAll(productos)
     }
     cargaDatos();
-  }, [])
+  }, [productos])
 
   const formulario = useRef()
   const enviarFormulario = (e)=>{
@@ -146,7 +141,7 @@ function AdminProductos() {
                 <option value="Rap">Rap</option>
                 <option value="Pop">Pop</option>
                 <option value="Vallenato">Vallenato</option>
-                <option value="Vallenato">Bachata</option>
+                <option value="Bachata">Bachata</option>
                 <option value="Salsa">Salsa</option>
               </select>
             </div>

@@ -9,7 +9,7 @@ import { sumarCantidad, restarCantidad } from '../../funtions/funcionesReutiliza
 
 
 function MiCarrito() {
-  const {productos, setProductos} = useProductos()
+  const {productos} = useProductos()
   const { carroCompra ,setCarroCompra } = useCarroCompras()
   const [openDialogo, setOpenDialogo] = useState(false);
   let valorTotal = 0
@@ -28,6 +28,8 @@ function MiCarrito() {
         toast.error('Error al realizar la compra',{theme:'dark', position:'bottom-center'})
       }
     )
+
+    // actualizar la propiedad ventas de los productos comprados
     Object.values(carroCompra[2]).map((item)=>{
       const modificado = productos.find(value => value.producto === item.producto )
       const { ventas, ...rest } = modificado
