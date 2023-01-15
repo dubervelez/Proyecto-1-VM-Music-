@@ -290,35 +290,40 @@ main{
     background-color: rgba(0, 0, 0, 0.911);
     transition: all 0.5s ease;
     z-index: 80;
-}
-.sub-nav-store.activo{
-    left: 0;
-}
-.sub-nav-ul{
-    height: 100%;
-    position: relative;
-}
-.sub-nav--li{
-    padding: 8px;
-    margin-bottom: 10px;
-    cursor: pointer;
-}
-.navlink-sub-nav{
-    @include mixins.text(16px, 400, $text-primary);
-    letter-spacing: 1px;
-    &:hover{
-        opacity: 0.7;
+
+    &.sub-nav-store.activo{
+        left: 0;
     }
-    &::after{
-        content: ">" ;
-        position: absolute;
-        right: 0;
-        color: $text-primary;
+    & .sub-nav-ul{
+        height: 100%;
+        position: relative;
     }
+    & .sub-nav--li{
+        padding: 8px;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+    & .navlink-sub-nav{
+        @include mixins.text(16px, 400, $text-primary);
+        letter-spacing: 1px;
+        &:hover{
+            opacity: 0.7;
+        }
+        &::after{
+            content: ">" ;
+            position: absolute;
+            right: 0;
+            color: $text-primary;
+        }
+    }
+    & .icon-sub-nav{
+        margin-right: 6px;
+    }
+
 }
-.icon-sub-nav{
-    margin-right: 6px;
-}
+
+
+
 
 
 
@@ -395,23 +400,27 @@ main{
         background-color: rgba(0, 0, 0, 0.144);
         height: 0;
         overflow: hidden;
-    }
-    .sub-nav-store.activo{
-        height: 70px;
-    }
-    .sub-nav-ul{
-        width: 100%;
-        position: relative;
-        @include mixins.flex()
-    }
-    .sub-nav--li{
-        margin: 0 8px;
-    }
-    .navlink-sub-nav{
-        @include mixins.text(16px, 400, $text-primary);
-       letter-spacing: 1px;
-        &::after{
-            content: none ;
+        & .sub-nav-ul{
+            width: 100%;
+            position: relative;
+            @include mixins.flex()
+        }
+        &.sub-nav-store.activo{
+            height: 70px;
+        }
+        & .sub-nav--li{
+            margin: 0 8px;
+        }
+        & .navlink-sub-nav{
+            @include mixins.text(16px, 400, $text-primary);
+           letter-spacing: 1px;
+            &::after{
+                content: none ;
+            }
         }
     }
+    
+    
+    
+    
 }

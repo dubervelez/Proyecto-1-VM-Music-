@@ -79,10 +79,9 @@ function Layout({ children, productosSelecionados }) {
 				</nav>
 				<nav className={`sub-nav-store ${subnavactive && "activo"}`}>
 					<ul className='sub-nav-ul'>	
-						<li className="sub-nav--li"><NavLink className='navlink-sub-nav' to='/Proyecto-1-VM-Music-/store/listado-productos'><FontAwesomeIcon className='icon-sub-nav' icon={faHeadphones} />Audio y video </NavLink></li>
-						<li className="sub-nav--li"><NavLink className='navlink-sub-nav' to='#'><FontAwesomeIcon className='icon-sub-nav' icon={faMusic} />Amplificadores</NavLink></li>
-						<li className="sub-nav--li"><NavLink className='navlink-sub-nav' to='#'><FontAwesomeIcon className='icon-sub-nav' icon={faKeyboard} />Mezcladores</NavLink></li>
-						<li className="sub-nav--li"><NavLink className='navlink-sub-nav' to='#'><FontAwesomeIcon className='icon-sub-nav' icon={faMusic} />Instrumentos musicales</NavLink></li>
+						<li className="sub-nav--li"><NavLink className='navlink-sub-nav' to='/Proyecto-1-VM-Music-/store/listado-productos'><FontAwesomeIcon className='icon-sub-nav' icon={faHeadphones} /> Vinilos </NavLink></li>
+						<li className="sub-nav--li"><NavLink className='navlink-sub-nav' to='#'><FontAwesomeIcon className='icon-sub-nav' icon={faMusic} />CD & Albunes</NavLink></li>
+						<li className="sub-nav--li"><NavLink className='navlink-sub-nav' to='#'><FontAwesomeIcon className='icon-sub-nav' icon={faHeart} />Mis Favoritos</NavLink></li>
 						<li className="sub-nav--li"><NavLink className='navlink-sub-nav' to='#'><FontAwesomeIcon className='icon-sub-nav' icon={faDollar} />Ofertas</NavLink></li>
 						<li className="sub-nav--li"><NavLink className='navlink-sub-nav' to='#'><FontAwesomeIcon className='icon-sub-nav' icon={faCartShopping} />Mi Carrito</NavLink></li>
 					</ul>

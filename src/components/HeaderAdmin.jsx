@@ -48,7 +48,6 @@ function Navmobile() {
       }
     }
 
-
   return(
       <nav className='nav-movile-admin'>
           <ul className='nav-mobile-ul'>
