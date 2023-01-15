@@ -6,3 +6,9 @@ export const useCarroCompras = ()=>{
    return useContext(ContextCarroCompras)
 }
 
+export const ContextProductos = createContext(null);
+
+export const useProductos = ()=>{
+   return useContext(ContextProductos)
+}
+

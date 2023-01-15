@@ -72,6 +72,19 @@ export const editarProductos = async (id, datosProducto, callbackSucces, callbac
   await axios.request(options).then(callbackSucces).catch(callbackError);
 }
 
+export const actualizarVentas = async ( datosProducto, callbackSucces, callbackError)=>{
+  const options = {
+    method: 'PATCH',
+    url: 'https://api-music-vm.up.railway.app/store/modificar-producto',
+    headers: {'Content-Type': 'application/json'},
+    data: {
+      _id: datosProducto._id,
+      ventas: datosProducto.ventas
+    }
+  }
+  await axios.request(options).then(callbackSucces).catch(callbackError);
+}
+
 
 
 

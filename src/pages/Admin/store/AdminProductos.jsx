@@ -144,7 +144,9 @@ function AdminProductos() {
                 <option value="">Selecione una categoria</option>
                 <option value="Urbano">Urbano</option>
                 <option value="Rap">Rap</option>
+                <option value="Pop">Pop</option>
                 <option value="Vallenato">Vallenato</option>
+                <option value="Vallenato">Bachata</option>
                 <option value="Salsa">Salsa</option>
               </select>
             </div>

@@ -1,18 +1,23 @@
 import { nanoid } from 'nanoid';
-import { useCarroCompras } from '../../context/contextStore';
+import { useCarroCompras, useProductos } from '../../context/contextStore';
 import '../../styles/store/miCarrito.scss'
 import { Dialog, DialogTitle, DialogActions, Button } from '@mui/material'
 import { ToastContainer, toast } from 'react-toastify';
 import { useState } from 'react';
-import { crearCompra } from '../../utils/ApiStore';
+import { actualizarVentas, crearCompra, editarProductos } from '../../utils/ApiStore';
 import { sumarCantidad, restarCantidad } from '../../funtions/funcionesReutilizables';
 
 
 function MiCarrito() {
+  const {productos, setProductos} = useProductos()
   const { carroCompra ,setCarroCompra } = useCarroCompras()
   const [openDialogo, setOpenDialogo] = useState(false);
   let valorTotal = 0
+  
 
+  
+  
+  
   const ComprarProductos = ()=>{
     setOpenDialogo(false)
     crearCompra(carroCompra, valorTotal, 
@@ -21,9 +26,19 @@ function MiCarrito() {
       },
       (err)=>{
         toast.error('Error al realizar la compra',{theme:'dark', position:'bottom-center'})
-        
       }
     )
+    Object.values(carroCompra[2]).map((item)=>{
+      const modificado = productos.find(value => value.producto === item.producto )
+      const { ventas, ...rest } = modificado
+      const updatedProducto = { ventas: modificado.ventas + item.cantidad , ...rest };
+      actualizarVentas(updatedProducto,
+        (response)=> ( console.log('se edito el valor venta del producto', updatedProducto.producto) ),
+        (err)=> console.error(err)
+      )
+      
+    })
+
   }
 
   
@@ -35,7 +50,6 @@ function MiCarrito() {
 				carroCompra[2] && (
           Object.values(carroCompra[2]).map((value, index)=>{
             valorTotal = valorTotal + (value.precio * value.cantidad);
-            console.log('el valor es',valorTotal)
 						return(
 								<div key={nanoid()} className='listado-de-productos'>
 									<div className='producto-descripcion'>
