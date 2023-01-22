@@ -9,7 +9,6 @@
 .contenedor-productos-mas-vendidos .titulo{
     @include mixins.text(32px, 700);
     font-style: italic;
-    margin-bottom: 4px
 }
 .contenedor-store-card{
     width: 100%;
@@ -18,11 +17,15 @@
     @include mixins.flex(flex-start);
 }
 
+.titulo-seccion-productos{
+    width: 100%;
+    @include mixins.flex(space-between);
+    padding: 16px;
+}
+
 .btn-ver-mas{
-    margin-top: 10px;
     border: 0;
     outline: 0;
-    align-self: flex-end;
     padding: 5px 10px;
     @include mixins.text(18px, 700);
     background-color: transparent;

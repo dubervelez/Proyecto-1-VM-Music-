@@ -1,46 +1,22 @@
-import React, { useEffect } from 'react'
 import CardStore from '../../components/CardStore'
 import '../../styles/store/store.scss'
 import ImagenRelleno from '../../Assets/images/relleno.jpg'
 import ImagenRelleno2 from '../../Assets/images/relleno-2.jpg'
-import { obtenerProductos } from '../../utils/ApiStore.js'
-import { useState } from 'react'
 import { nanoid } from 'nanoid';
+import { useProductos } from '../../context/contextStore.js'
 
 
 
 function Store() {
-  // hook que almacena los datos de la base de datos - pendiente cambia por un context
-  const [productosData, setProductosData] = useState([])
-  
+  // contexto que almacena el listado de productos
+  const {productos} = useProductos()
 
-  const datadePrueba = {
-    "producto": "amplificador Orange",
-    "categoria": "Amplificadores",
-    "precio": "275.500",
-    "stock": "4",
-    "estado": "ultimas existencias",
-  "miniatura": "https://cdn.shopify.com/s/files/1/0512/9116/0767/products/2db5b8b5-9f97-4eb1-9762-a3f407a81158_200x.jpg?v=1605561857"
-  };
+  //bjeto que almacena las diferentes formas de ordenar el listado de productos
+  const ordenProductos = {
+    masVendidos: (a, b) => b.ventas - a.ventas,
+    default: (a, b) => b.ref - a.ref
+  }
 
-
-  useEffect(() => {
-    const cargaDatos =  async ()=>{
-      await obtenerProductos(
-        (response)=>{
-          setProductosData(response.data)
-        },
-        (error)=>{
-          console.error(error)
-        }
-      )
-    }
-    cargaDatos();
-  }, [])
-  
-  // pendiente funcionalidad para guardar los datos del producto al hacer clic en la card
-  
-  
   return (
     <>
     
@@ -48,68 +24,53 @@ function Store() {
         <img src={ImagenRelleno2} alt="" />
       </div>
       <div className='contenedor-productos-mas-vendidos'> 
-        <h2 className='titulo'>Mas Vendidos</h2>
+        <div className='titulo-seccion-productos'>
+          <h2 className='titulo'>Mas Vendidos</h2>
+          <button className='btn-ver-mas'>ver Todos...</button>
+        </div>
         <div className='contenedor-store-card' >
         {
-          productosData.map((producto, index)=>{
-            return(  
-              <CardStore key={nanoid()}
-                categoria={producto.categoria} 
-                producto={producto.producto} 
-                precio={producto.precio}
-                estado={producto.estado}
-                miniatura={producto.miniatura}
-                />
-            )
+          productos.sort( ordenProductos[`masVendidos`] ).map((producto, index)=>{
+            if (index < 5) {            
+              return(  
+                <CardStore key={nanoid()}
+                  categoria={producto.categoria} 
+                  producto={producto.producto} 
+                  precio={producto.precio}
+                  estado={producto.estado}
+                  miniatura={producto.miniatura}
+                  />
+              )
+            }
           })
         }
-        </div>
-        <button className='btn-ver-mas'>ver Todos...</button>
+        </div>  
       </div>
       <div className='imagen-relleno'>
         <img src={ImagenRelleno} alt="" />
       </div>
       <div className='contenedor-productos-mas-vendidos'> 
-        <h2 className='titulo'>Novedades...</h2>
-        <div className='contenedor-store-card' >
-            <CardStore
-              categoria={datadePrueba.categoria} 
-              producto={datadePrueba.producto} 
-              precio={datadePrueba.precio}
-              estado={datadePrueba.estado}
-              miniatura={datadePrueba.miniatura}
-              />
-          <CardStore
-            categoria={datadePrueba.categoria} 
-            producto={datadePrueba.producto} 
-            precio={datadePrueba.precio}
-            estado={datadePrueba.estado}
-            miniatura={datadePrueba.miniatura}
-            />
-          <CardStore 
-            categoria={datadePrueba.categoria} 
-            producto={datadePrueba.producto} 
-            precio={datadePrueba.precio}
-            estado={datadePrueba.estado}
-            miniatura='https://cdn.shopify.com/s/files/1/0512/9116/0767/products/rumble112cabinet_1_200x.png?v=1605549610'
-            />
-          <CardStore
-            categoria={datadePrueba.categoria} 
-            producto={datadePrueba.producto} 
-            precio={datadePrueba.precio}
-            estado={datadePrueba.estado}
-            miniatura='https://cdn.shopify.com/s/files/1/0512/9116/0767/products/preview2_2_200x.jpg?v=1605553028'
-            />
-          <CardStore
-            categoria={datadePrueba.categoria} 
-            producto={datadePrueba.producto} 
-            precio={datadePrueba.precio}
-            estado={datadePrueba.estado}
-            miniatura="https://cdn.shopify.com/s/files/1/0512/9116/0767/products/thumb_200x.jpg?v=1605551015"
-            />
-          
+        <div className='titulo-seccion-productos'>
+          <h2 className='titulo'>Novedades...</h2>
+          <button className='btn-ver-mas'>ver Todos...</button>
         </div>
-        <button className='btn-ver-mas'>ver Todos...</button>
+        <div className='contenedor-store-card' >
+          {
+            productos.sort( ordenProductos[`default`] ).map((producto, index)=>{
+              if (index < 5) {            
+                return(  
+                  <CardStore key={nanoid()}
+                    categoria={producto.categoria} 
+                    producto={producto.producto} 
+                    precio={producto.precio}
+                    estado={producto.estado}
+                    miniatura={producto.miniatura}
+                    />
+                )
+              }
+            })
+          }  
+        </div>
       </div>
     </>
   )
