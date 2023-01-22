@@ -4,7 +4,7 @@ import ImagenRelleno from '../../Assets/images/relleno.jpg'
 import ImagenRelleno2 from '../../Assets/images/relleno-2.jpg'
 import { nanoid } from 'nanoid';
 import { useProductos } from '../../context/contextStore.js'
-
+import { Link } from 'react-router-dom';
 
 
 function Store() {
@@ -26,7 +26,7 @@ function Store() {
       <div className='contenedor-productos-mas-vendidos'> 
         <div className='titulo-seccion-productos'>
           <h2 className='titulo'>Mas Vendidos</h2>
-          <button className='btn-ver-mas'>ver Todos...</button>
+          <Link to='/Proyecto-1-VM-Music-/store/listado-productos' className='btn-ver-mas'>ver Todos...</Link>
         </div>
         <div className='contenedor-store-card' >
         {
@@ -52,7 +52,7 @@ function Store() {
       <div className='contenedor-productos-mas-vendidos'> 
         <div className='titulo-seccion-productos'>
           <h2 className='titulo'>Novedades...</h2>
-          <button className='btn-ver-mas'>ver Todos...</button>
+          <Link to='/Proyecto-1-VM-Music-/store/listado-productos' className='btn-ver-mas'>ver Todos...</Link>
         </div>
         <div className='contenedor-store-card' >
           {

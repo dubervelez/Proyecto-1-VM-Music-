@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import "../styles/admin/headerAdmin.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars,faHouse, faXmark, faHouseChimneyUser, faFileAudio, faCartShopping, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faBars,faHouse, faXmark, faHouseChimneyUser, faFileAudio, faCartShopping, faChevronDown, faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
 import Logo from "../Assets/logos/logo-vm.png";
 import LogoW from "../Assets/logos/logo-vm-white.png";
 import { useState } from 'react';
@@ -52,7 +52,7 @@ function Navmobile() {
       <nav className='nav-movile-admin'>
           <ul className='nav-mobile-ul'>
                 <li className="sidebar--li"> 
-                    <NavLink className='navlink-admin' to='/Proyecto-1-VM-Music-/'>
+                    <NavLink className='navlink-admin' to='#'>
                         <FontAwesomeIcon className='icon-nav-sidebar' icon={faHouseChimneyUser} />Admin. Inicio
                     </NavLink> 
                     <FontAwesomeIcon className='icon-subnav' icon={faChevronDown} onClick={()=>{desplegarSubMenu(1)}} />
@@ -63,42 +63,36 @@ function Navmobile() {
                         <li className="sub-nav--li">
                             <NavLink className='subnav-link' to='/Proyecto-1-VM-Music-/admin/ultimos-Lanzamientos'>Ultimos Lanzamientos</NavLink>
                         </li>
-                        <li className="sub-nav--li">
-                            <NavLink className='subnav-link' to='/Proyecto-1-VM-Music-/admin/catalogo-musical'>Articulo</NavLink>
-                        </li>
                     </ul>
                 </li>
                 <li className="sidebar--li">
-                    <NavLink className='navlink-admin' to='/catalogo-musical'>
-                        <FontAwesomeIcon className='icon-nav-sidebar' icon={faFileAudio} />Catalogo Musical
-                    </NavLink>
-                    <FontAwesomeIcon className='icon-subnav' icon={faChevronDown} onClick={()=>{desplegarSubMenu(2)}}/>
-                    <ul className={`sub-nav-ul subnav-2 ${subnav2 ? 'activo': ''}`}>
-                        <li className="sub-nav--li">
-                            <NavLink className='subnav-link' to='/Proyecto-1-VM-Music-/'>Canciones</NavLink>
-                        </li>
-                        <li className="sub-nav--li">
-                            <NavLink className='subnav-link' to='/catalogo-musical'>Usuarios</NavLink>
-                        </li>
-                    </ul>
-                </li>
-                <li className="sidebar--li">
-                    <NavLink className='navlink-admin' to='/tienda'>
+                    <NavLink className='navlink-admin' to='#'>
                         <FontAwesomeIcon className='icon-nav-sidebar' icon={faCartShopping} />Admin Tienda
                     </NavLink>
                     <FontAwesomeIcon className='icon-subnav' icon={faChevronDown} onClick={()=>{desplegarSubMenu(3)}}/> 
                     <ul className={`sub-nav-ul subnav-3 ${subnav3 ? 'activo': ''}`}>
                         <li className="sub-nav--li">
-                            <NavLink className='subnav-link' to='/Proyecto-1-VM-Music-/'>Dashboard</NavLink>
+                            <NavLink className='subnav-link' to='/Proyecto-1-VM-Music-/admin/store/productos'>Productos</NavLink>
                         </li>
                         <li className="sub-nav--li">
                             <NavLink className='subnav-link' to='/catalogo-musical'>Ventas</NavLink>
                         </li>
                         <li className="sub-nav--li">
-                            <NavLink className='subnav-link' to='/Proyecto-1-VM-Music-/admin/store/productos'>Productos</NavLink>
+                            <NavLink className='subnav-link' to='/catalogo-musical'>Clientes</NavLink>
+                        </li>
+                    </ul>
+                </li>
+                <li className="sidebar--li">
+                    <NavLink className='navlink-admin' to='#'>
+                        <FontAwesomeIcon className='icon-nav-sidebar' icon={ faCircleQuestion } />Más funciones...
+                    </NavLink>
+                    <FontAwesomeIcon className='icon-subnav' icon={faChevronDown} onClick={()=>{desplegarSubMenu(2)}}/>
+                    <ul className={`sub-nav-ul subnav-2 ${subnav2 ? 'activo': ''}`}>
+                        <li className="sub-nav--li">
+                            <NavLink className='subnav-link' to='/Proyecto-1-VM-Music-/'>------------</NavLink>
                         </li>
                         <li className="sub-nav--li">
-                            <NavLink className='subnav-link' to='/catalogo-musical'>Clientes</NavLink>
+                            <NavLink className='subnav-link' to='/catalogo-musical'>------------</NavLink>
                         </li>
                     </ul>
                 </li>

@@ -4,7 +4,7 @@ import PrivateRoute from "../../components/PrivateRoute";
 
 function Layout({ children }) {
 
-  
+  // pendiente adicionar private
 
   return (
     <PrivateRoute>
@@ -16,6 +16,7 @@ function Layout({ children }) {
         </div>
       </div>
     </PrivateRoute>
+    
   )
 }
 
